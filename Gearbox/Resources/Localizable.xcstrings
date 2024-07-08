@@ -1,0 +1,131 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "button.next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sljedeće"
+          }
+        }
+      }
+    },
+    "Finish" : {
+
+    },
+    "Home screen" : {
+
+    },
+    "onboarding.first.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gearbox is your one-stop shop for all things automotive. Share your love for cars, connect with fellow enthusiasts, and discover a world of car content."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gearbox je jedinstveno mjesto koje okuplja entuzijaste. Dijeli svoju strast prema automobilima i otkrij svijet automobila."
+          }
+        }
+      }
+    },
+    "onboarding.first.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rev up your passion"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubrzaj svoju strast"
+          }
+        }
+      }
+    },
+    "onboarding.second.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Follow topics you love, from classic muscle cars to cutting-edge EVs. Create your profile and showcase your own ride."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prati teme koje te zanimaju, od snažnih klasika do najnoviji električnih automobila. Kreiraj svoj profil i pokaži svoj automobil."
+          }
+        }
+      }
+    },
+    "onboarding.second.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shift into high gear"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubaci u sljedeću brzinu"
+          }
+        }
+      }
+    },
+    "onboarding.third.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up or sign in to join the Gearbox community. Get ready to share your passion and explore the world of cars!"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registriraje se ili prijavi u Gearbox zajednicu. Pripremi se za dijeljenje strasti i istraži svijet automobila sada."
+          }
+        }
+      }
+    },
+    "onboarding.third.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hit the road"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreni na cestu"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

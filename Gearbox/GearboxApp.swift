@@ -1,0 +1,36 @@
+//
+//  GearboxApp.swift
+//  Gearbox
+//
+//  Created by Filip Kisić on 04.07.2024..
+//
+
+import SwiftUI
+
+@main
+struct GearboxApp: App {
+  // MARK: - PROPERTIES
+  @AppStorage("shouldShowOnBoarding") var isOnboarding = true
+  
+  // MARK: - BODY
+  var body: some Scene {
+    WindowGroup {
+      if isOnboarding {
+        OnBoardingView(isOnboarding: $isOnboarding)
+      } else {
+        Text("Home screen")
+      }
+    }
+  }
+}
+
+// ALL AVAILABLE FONTS
+// RobotoCondensed-Regular
+// RobotoCondensed-Thin
+// RobotoCondensed-ExtraLight
+// RobotoCondensed-Light
+// RobotoCondensed-Medium
+// RobotoCondensed-SemiBold
+// RobotoCondensed-Bold
+// RobotoCondensed-ExtraBold
+// RobotoCondensed-Black
