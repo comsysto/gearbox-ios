@@ -18,6 +18,8 @@ struct OnBoardingView: View {
     ZStack {
       Color(.background)
         .edgesIgnoringSafeArea(.all)
+      
+      // MARK: - BACKGROUND IMAGE
       VStack (alignment: .leading) {
         Image(onboardingViews[pageIndex].imageName)
           .resizable()
@@ -33,6 +35,8 @@ struct OnBoardingView: View {
           .id(UUID())
         Spacer()
       } //: VSTACK
+      
+      // MARK: - BACKGROUND COLOR
       VStack {
         LinearGradient(
           gradient: Gradient(colors: [.background.opacity(0.0), .background]),
@@ -43,9 +47,12 @@ struct OnBoardingView: View {
         .edgesIgnoringSafeArea(.all)
         Spacer()
       } //: VSTACK
-      VStack (alignment: .trailing) {
+      
+      VStack(alignment: .leading) {
         Spacer()
           .frame(height: 450)
+        
+        // MARK: - TITLE AND PAGE INDICATOR
         HStack {
           Text(LocalizedStringKey(onboardingViews[pageIndex].title))
             .font(Font.custom("RobotoCondensed-Bold", size: 28))
@@ -55,27 +62,35 @@ struct OnBoardingView: View {
         } //: HSTACK
         Spacer()
           .frame(height: 20)
+        
+        // MARK: - CONTENT TEXT
         Text(LocalizedStringKey(onboardingViews[pageIndex].content))
           .font(.system(size: 16, design: .rounded))
+        
         Spacer()
-        Button {
-          if pageIndex != onboardingViews.count - 1 {
-            withAnimation {
-              pageIndex += 1
-              isLast = pageIndex == onboardingViews.count - 1
+        
+        // MARK: - BUTTON
+        HStack {
+          Spacer()
+          Button {
+            if pageIndex != onboardingViews.count - 1 {
+              withAnimation {
+                pageIndex += 1
+                isLast = pageIndex == onboardingViews.count - 1
+              }
+            } else {
+              isOnboarding = false
             }
-          } else {
-            isOnboarding = false
+          } label: {
+            Text(isLast ? "button.finish" : "button.next")
+              .font(Font.custom("RobotoCondensed-Bold", size: 20))
+              .foregroundStyle(.white)
+              .padding(.vertical)
+              .padding(.horizontal, 40)
           }
-        } label: {
-          Text(isLast ? "Finish" : "button.next")
-            .font(Font.custom("RobotoCondensed-Bold", size: 20))
-            .foregroundStyle(.white)
-            .padding(.vertical)
-            .padding(.horizontal, 40)
-        }
-        .background(Color.brand)
+          .background(Color.brand)
         .cornerRadius(7)
+        } //: HSTACK
       } //: VSTACK
       .padding(20)
     } //: ZSTACK

@@ -18,7 +18,7 @@ struct GearboxApp: App {
       if isOnboarding {
         OnBoardingView(isOnboarding: $isOnboarding)
       } else {
-        Text("Home screen")
+        SignInView()
       }
     }
   }
