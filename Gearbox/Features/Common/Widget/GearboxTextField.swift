@@ -14,7 +14,7 @@ struct GearboxTextField: View {
   
   @Binding var text: String
   
-  @State private var errorMessage: String = ""
+  @State private var errorMessage: String = .empty()
   
   // MARK: - INITIALIZER
   init(_ placeholder: String, text: Binding<String>, type: InputType) {
@@ -51,9 +51,11 @@ struct GearboxTextField: View {
   private func validate() {
     switch type {
       case .email:
-        errorMessage = text.validateAsEmail() ?? ""
+        errorMessage = text.validateAsEmail() ?? .empty()
       case .password:
-        errorMessage = text.validateAsPassword() ?? ""
+        errorMessage = text.validateAsPassword() ?? .empty()
+      case .username:
+        errorMessage = text.validateAsUsername() ?? .empty()
     }
   }
   
@@ -63,15 +65,19 @@ struct GearboxTextField: View {
           .emailAddress
       case .password:
           .asciiCapable
+      case .username:
+          .default
     }
   }
   
-  private func getTextContentType() -> UITextContentType {
+  private func getTextContentType() -> UITextContentType? {
     return switch type {
       case .email:
           .emailAddress
       case .password:
           .password
+      default:
+        nil
     }
   }
 }
@@ -102,5 +108,9 @@ struct RoundedGearboxTextStyle: TextFieldStyle {
 // MARK: - PREVIEW
 #Preview(traits: .sizeThatFitsLayout) {
   @State var text: String = ""
-  return GearboxTextField("password", text: $text, type: .password).padding(10)
+  return GearboxTextField("label.email", text: $text, type: .email).padding(10)
+}
+
+enum InputType {
+  case email, password, username
 }

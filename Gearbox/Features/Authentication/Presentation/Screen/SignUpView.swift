@@ -1,18 +1,20 @@
 //
-//  SignInView.swift
+//  SignUpView.swift
 //  Gearbox
 //
-//  Created by Filip Kisić on 08.07.2024..
+//  Created by Filip Kisić on 28.07.2024..
 //
 
 import SwiftUI
 
-struct SignInView: View {
+struct SignUpView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject var router: Router
   
   @State private var email: String = ""
+  @State private var username: String = ""
   @State private var password: String = ""
+  @State private var confirmPassword: String = ""
   
   @FocusState private var focusedField: FocusedField?
   
@@ -22,35 +24,38 @@ struct SignInView: View {
       Color(.background)
         .edgesIgnoringSafeArea(.all)
       
-      VStack (alignment: .leading) {
+      VStack(alignment: .leading) {
         // MARK: - HEADING
         Text("authentication.sign-in.title")
           .font(Font.custom("RobotoCondensed-Bold", size: 28))
           .padding(.top, 20)
         Text("authentication.sign-in.subtitle")
           .font(.system(size: 16, design: .rounded))
+          .padding(.bottom, 20)
         
-        Spacer()
-          .frame(minHeight: 20, idealHeight: 60, maxHeight: 100)
-          .fixedSize()
-        
-        // MARK: - INPUT
         GearboxTextField("label.email", text: $email, type: .email)
           .focused($focusedField, equals: .email)
           .submitLabel(.next)
         
+        GearboxTextField("label.username", text: $username, type: .username)
+          .focused($focusedField, equals: .username)
+          .submitLabel(.next)
+        
         GearboxTextField("label.password", text: $password, type: .password)
           .focused($focusedField, equals: .password)
+          .submitLabel(.next)
+        
+        GearboxTextField("label.confirm-password", text: $confirmPassword, type: .password)
+          .focused($focusedField, equals: .confirmPassword)
           .submitLabel(.done)
         
-        
         Spacer()
-          .frame(minHeight: 20, idealHeight: 40, maxHeight: 100)
+          .frame(minHeight: 20, idealHeight: 20, maxHeight: 30)
           .fixedSize()
         
         // MARK: - ACTION
-        GearboxLargeButton(label: "authentication.sign-in") {
-          signIn()
+        GearboxLargeButton(label: "authentication.sign-up") {
+          signUp()
         }
         
         Spacer()
@@ -58,12 +63,12 @@ struct SignInView: View {
         // MARK: - FOOTER
         HStack() {
           Spacer()
-          Text("authentication.no-account.sign-up.label")
+          Text("authentication.no-account.sign-in.label")
             .font(.system(size: 16, design: .rounded))
           Button {
-            router.navigateTo(.signUp)
+            router.navigateBack()
           } label: {
-            Text("authentication.no-account.sign-up.action")
+            Text("authentication.no-account.sign-in.action")
               .foregroundStyle(Color.brand)
               .font(.system(size: 16, weight: .bold, design: .rounded))
           }
@@ -73,33 +78,40 @@ struct SignInView: View {
       .padding()
       .onSubmit(handleOnSubmit)
     } //: ZSTACK
+    .navigationBarBackButtonHidden()
+  }
+  
+  // MARK: - FUNCTIONS
+  private func signUp() {
+    print("Sign up pressed!")
   }
   
   private func handleOnSubmit() {
-    focusedField == .email ? focusedField = .password : signIn()
-  }
-  
-  private func signIn() {
-    focusedField = nil
-    if isInputValid() {
-      print("Sign in action pressed!")
-      //await sign in response from API
-      //redirect to Main screen
+    switch focusedField {
+      case .email:
+        focusedField = .username
+      case .username:
+        focusedField = .password
+      case .password:
+        focusedField = .confirmPassword
+      case .confirmPassword:
+        focusedField = nil
+        signUp()
+      case nil:
+        break
     }
-  }
-  
-  private func isInputValid() -> Bool {
-    return email.validateAsEmail() == nil && password.validateAsPassword() == nil
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  SignInView()
+  SignUpView()
 }
 
 // MARK: - FOCUSED FIELD ENUM
 private enum FocusedField {
   case email
+  case username
   case password
+  case confirmPassword
 }

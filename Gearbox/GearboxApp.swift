@@ -15,10 +15,12 @@ struct GearboxApp: App {
   // MARK: - BODY
   var body: some Scene {
     WindowGroup {
-      if isOnboarding {
-        OnBoardingView(isOnboarding: $isOnboarding)
-      } else {
-        SignInView()
+      MasterRouteView {
+        if isOnboarding {
+          OnBoardingView(isOnboarding: $isOnboarding)
+        } else {
+          SignInView()
+        }
       }
     }
   }
