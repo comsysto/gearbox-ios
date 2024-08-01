@@ -24,13 +24,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Field cannot be empty"
+            "value" : "Field cannot be empty."
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Polje je prazno"
+            "value" : "Polje je prazno."
           }
         }
       }
@@ -41,13 +41,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Invalid email address"
+            "value" : "Invalid email address."
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neispravna email adresa"
+            "value" : "Neispravna email adresa."
           }
         }
       }
@@ -75,13 +75,98 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Password is too short"
+            "value" : "Password must be at least 8 characters long."
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lozinka je prekratka"
+            "value" : "Lozinka mora sadržavati barem 8 znakova."
+          }
+        }
+      }
+    },
+    "authentication.error.username-captialized" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username must not start with capitalized letter."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korisničko ime ne smije započeti velikim slovom."
+          }
+        }
+      }
+    },
+    "authentication.error.username-characters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username must not contain special characters."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korisničko ime ne smije sadržavati specijalne znakove."
+          }
+        }
+      }
+    },
+    "authentication.error.username-too-short" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username must be at least 5 characters long."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korsiničko ime mora sadržavati barem 5 znakova."
+          }
+        }
+      }
+    },
+    "authentication.no-account.sign-in.action" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prijavi se"
+          }
+        }
+      }
+    },
+    "authentication.no-account.sign-in.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already have an account?"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imaš već račun?"
           }
         }
       }
@@ -256,7 +341,24 @@
         }
       }
     },
-    "email" : {
+    "label.confirm-password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm password"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potvrdi lozinku"
+          }
+        }
+      }
+    },
+    "label.email" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -269,6 +371,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email"
+          }
+        }
+      }
+    },
+    "label.password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lozinka"
+          }
+        }
+      }
+    },
+    "label.username" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korisničko ime"
           }
         }
       }
@@ -371,23 +507,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kreni na cestu"
-          }
-        }
-      }
-    },
-    "password" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Password"
-          }
-        },
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lozinka"
           }
         }
       }
