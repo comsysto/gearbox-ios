@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import GearboxDatasource
 
 struct SignInView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject var router: Router
+  @StateObject private var userViewModel = UserViewModel()
   
   @State private var email: String = ""
   @State private var password: String = ""
@@ -49,7 +51,7 @@ struct SignInView: View {
           .fixedSize()
         
         // MARK: - ACTION
-        GearboxLargeButton(label: "authentication.sign-in") {
+        GearboxLargeButton(label: "authentication.sign-in", isLoading: isLoading()) {
           signIn()
         }
         
@@ -75,21 +77,32 @@ struct SignInView: View {
     } //: ZSTACK
   }
   
-  private func handleOnSubmit() {
-    focusedField == .email ? focusedField = .password : signIn()
+  // MARK: - FUNCTIONS
+  private func isLoading() -> Bool {
+    if case .loading = userViewModel.authenticationState {
+      return true
+    }
+    return false
   }
   
   private func signIn() {
     focusedField = nil
     if isInputValid() {
+      Task {
+        //await sign in response from API
+        await userViewModel.signIn(email: email, password: password)
+      }
       print("Sign in action pressed!")
-      //await sign in response from API
       //redirect to Main screen
     }
   }
   
   private func isInputValid() -> Bool {
     return email.validateAsEmail() == nil && password.validateAsPassword() == nil
+  }
+  
+  private func handleOnSubmit() {
+    focusedField == .email ? focusedField = .password : signIn()
   }
 }
 
