@@ -15,10 +15,8 @@ public struct ErrorResponse: Decodable {
 extension ErrorResponse {
   func filterException() -> AuthenticationException {
     switch self.message {
-      case "User is not found.":
-        return AuthenticationException.userNotFound(self.message)
       case "User already exists.":
-        return AuthenticationException.userAlreadyExists(self.message)
+        return AuthenticationException.userAlreadyExists("authentication.error.user-already-exists")
       default:
         return AuthenticationException.serverError(self.message)
     }

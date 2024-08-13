@@ -11,10 +11,13 @@ import GearboxDatasource
 struct SignInView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject var router: Router
-  @StateObject private var userViewModel = UserViewModel()
+  @EnvironmentObject private var userViewModel: UserViewModel
   
   @State private var email: String = ""
   @State private var password: String = ""
+  @State private var isErrorShown: Bool = false
+  @State private var isLoading: Bool = false
+  @State private var errorMessage: String = ""
   
   @FocusState private var focusedField: FocusedField?
   
@@ -51,7 +54,7 @@ struct SignInView: View {
           .fixedSize()
         
         // MARK: - ACTION
-        GearboxLargeButton(label: "authentication.sign-in", isLoading: isLoading()) {
+        GearboxLargeButton(label: "authentication.sign-in", isLoading: $isLoading) {
           signIn()
         }
         
@@ -74,26 +77,26 @@ struct SignInView: View {
       } //: VSTACK
       .padding()
       .onSubmit(handleOnSubmit)
+      .onChange(of: userViewModel.authenticationState, perform: handleStateChange)
+      // MARK: - ERROR ALERT
+      .alert(isPresented: $isErrorShown) {
+        Alert(
+          title: Text("error.title"),
+          message: Text(LocalizedStringKey(errorMessage)),
+          dismissButton: .default(Text("ok"))
+        )
+      }
     } //: ZSTACK
   }
   
   // MARK: - FUNCTIONS
-  private func isLoading() -> Bool {
-    if case .loading = userViewModel.authenticationState {
-      return true
-    }
-    return false
-  }
-  
   private func signIn() {
     focusedField = nil
+    
     if isInputValid() {
       Task {
-        //await sign in response from API
         await userViewModel.signIn(email: email, password: password)
       }
-      print("Sign in action pressed!")
-      //redirect to Main screen
     }
   }
   
@@ -103,6 +106,34 @@ struct SignInView: View {
   
   private func handleOnSubmit() {
     focusedField == .email ? focusedField = .password : signIn()
+  }
+  
+  private func handleStateChange(state: AuthenticationState) {
+    switch state {
+      case .loading:
+        isLoading = true
+      case .authenticated(let user):
+        isLoading = false
+        isErrorShown = false
+        router.navigateTo(.home)
+      case .unauthenticated(let error):
+        isLoading = false
+        isErrorShown = true
+        setErrorMessage(error)
+    }
+  }
+  
+  private func setErrorMessage(_ error: AuthError?) {
+    switch error {
+      case .invalidRequest(let message),
+          .userNotFound(let message),
+          .userAlreadyExists(let message),
+          .expiredToken(let message),
+          .serverError(let message):
+        errorMessage = message
+      default:
+        errorMessage = "error.unknown"
+    }
   }
 }
 

@@ -10,10 +10,14 @@ import SwiftUI
 struct GearboxLargeButton: View {
   // MARK: - PROPERTIES
   let label: String
-  var isLoading: Bool = false
+  var isLoading: Binding<Bool>
   let action: () -> Void
   
-  init(label: String, isLoading: Bool = false, action: @escaping () -> Void) {
+  init(
+    label: String,
+    isLoading: Binding<Bool> = .constant(false),
+    action: @escaping () -> Void
+  ) {
     self.label = label
     self.isLoading = isLoading
     self.action = action
@@ -24,7 +28,7 @@ struct GearboxLargeButton: View {
     Button {
       action()
     } label: {
-      if isLoading {
+      if isLoading.wrappedValue {
         ProgressView()
           .progressViewStyle(.circular)
           .tint(.white)
@@ -43,13 +47,15 @@ struct GearboxLargeButton: View {
     .background(Color.brand)
     .cornerRadius(7)
     .shadow(color: .brand.opacity(0.25), radius: 5, x: 0, y: 5)
-    .disabled(isLoading)
+    .disabled(isLoading.wrappedValue)
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  GearboxLargeButton(label: "button.next", isLoading: true) {
+  @State var isLoading = false
+  
+  return GearboxLargeButton(label: "button.next", isLoading: $isLoading) {
     print("Button pressed!")
   }
   .padding()

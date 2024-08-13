@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum AuthError: Error {
+enum AuthError: Error, Equatable {
   case invalidRequest(_ message: String)
   case userNotFound(_ message: String)
   case userAlreadyExists(_ message: String)
   case expiredToken(_ message: String)
   case serverError(_ message: String)
 }
+

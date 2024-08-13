@@ -11,6 +11,7 @@
 		122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122191962C56925A00E3E138 /* MasterRouteView.swift */; };
 		122191992C5692D000E3E138 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122191982C5692D000E3E138 /* Router.swift */; };
 		1221919B2C56975F00E3E138 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221919A2C56975F00E3E138 /* SignUpView.swift */; };
+		123BD9062C6B77F3007762EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123BD9052C6B77F3007762EF /* HomeView.swift */; };
 		124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */; };
 		124F1B472C41409200897BA3 /* StringValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B462C41409200897BA3 /* StringValidators.swift */; };
 		1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1251E63D2C36E61F00FE8E93 /* GearboxApp.swift */; };
@@ -42,6 +43,7 @@
 		122191962C56925A00E3E138 /* MasterRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRouteView.swift; sourceTree = "<group>"; };
 		122191982C5692D000E3E138 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1221919A2C56975F00E3E138 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		123BD9052C6B77F3007762EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearboxLargeButton.swift; sourceTree = "<group>"; };
 		124F1B462C41409200897BA3 /* StringValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidators.swift; sourceTree = "<group>"; };
 		1251E63A2C36E61F00FE8E93 /* Gearbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gearbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,53 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
+		123BD8FF2C6B76D0007762EF /* Blogs */ = {
+			isa = PBXGroup;
+			children = (
+				123BD9032C6B7784007762EF /* Bookmarks */,
+				123BD9022C6B7759007762EF /* Explore */,
+				123BD9012C6B7752007762EF /* CreateNew */,
+				123BD9002C6B774D007762EF /* Home */,
+			);
+			path = Blogs;
+			sourceTree = "<group>";
+		};
+		123BD9002C6B774D007762EF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				123BD9052C6B77F3007762EF /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		123BD9012C6B7752007762EF /* CreateNew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreateNew;
+			sourceTree = "<group>";
+		};
+		123BD9022C6B7759007762EF /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		123BD9032C6B7784007762EF /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		123BD9042C6B7791007762EF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		124F1B452C41406F00897BA3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +210,8 @@
 		1251E64D2C36EA7600FE8E93 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				123BD9042C6B7791007762EF /* Profile */,
+				123BD8FF2C6B76D0007762EF /* Blogs */,
 				1212F5732C3ECE8E00B1DDCF /* Common */,
 				1251E6502C36EA8C00FE8E93 /* Authentication */,
 				1251E64E2C36EA7E00FE8E93 /* Onboarding */,
@@ -418,6 +469,7 @@
 				12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */,
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
 				12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */,
+				123BD9062C6B77F3007762EF /* HomeView.swift in Sources */,
 				12AD4FA42C5F967D0081E9F1 /* AuthenticationRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

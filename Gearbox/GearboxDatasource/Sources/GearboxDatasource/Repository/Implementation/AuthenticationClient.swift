@@ -56,9 +56,9 @@ class AuthenticationClient: AuthenticationDatasource {
         throw errorResponse.filterException()
       case 404:
         let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: response)
-        throw AuthenticationException.userNotFound(errorResponse.message)
+        throw AuthenticationException.userNotFound("authentication.error.user-not-found")
       default:
-        throw AuthenticationException.serverError("Server error.")
+        throw AuthenticationException.serverError("error.server-error.")
     }
   }
 }

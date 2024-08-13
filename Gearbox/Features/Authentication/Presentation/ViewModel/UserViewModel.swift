@@ -15,6 +15,7 @@ class UserViewModel: ObservableObject {
   
   // MARK: - STATE
   @Published var authenticationState = AuthenticationState.unauthenticated(nil)
+  @Published var currentUser: User? = nil
   
   // MARK: - FUNCTIONS
   @MainActor
@@ -24,14 +25,30 @@ class UserViewModel: ObservableObject {
     switch result {
       case .success(let user):
         authenticationState = .authenticated(user)
+        currentUser = user
+        print("SET USER \(user.username)")
       case .failure(let error):
         authenticationState = .unauthenticated(error)
+        print("ERROR??????")
     }
   }
 }
 
-enum AuthenticationState {
+enum AuthenticationState: Equatable {
   case loading
   case authenticated(User)
-  case unauthenticated(Error?)
+  case unauthenticated(AuthError?)
+  
+  static func == (lhs: AuthenticationState, rhs: AuthenticationState) -> Bool {
+    switch (lhs, rhs) {
+      case (.loading, .loading):
+        return true
+      case (.authenticated(let lhsUser), .authenticated(let rhsUser)):
+        return lhsUser == rhsUser
+      case (.unauthenticated(let lhsError), .unauthenticated(let rhsError)):
+        return lhsError == rhsError
+      default:
+        return false
+    }
+  }
 }

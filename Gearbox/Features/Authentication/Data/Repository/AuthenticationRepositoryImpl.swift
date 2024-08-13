@@ -40,7 +40,7 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
   }
   
   private func handleAuthExceptions(_ error: Error) -> AuthError {
-    switch error as! AuthenticationException {
+    switch error as? AuthenticationException {
       case .invalidRequest(let message):
         return AuthError.invalidRequest(message)
       case .userNotFound(let message):
@@ -50,7 +50,7 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
       case .serverError(let message):
         return .serverError(message)
       default:
-        return AuthError.serverError("Unknown error.")
+        return AuthError.serverError("error.unknown")
     }
   }
 }

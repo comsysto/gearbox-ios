@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Token {
+struct Token: Equatable {
   let token: String
   let refreshToken: String
 }
