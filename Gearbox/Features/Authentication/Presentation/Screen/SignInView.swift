@@ -10,13 +10,14 @@ import GearboxDatasource
 
 struct SignInView: View {
   // MARK: - PROPERTIES
-  @EnvironmentObject var router: Router
+  @EnvironmentObject private var router: Router
   @EnvironmentObject private var userViewModel: UserViewModel
   
   @State private var email: String = ""
   @State private var password: String = ""
-  @State private var isErrorShown: Bool = false
+  
   @State private var isLoading: Bool = false
+  @State private var isErrorShown: Bool = false
   @State private var errorMessage: String = ""
   
   @FocusState private var focusedField: FocusedField?
@@ -112,7 +113,7 @@ struct SignInView: View {
     switch state {
       case .loading:
         isLoading = true
-      case .authenticated(let user):
+      case .authenticated(_):
         isLoading = false
         isErrorShown = false
         router.navigateTo(.home)

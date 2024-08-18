@@ -11,14 +11,3 @@ public struct ErrorResponse: Decodable {
   let timestamp: String
   let message: String
 }
-
-extension ErrorResponse {
-  func filterException() -> AuthenticationException {
-    switch self.message {
-      case "User already exists.":
-        return AuthenticationException.userAlreadyExists("authentication.error.user-already-exists")
-      default:
-        return AuthenticationException.serverError(self.message)
-    }
-  }
-}

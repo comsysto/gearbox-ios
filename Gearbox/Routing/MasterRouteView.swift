@@ -11,6 +11,7 @@ struct MasterRouteView<Content: View>: View {
   // MARK: - PROPERTIES
   @StateObject var router = Router()
   @StateObject var userViewModel = UserViewModel()
+  
   private let content: Content
   
   // MARK: - INITIALIZER

@@ -12,7 +12,10 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
   private let authApi: AuthenticationDatasource
   private let responseToEntityConverter: AuthenticationResponseToUserEntityConverter
   
-  init(_ authenticationDatasource: AuthenticationDatasource,_ responseToEntityMapper: AuthenticationResponseToUserEntityConverter) {
+  init(
+    _ authenticationDatasource: AuthenticationDatasource,
+    _ responseToEntityMapper: AuthenticationResponseToUserEntityConverter
+  ) {
     self.authApi = authenticationDatasource
     self.responseToEntityConverter = responseToEntityMapper
   }
@@ -30,7 +33,12 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
   
   func signUp(email: String, username: String, password: String, confirmPassword: String) async -> Result<User, AuthError> {
     do {
-      let request = SignUpRequest(email: email, username: username, password: password, confirmPassword: confirmPassword)
+      let request = SignUpRequest(
+        email: email,
+        username: username,
+        password: password,
+        confirmPassword: confirmPassword
+      )
       let response = try await authApi.signUp(request: request)
       let user = responseToEntityConverter.convert(response)
       return .success(user)

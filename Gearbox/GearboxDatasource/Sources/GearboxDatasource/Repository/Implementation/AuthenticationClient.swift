@@ -53,9 +53,13 @@ class AuthenticationClient: AuthenticationDatasource {
         return decodedResponse
       case 400:
         let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: response)
-        throw errorResponse.filterException()
+        switch errorResponse.message {
+          case "User already exists.":
+            throw AuthenticationException.userAlreadyExists("authentication.error.user-already-exists")
+          default:
+            throw AuthenticationException.serverError(errorResponse.message)
+        }
       case 404:
-        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: response)
         throw AuthenticationException.userNotFound("authentication.error.user-not-found")
       default:
         throw AuthenticationException.serverError("error.server-error.")

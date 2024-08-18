@@ -20,6 +20,8 @@
 		1251E65A2C36F0E500FE8E93 /* RobotoCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1251E6592C36F0E500FE8E93 /* RobotoCondensed.ttf */; };
 		1252167C2C5A5DDF00A0185B /* NavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252167B2C5A5DDF00A0185B /* NavigationUtils.swift */; };
 		125216852C5BDE2F00A0185B /* GearboxDatasource in Frameworks */ = {isa = PBXBuildFile; productRef = 125216842C5BDE2F00A0185B /* GearboxDatasource */; };
+		126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126BEB482C6CC205000DB687 /* KeychainStorage.swift */; };
+		126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 126BEB4B2C6CC8D7000DB687 /* KeychainSwift */; };
 		126D80142C6629EE006FFD3B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D80132C6629EE006FFD3B /* AuthError.swift */; };
 		12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */; };
 		12A810562C3C085F00725C1B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A810552C3C085F00725C1B /* OnBoardingView.swift */; };
@@ -54,6 +56,7 @@
 		1251E65B2C36F15000FE8E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1252167B2C5A5DDF00A0185B /* NavigationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtils.swift; sourceTree = "<group>"; };
 		125216822C5BDE0A00A0185B /* GearboxDatasource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GearboxDatasource; path = Gearbox/GearboxDatasource; sourceTree = "<group>"; };
+		126BEB482C6CC205000DB687 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		126D80132C6629EE006FFD3B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		12A810552C3C085F00725C1B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */,
 				125216852C5BDE2F00A0185B /* GearboxDatasource in Frameworks */,
 				12C12D732C623CA600C2B0F4 /* Dependency in Frameworks */,
 			);
@@ -162,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				124F1B462C41409200897BA3 /* StringValidators.swift */,
+				126BEB482C6CC205000DB687 /* KeychainStorage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 			packageProductDependencies = (
 				125216842C5BDE2F00A0185B /* GearboxDatasource */,
 				12C12D722C623CA600C2B0F4 /* Dependency */,
+				126BEB4B2C6CC8D7000DB687 /* KeychainSwift */,
 			);
 			productName = Gearbox;
 			productReference = 1251E63A2C36E61F00FE8E93 /* Gearbox.app */;
@@ -419,6 +425,7 @@
 			mainGroup = 1251E6312C36E61F00FE8E93;
 			packageReferences = (
 				12C12D712C623CA600C2B0F4 /* XCRemoteSwiftPackageReference "Dependency" */,
+				126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 1251E63B2C36E61F00FE8E93 /* Products */;
 			projectDirPath = "";
@@ -454,6 +461,7 @@
 				122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */,
 				124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */,
 				122191992C5692D000E3E138 /* Router.swift in Sources */,
+				126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */,
 				1212F5762C3ECEC100B1DDCF /* GearboxTextField.swift in Sources */,
 				12AD4FAB2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift in Sources */,
 				1221919B2C56975F00E3E138 /* SignUpView.swift in Sources */,
@@ -690,6 +698,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 		12C12D712C623CA600C2B0F4 /* XCRemoteSwiftPackageReference "Dependency" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/chFlorian/Dependency";
@@ -704,6 +720,11 @@
 		125216842C5BDE2F00A0185B /* GearboxDatasource */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GearboxDatasource;
+		};
+		126BEB4B2C6CC8D7000DB687 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		12C12D722C623CA600C2B0F4 /* Dependency */ = {
 			isa = XCSwiftPackageProductDependency;

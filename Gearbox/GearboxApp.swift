@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct GearboxApp: App {
   // MARK: - PROPERTIES
-  @AppStorage("shouldShowOnBoarding") var isOnboarding = true
+  @AppStorage("shouldShowOnBoarding") private var isOnboarding = true
+  @KeychainStorage("accessToken") private var accessToken: String?
   
   // MARK: - BODY
   var body: some Scene {

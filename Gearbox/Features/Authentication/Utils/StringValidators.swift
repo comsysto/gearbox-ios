@@ -8,10 +8,6 @@
 import Foundation
 
 extension String {
-  static func empty() -> String {
-    return " "
-  }
-  
   func validateAsEmail() -> String? {
     let isValid = doesMatchRegex("[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
     
