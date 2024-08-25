@@ -15,7 +15,7 @@ public struct AuthenticationDatasourceKey: DependencyKey {
 
 extension DependencyValues {
   @available(iOS 15.0, *)
-  public var authenticationDatasource: AuthenticationDatasource {
+  public var authenticationDatasourceKey: AuthenticationDatasource {
     get { Self[AuthenticationDatasourceKey.self] }
     set { Self[AuthenticationDatasourceKey.self] = newValue }
   }

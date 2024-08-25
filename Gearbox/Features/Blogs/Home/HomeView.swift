@@ -11,8 +11,6 @@ struct HomeView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var userViewModel: UserViewModel
   
-  @KeychainStorage("accessToken") private var token: String?
-  
   // MARK: - BODY
   var body: some View {
     Text("Hello, \(userViewModel.currentUser?.username ?? "No username")")

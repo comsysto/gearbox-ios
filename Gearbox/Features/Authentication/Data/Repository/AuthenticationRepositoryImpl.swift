@@ -9,22 +9,35 @@ import Foundation
 import GearboxDatasource
 
 class AuthenticationRepositoryImpl: AuthenticationRepository {
+  // MARK: - DEPENDECIES
   private let authApi: AuthenticationDatasource
-  private let responseToEntityConverter: AuthenticationResponseToUserEntityConverter
+  private let userLocalDataSource: UserLocalDatasource
   
+  private let authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
+  private let refreshTokenResponseToTokenEntityConverter: RefreshTokenResponseToTokenEntityConverter
+  
+  // MARK: - CONSTRUCTOR
   init(
     _ authenticationDatasource: AuthenticationDatasource,
-    _ responseToEntityMapper: AuthenticationResponseToUserEntityConverter
+    _ userLocalDataSource: UserLocalDatasource,
+    _ authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter,
+    _ refreshTokenResponseToTokenEntityConverter: RefreshTokenResponseToTokenEntityConverter
   ) {
     self.authApi = authenticationDatasource
-    self.responseToEntityConverter = responseToEntityMapper
+    self.userLocalDataSource = userLocalDataSource
+    self.authenticationResponseToUserEntityConverter = authenticationResponseToUserEntityConverter
+    self.refreshTokenResponseToTokenEntityConverter = refreshTokenResponseToTokenEntityConverter
   }
   
+  // MARK: - FUNCTIONS
   func signIn(email: String, password: String) async -> Result<User, AuthError> {
     do {
       let request = SignInRequest(email: email, password: password)
       let response = try await authApi.signIn(request: request)
-      let user = responseToEntityConverter.convert(response)
+      let user = authenticationResponseToUserEntityConverter.convert(response)
+      
+      userLocalDataSource.saveUser(user)
+      
       return .success(user)
     } catch {
       return .failure(handleAuthExceptions(error))
@@ -40,9 +53,30 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
         confirmPassword: confirmPassword
       )
       let response = try await authApi.signUp(request: request)
-      let user = responseToEntityConverter.convert(response)
+      let user = authenticationResponseToUserEntityConverter.convert(response)
+      
+      userLocalDataSource.saveUser(user)
+      
       return .success(user)
     } catch {
+      return .failure(handleAuthExceptions(error))
+    }
+  }
+  
+  func refreshUserSession() async -> Result<User, AuthError> {
+    do {
+      let token = userLocalDataSource.loadToken()
+      
+      let request = RefreshTokenRequest(token.refreshToken)
+      let response = try await authApi.refreshToken(request: request)
+      let newToken = refreshTokenResponseToTokenEntityConverter.convert(response)
+      
+      userLocalDataSource.saveToken(newToken)
+      let user = userLocalDataSource.loadUser()
+      
+      return .success(user)
+    } catch {
+      userLocalDataSource.clearUser()
       return .failure(handleAuthExceptions(error))
     }
   }
@@ -55,6 +89,8 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
         return AuthError.userNotFound(message)
       case .userAlreadyExists(let message):
         return AuthError.userAlreadyExists(message)
+      case .expiredToken(let message):
+        return AuthError.expiredToken(message)
       case .serverError(let message):
         return .serverError(message)
       default:

@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Filip Kisić on 01.08.2024..
 //
@@ -10,6 +10,7 @@ import Foundation
 public protocol AuthenticationDatasource {
   func signIn(request: SignInRequest) async throws -> AuthenticationResponse
   func signUp(request: SignUpRequest) async throws -> AuthenticationResponse
+  func refreshToken(request: RefreshTokenRequest) async throws -> RefreshTokenResponse
 }
 
 public enum AuthenticationException: Error {

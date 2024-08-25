@@ -18,18 +18,14 @@ struct KeychainStorage {
     self.key = key
   }
   
-  var wrappedValue: String? {
+  var wrappedValue: String {
     get {
-      keychain.get(key)
+      keychain.get(key) ?? ""
     }
     
     nonmutating set {
-      keychain.set(newValue!, forKey: key)
+      keychain.set(newValue, forKey: key)
     }
-  }
-  
-  func doesAlreadyExist() -> Bool {
-    return keychain.get(key) != nil
   }
 }
 

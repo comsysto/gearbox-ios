@@ -7,19 +7,23 @@
 
 import Foundation
 import Dependency
+import SwiftUI
 
 class UserViewModel: ObservableObject {
   // MARK: - DEPENDECIES
   @Dependency(\.signInUseCase) private var signInUseCase: SignInUseCase
   @Dependency(\.signUpUseCase) private var signUpUseCase: SignUpUseCase
+  @Dependency(\.refreshUserSessionUseCase) private var refreshUserSessionUseCase: RefreshUserSessionUseCase
   
   // MARK: - STORAGE
-  @KeychainStorage("accessToken") private var accessToken: String?
-  @KeychainStorage("refreshToken") private var refreshToken: String?
+  @KeychainStorage("accessToken") private var accessToken: String
+  @KeychainStorage("refreshToken") private var refreshToken: String
+  @AppStorage("shouldShowOnBoarding") private var isOnboarding = true
   
   // MARK: - STATE
   @Published var authenticationState = AuthenticationState.unauthenticated(nil)
   @Published var currentUser: User? = nil
+  @Published var firstScreen: FirstScreenOptions = .onboarding
   
   // MARK: - FUNCTIONS
   @MainActor
@@ -29,10 +33,7 @@ class UserViewModel: ObservableObject {
     let result = await signInUseCase.execute(email: email, password: password)
     switch result {
       case .success(let user):
-        authenticationState = .authenticated(user)
-        currentUser = user
-        accessToken = user.token.token
-        refreshToken = user.token.refreshToken
+        setAuthenticatedState(user)
       case .failure(let error):
         authenticationState = .unauthenticated(error)
     }
@@ -50,13 +51,37 @@ class UserViewModel: ObservableObject {
     )
     switch result {
       case .success(let user):
-        authenticationState = .authenticated(user)
-        currentUser = user
-        accessToken = user.token.token
-        refreshToken = user.token.refreshToken
+        setAuthenticatedState(user)
       case .failure(let error):
         authenticationState = .unauthenticated(error)
     }
+  }
+  
+  @MainActor
+  func setFirstScreen() async {
+    if (isOnboarding) {
+      firstScreen = .onboarding
+    }
+    
+    guard !refreshToken.isEmpty else {
+      firstScreen = .signIn
+      return
+    }
+    
+    let result = await refreshUserSessionUseCase.execute()
+    switch result {
+      case .success(let user):
+        firstScreen = .home
+        currentUser = user
+      case .failure(_):
+        firstScreen = .signIn
+    }
+  }
+  
+  
+  private func setAuthenticatedState(_ user: User) {
+    authenticationState = .authenticated(user)
+    currentUser = user
   }
 }
 
@@ -77,4 +102,10 @@ enum AuthenticationState: Equatable {
         return false
     }
   }
+}
+
+enum FirstScreenOptions {
+  case onboarding
+  case signIn
+  case home
 }

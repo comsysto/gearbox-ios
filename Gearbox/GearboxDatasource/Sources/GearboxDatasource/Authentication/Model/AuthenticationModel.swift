@@ -7,6 +7,16 @@
 
 import Foundation
 
+public struct SignInRequest: Codable {
+  let email: String
+  let password: String
+  
+  public init(email: String, password: String) {
+    self.email = email
+    self.password = password
+  }
+}
+
 public struct SignUpRequest: Codable{
   let email: String
   let username: String
@@ -19,4 +29,13 @@ public struct SignUpRequest: Codable{
     self.password = password
     self.confirmPassword = confirmPassword
   }
+}
+
+public struct AuthenticationResponse: Identifiable, Decodable {
+  public let token: String
+  public let refreshToken: String
+  public let id: String
+  public let email: String
+  public let username: String
+  public let profileImageUrl: String?
 }

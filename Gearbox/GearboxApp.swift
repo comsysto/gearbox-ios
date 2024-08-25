@@ -9,19 +9,10 @@ import SwiftUI
 
 @main
 struct GearboxApp: App {
-  // MARK: - PROPERTIES
-  @AppStorage("shouldShowOnBoarding") private var isOnboarding = true
-  @KeychainStorage("accessToken") private var accessToken: String?
-  
-  // MARK: - BODY
   var body: some Scene {
     WindowGroup {
       MasterRouteView {
-        if isOnboarding {
-          OnBoardingView(isOnboarding: $isOnboarding)
-        } else {
-          SignInView()
-        }
+        FirstView()
       }
     }
   }

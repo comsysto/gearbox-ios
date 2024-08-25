@@ -8,10 +8,10 @@
 import Foundation
 
 class SignUpUseCase {
-  private let authRepository: AuthenticationRepository
+  private let repository: AuthenticationRepository
   
-  init(_ authRepository: AuthenticationRepository) {
-    self.authRepository = authRepository
+  init(_ repository: AuthenticationRepository) {
+    self.repository = repository
   }
   
   func execute(
@@ -20,7 +20,7 @@ class SignUpUseCase {
     password: String,
     confirmPassword: String
   ) async -> Result<User, AuthError> {
-    return await authRepository.signUp(
+    return await repository.signUp(
       email: email,
       username: username,
       password: password,

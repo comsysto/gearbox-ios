@@ -8,13 +8,13 @@
 import Foundation
 
 class SignInUseCase {
-  private let authenticationRepository: AuthenticationRepository
+  private let repository: AuthenticationRepository
   
-  init(_ authenticationRepository: AuthenticationRepository) {
-    self.authenticationRepository = authenticationRepository
+  init(_ repository: AuthenticationRepository) {
+    self.repository = repository
   }
   
   func execute(email: String, password: String) async -> Result<User, AuthError> {
-    return await authenticationRepository.signIn(email: email, password: password)
+    return await repository.signIn(email: email, password: password)
   }
 }
