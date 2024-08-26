@@ -42,6 +42,7 @@
 		12C12D7A2C624C1B00C2B0F4 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */; };
 		12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */; };
 		12C1EDF52C38000A005783CC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C1EDF42C38000A005783CC /* Localizable.xcstrings */; };
+		12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAFC352C7C8B870038ED40 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		12C1EDF42C38000A005783CC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		12CAFC352C7C8B870038ED40 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,7 +311,6 @@
 		12694BCC2C74DBB400E9B44C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				12694BCE2C74DBC500E9B44C /* ViewModel */,
 				12694BCD2C74DBC000E9B44C /* View */,
 			);
 			path = Presentation;
@@ -319,15 +320,9 @@
 			isa = PBXGroup;
 			children = (
 				12694BCF2C74DBD900E9B44C /* FirstView.swift */,
+				12CAFC352C7C8B870038ED40 /* SplashView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		12694BCE2C74DBC500E9B44C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		12715B962C760DE400AA37EE /* Datasource */ = {
@@ -533,6 +528,7 @@
 				12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */,
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
 				12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */,
+				12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */,
 				123BD9062C6B77F3007762EF /* HomeView.swift in Sources */,
 				12AD4FA42C5F967D0081E9F1 /* AuthenticationRepository.swift in Sources */,
 			);

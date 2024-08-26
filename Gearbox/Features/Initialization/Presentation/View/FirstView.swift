@@ -19,10 +19,15 @@ struct FirstView: View {
       switch viewModel.firstScreen {
         case .onboarding:
           OnBoardingView(isOnboarding: $isOnboarding)
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
         case .signIn:
           SignInView()
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
         case .home:
           HomeView()
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
+        default:
+          SplashView()
       }
     }
     .task {
@@ -33,5 +38,8 @@ struct FirstView: View {
 
 // MARK: - PREVIEW
 #Preview {
-  FirstView()
+  var viewModel = UserViewModel()
+  return ZStack {
+    FirstView()
+  }.environmentObject(viewModel)
 }

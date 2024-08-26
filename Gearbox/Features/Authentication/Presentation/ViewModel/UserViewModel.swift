@@ -22,8 +22,8 @@ class UserViewModel: ObservableObject {
   
   // MARK: - STATE
   @Published var authenticationState = AuthenticationState.unauthenticated(nil)
-  @Published var currentUser: User? = nil
-  @Published var firstScreen: FirstScreenOptions = .onboarding
+  @Published var currentUser: User?
+  @Published var firstScreen: FirstScreenOptions?
   
   // MARK: - FUNCTIONS
   @MainActor
@@ -61,6 +61,7 @@ class UserViewModel: ObservableObject {
   func setFirstScreen() async {
     if (isOnboarding) {
       firstScreen = .onboarding
+      return
     }
     
     guard !refreshToken.isEmpty else {

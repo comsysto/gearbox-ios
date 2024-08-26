@@ -427,7 +427,20 @@
       }
     },
     "Hello, %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello"
+          }
+        }
+      }
     },
     "label.confirm-password" : {
       "extractionState" : "manual",
@@ -493,6 +506,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Korisničko ime"
+          }
+        }
+      }
+    },
+    "loading.three.dots" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading..."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Učitavanje..."
           }
         }
       }

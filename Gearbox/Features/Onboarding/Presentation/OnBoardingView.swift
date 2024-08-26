@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OnBoardingView: View {
   // MARK: - PROPERTIES
+  @EnvironmentObject private var router: Router
+  
   @Binding var isOnboarding: Bool
   @State private var pageIndex = 0
   @State private var isLast = false
@@ -80,6 +82,7 @@ struct OnBoardingView: View {
               }
             } else {
               isOnboarding = false
+              router.navigateTo(.signIn)
             }
           } label: {
             Text(isLast ? "button.finish" : "button.next")

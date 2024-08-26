@@ -86,8 +86,9 @@ struct SignInView: View {
           message: Text(LocalizedStringKey(errorMessage)),
           dismissButton: .default(Text("ok"))
         )
-      }
+      } //: ALERT
     } //: ZSTACK
+    .navigationBarBackButtonHidden()
   }
   
   // MARK: - FUNCTIONS
