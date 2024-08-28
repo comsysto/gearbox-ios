@@ -426,22 +426,6 @@
         }
       }
     },
-    "Hello, %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello"
-          }
-        },
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello"
-          }
-        }
-      }
-    },
     "label.confirm-password" : {
       "extractionState" : "manual",
       "localizations" : {

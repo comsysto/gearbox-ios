@@ -13,12 +13,16 @@ struct HomeView: View {
   
   // MARK: - BODY
   var body: some View {
-    Text("Hello, \(userViewModel.currentUser?.username ?? "No username")")
+    Text("Hello \(userViewModel.currentUser?.username ?? "stranger")")
       .navigationBarBackButtonHidden()
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  HomeView()
+  var viewModel = UserViewModel()
+  return ZStack {
+    HomeView()
+      .environmentObject(viewModel)
+  }
 }

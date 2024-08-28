@@ -73,7 +73,7 @@ class UserViewModel: ObservableObject {
     switch result {
       case .success(let user):
         firstScreen = .home
-        currentUser = user
+        setAuthenticatedState(user)
       case .failure(_):
         firstScreen = .signIn
     }
