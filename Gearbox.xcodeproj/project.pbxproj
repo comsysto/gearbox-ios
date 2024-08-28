@@ -11,6 +11,7 @@
 		122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122191962C56925A00E3E138 /* MasterRouteView.swift */; };
 		122191992C5692D000E3E138 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122191982C5692D000E3E138 /* Router.swift */; };
 		1221919B2C56975F00E3E138 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221919A2C56975F00E3E138 /* SignUpView.swift */; };
+		123BD9062C6B77F3007762EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123BD9052C6B77F3007762EF /* HomeView.swift */; };
 		124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */; };
 		124F1B472C41409200897BA3 /* StringValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B462C41409200897BA3 /* StringValidators.swift */; };
 		1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1251E63D2C36E61F00FE8E93 /* GearboxApp.swift */; };
@@ -18,10 +19,30 @@
 		1251E6452C36E62100FE8E93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1251E6442C36E62100FE8E93 /* Preview Assets.xcassets */; };
 		1251E65A2C36F0E500FE8E93 /* RobotoCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1251E6592C36F0E500FE8E93 /* RobotoCondensed.ttf */; };
 		1252167C2C5A5DDF00A0185B /* NavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252167B2C5A5DDF00A0185B /* NavigationUtils.swift */; };
+		125216852C5BDE2F00A0185B /* GearboxDatasource in Frameworks */ = {isa = PBXBuildFile; productRef = 125216842C5BDE2F00A0185B /* GearboxDatasource */; };
+		12694BC82C74BEE900E9B44C /* RefreshTokenResponseToTokenEntityConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12694BC72C74BEE900E9B44C /* RefreshTokenResponseToTokenEntityConverter.swift */; };
+		12694BCA2C74C13A00E9B44C /* RefreshUserSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12694BC92C74C13A00E9B44C /* RefreshUserSessionUseCase.swift */; };
+		12694BD02C74DBD900E9B44C /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12694BCF2C74DBD900E9B44C /* FirstView.swift */; };
+		126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126BEB482C6CC205000DB687 /* KeychainStorage.swift */; };
+		126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 126BEB4B2C6CC8D7000DB687 /* KeychainSwift */; };
+		126D80142C6629EE006FFD3B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D80132C6629EE006FFD3B /* AuthError.swift */; };
+		12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12715B972C760EE600AA37EE /* UserLocalDatasource.swift */; };
 		12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */; };
 		12A810562C3C085F00725C1B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A810552C3C085F00725C1B /* OnBoardingView.swift */; };
 		12A8105B2C3C161900725C1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8105A2C3C161900725C1B /* SignInView.swift */; };
+		12AD4F9F2C5F96040081E9F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4F9E2C5F96040081E9F1 /* User.swift */; };
+		12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA02C5F961D0081E9F1 /* Token.swift */; };
+		12AD4FA42C5F967D0081E9F1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA32C5F967D0081E9F1 /* AuthenticationRepository.swift */; };
+		12AD4FA82C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */; };
+		12AD4FAB2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */; };
+		12AD4FAD2C5F992F0081E9F1 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FAC2C5F992F0081E9F1 /* Converter.swift */; };
+		12C12D732C623CA600C2B0F4 /* Dependency in Frameworks */ = {isa = PBXBuildFile; productRef = 12C12D722C623CA600C2B0F4 /* Dependency */; };
+		12C12D752C623CCA00C2B0F4 /* DependecyInjectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */; };
+		12C12D782C624B6E00C2B0F4 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */; };
+		12C12D7A2C624C1B00C2B0F4 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */; };
+		12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */; };
 		12C1EDF52C38000A005783CC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C1EDF42C38000A005783CC /* Localizable.xcstrings */; };
+		12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAFC352C7C8B870038ED40 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +50,7 @@
 		122191962C56925A00E3E138 /* MasterRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterRouteView.swift; sourceTree = "<group>"; };
 		122191982C5692D000E3E138 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1221919A2C56975F00E3E138 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		123BD9052C6B77F3007762EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearboxLargeButton.swift; sourceTree = "<group>"; };
 		124F1B462C41409200897BA3 /* StringValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidators.swift; sourceTree = "<group>"; };
 		1251E63A2C36E61F00FE8E93 /* Gearbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gearbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,10 +60,28 @@
 		1251E6592C36F0E500FE8E93 /* RobotoCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoCondensed.ttf; sourceTree = "<group>"; };
 		1251E65B2C36F15000FE8E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1252167B2C5A5DDF00A0185B /* NavigationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtils.swift; sourceTree = "<group>"; };
+		125216822C5BDE0A00A0185B /* GearboxDatasource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GearboxDatasource; path = Gearbox/GearboxDatasource; sourceTree = "<group>"; };
+		12694BC72C74BEE900E9B44C /* RefreshTokenResponseToTokenEntityConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenResponseToTokenEntityConverter.swift; sourceTree = "<group>"; };
+		12694BC92C74C13A00E9B44C /* RefreshUserSessionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshUserSessionUseCase.swift; sourceTree = "<group>"; };
+		12694BCF2C74DBD900E9B44C /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		126BEB482C6CC205000DB687 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
+		126D80132C6629EE006FFD3B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		12715B972C760EE600AA37EE /* UserLocalDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDatasource.swift; sourceTree = "<group>"; };
 		12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		12A810552C3C085F00725C1B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		12A8105A2C3C161900725C1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		12AD4F9E2C5F96040081E9F1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		12AD4FA02C5F961D0081E9F1 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		12AD4FA32C5F967D0081E9F1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryImpl.swift; sourceTree = "<group>"; };
+		12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResponseToUserEntityConverter.swift; sourceTree = "<group>"; };
+		12AD4FAC2C5F992F0081E9F1 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependecyInjectionContainer.swift; sourceTree = "<group>"; };
+		12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		12C1EDF42C38000A005783CC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		12CAFC352C7C8B870038ED40 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +89,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */,
+				125216852C5BDE2F00A0185B /* GearboxDatasource in Frameworks */,
+				12C12D732C623CA600C2B0F4 /* Dependency in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +125,58 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
+		123BD8FF2C6B76D0007762EF /* Blogs */ = {
+			isa = PBXGroup;
+			children = (
+				123BD9032C6B7784007762EF /* Bookmarks */,
+				123BD9022C6B7759007762EF /* Explore */,
+				123BD9012C6B7752007762EF /* CreateNew */,
+				123BD9002C6B774D007762EF /* Home */,
+			);
+			path = Blogs;
+			sourceTree = "<group>";
+		};
+		123BD9002C6B774D007762EF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				123BD9052C6B77F3007762EF /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		123BD9012C6B7752007762EF /* CreateNew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreateNew;
+			sourceTree = "<group>";
+		};
+		123BD9022C6B7759007762EF /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		123BD9032C6B7784007762EF /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bookmarks;
+			sourceTree = "<group>";
+		};
+		123BD9042C6B7791007762EF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		124F1B452C41406F00897BA3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				124F1B462C41409200897BA3 /* StringValidators.swift */,
+				126BEB482C6CC205000DB687 /* KeychainStorage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -93,8 +184,10 @@
 		1251E6312C36E61F00FE8E93 = {
 			isa = PBXGroup;
 			children = (
+				125216822C5BDE0A00A0185B /* GearboxDatasource */,
 				1251E63C2C36E61F00FE8E93 /* Gearbox */,
 				1251E63B2C36E61F00FE8E93 /* Products */,
+				125216832C5BDE2F00A0185B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +205,7 @@
 				122191952C56923D00E3E138 /* Routing */,
 				12C1EDF22C37FF7D005783CC /* Resources */,
 				1251E64D2C36EA7600FE8E93 /* Features */,
+				12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */,
 				1251E63D2C36E61F00FE8E93 /* GearboxApp.swift */,
 				1251E65B2C36F15000FE8E93 /* Info.plist */,
 				1251E6412C36E62100FE8E93 /* Assets.xcassets */,
@@ -131,9 +225,12 @@
 		1251E64D2C36EA7600FE8E93 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				123BD9042C6B7791007762EF /* Profile */,
+				123BD8FF2C6B76D0007762EF /* Blogs */,
 				1212F5732C3ECE8E00B1DDCF /* Common */,
 				1251E6502C36EA8C00FE8E93 /* Authentication */,
 				1251E64E2C36EA7E00FE8E93 /* Onboarding */,
+				12694BCB2C74DB9D00E9B44C /* Initialization */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -150,8 +247,10 @@
 		1251E6502C36EA8C00FE8E93 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				124F1B452C41406F00897BA3 /* Utils */,
+				1252167D2C5BD95400A0185B /* Data */,
+				1252167E2C5BD97500A0185B /* Domain */,
 				12A810572C3C159E00725C1B /* Presentation */,
+				124F1B452C41406F00897BA3 /* Utils */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -162,6 +261,76 @@
 				12A810552C3C085F00725C1B /* OnBoardingView.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1252167D2C5BD95400A0185B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				12715B962C760DE400AA37EE /* Datasource */,
+				12AD4FA62C5F97560081E9F1 /* Mapper */,
+				12AD4FA52C5F974C0081E9F1 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1252167E2C5BD97500A0185B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				12AD4FA22C5F965C0081E9F1 /* Repository */,
+				1252167F2C5BD98500A0185B /* Entity */,
+				12C12D762C624B5900C2B0F4 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1252167F2C5BD98500A0185B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				126D80132C6629EE006FFD3B /* AuthError.swift */,
+				12AD4F9E2C5F96040081E9F1 /* User.swift */,
+				12AD4FA02C5F961D0081E9F1 /* Token.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		125216832C5BDE2F00A0185B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12694BCB2C74DB9D00E9B44C /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				12694BCC2C74DBB400E9B44C /* Presentation */,
+			);
+			path = Initialization;
+			sourceTree = "<group>";
+		};
+		12694BCC2C74DBB400E9B44C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				12694BCD2C74DBC000E9B44C /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		12694BCD2C74DBC000E9B44C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12694BCF2C74DBD900E9B44C /* FirstView.swift */,
+				12CAFC352C7C8B870038ED40 /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12715B962C760DE400AA37EE /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				12715B972C760EE600AA37EE /* UserLocalDatasource.swift */,
+			);
+			path = Datasource;
 			sourceTree = "<group>";
 		};
 		12A8104E2C3BFC5800725C1B /* Model */ = {
@@ -175,6 +344,7 @@
 		12A810572C3C159E00725C1B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				12C12D7B2C624E6D00C2B0F4 /* ViewModel */,
 				12A810582C3C15AA00725C1B /* Screen */,
 			);
 			path = Presentation;
@@ -187,6 +357,50 @@
 				1221919A2C56975F00E3E138 /* SignUpView.swift */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		12AD4FA22C5F965C0081E9F1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				12AD4FA32C5F967D0081E9F1 /* AuthenticationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		12AD4FA52C5F974C0081E9F1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		12AD4FA62C5F97560081E9F1 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */,
+				12AD4FAC2C5F992F0081E9F1 /* Converter.swift */,
+				12694BC72C74BEE900E9B44C /* RefreshTokenResponseToTokenEntityConverter.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		12C12D762C624B5900C2B0F4 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */,
+				12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */,
+				12694BC92C74C13A00E9B44C /* RefreshUserSessionUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		12C12D7B2C624E6D00C2B0F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		12C1EDF12C37CBF6005783CC /* Fonts */ = {
@@ -222,6 +436,11 @@
 			dependencies = (
 			);
 			name = Gearbox;
+			packageProductDependencies = (
+				125216842C5BDE2F00A0185B /* GearboxDatasource */,
+				12C12D722C623CA600C2B0F4 /* Dependency */,
+				126BEB4B2C6CC8D7000DB687 /* KeychainSwift */,
+			);
 			productName = Gearbox;
 			productReference = 1251E63A2C36E61F00FE8E93 /* Gearbox.app */;
 			productType = "com.apple.product-type.application";
@@ -251,6 +470,10 @@
 				Base,
 			);
 			mainGroup = 1251E6312C36E61F00FE8E93;
+			packageReferences = (
+				12C12D712C623CA600C2B0F4 /* XCRemoteSwiftPackageReference "Dependency" */,
+				126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = 1251E63B2C36E61F00FE8E93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,11 +508,29 @@
 				122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */,
 				124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */,
 				122191992C5692D000E3E138 /* Router.swift in Sources */,
+				126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */,
+				12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */,
+				12694BCA2C74C13A00E9B44C /* RefreshUserSessionUseCase.swift in Sources */,
 				1212F5762C3ECEC100B1DDCF /* GearboxTextField.swift in Sources */,
+				12AD4FAB2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift in Sources */,
 				1221919B2C56975F00E3E138 /* SignUpView.swift in Sources */,
+				12C12D752C623CCA00C2B0F4 /* DependecyInjectionContainer.swift in Sources */,
+				12AD4F9F2C5F96040081E9F1 /* User.swift in Sources */,
+				12AD4FAD2C5F992F0081E9F1 /* Converter.swift in Sources */,
 				124F1B472C41409200897BA3 /* StringValidators.swift in Sources */,
+				12C12D7A2C624C1B00C2B0F4 /* SignUpUseCase.swift in Sources */,
+				12694BC82C74BEE900E9B44C /* RefreshTokenResponseToTokenEntityConverter.swift in Sources */,
+				126D80142C6629EE006FFD3B /* AuthError.swift in Sources */,
+				12C12D782C624B6E00C2B0F4 /* SignInUseCase.swift in Sources */,
+				12AD4FA82C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift in Sources */,
+				12694BD02C74DBD900E9B44C /* FirstView.swift in Sources */,
 				12A8105B2C3C161900725C1B /* SignInView.swift in Sources */,
+				12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */,
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
+				12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */,
+				12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */,
+				123BD9062C6B77F3007762EF /* HomeView.swift in Sources */,
+				12AD4FA42C5F967D0081E9F1 /* AuthenticationRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,8 +671,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,6 +681,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kisic.filip.Gearbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -460,8 +706,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +716,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kisic.filip.Gearbox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -497,6 +748,42 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
+		12C12D712C623CA600C2B0F4 /* XCRemoteSwiftPackageReference "Dependency" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chFlorian/Dependency";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		125216842C5BDE2F00A0185B /* GearboxDatasource */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GearboxDatasource;
+		};
+		126BEB4B2C6CC8D7000DB687 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		12C12D722C623CA600C2B0F4 /* Dependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12C12D712C623CA600C2B0F4 /* XCRemoteSwiftPackageReference "Dependency" */;
+			productName = Dependency;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1251E6322C36E61F00FE8E93 /* Project object */;
 }

@@ -14,6 +14,7 @@ class Router: ObservableObject {
     case onboarding
     case signIn
     case signUp
+    case home
   }
   
   // MARK: - PROPERTIES
@@ -29,6 +30,8 @@ class Router: ObservableObject {
         SignInView()
       case .signUp:
         SignUpView()
+      case .home:
+        HomeView()
     }
   }
   

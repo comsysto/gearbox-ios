@@ -1,0 +1,24 @@
+{
+  "originHash" : "56e03196ca00e555edc78033e6c9b06bc0bf981c7be3ceca41c2d1737728ae33",
+  "pins" : [
+    {
+      "identity" : "dependency",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chFlorian/Dependency",
+      "state" : {
+        "revision" : "aa9b0323432eb7b27ef1ecbf5193e73caf50d064",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift",
+      "state" : {
+        "revision" : "5e1b02b6a9dac2a759a1d5dbc175c86bd192a608",
+        "version" : "24.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
