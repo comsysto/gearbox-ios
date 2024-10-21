@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld" : {
+
+    },
     "authentication.else" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -341,6 +344,9 @@
         }
       }
     },
+    "Bookmarks🔖" : {
+
+    },
     "button.finish" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -374,6 +380,9 @@
           }
         }
       }
+    },
+    "Create new👷🏼‍♂️➕" : {
+
     },
     "error.server-error" : {
       "extractionState" : "manual",
@@ -426,6 +435,26 @@
         }
       }
     },
+    "Explore🌎🔎" : {
+
+    },
+    "label.bookmarks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarks"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spremljeno"
+          }
+        }
+      }
+    },
     "label.confirm-password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -439,6 +468,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Potvrdi lozinku"
+          }
+        }
+      }
+    },
+    "label.create" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreiraj"
           }
         }
       }
@@ -460,6 +506,57 @@
         }
       }
     },
+    "label.explore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istraži"
+          }
+        }
+      }
+    },
+    "label.garage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garage"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garaža"
+          }
+        }
+      }
+    },
+    "label.home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogs"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogovi"
+          }
+        }
+      }
+    },
     "label.password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -473,6 +570,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lozinka"
+          }
+        }
+      }
+    },
+    "label.trending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trending"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popularno"
           }
         }
       }
@@ -510,6 +624,9 @@
           }
         }
       }
+    },
+    "Notifications" : {
+
     },
     "ok" : {
       "localizations" : {
@@ -628,6 +745,12 @@
           }
         }
       }
+    },
+    "Profile View🏠🚗" : {
+
+    },
+    "Trending" : {
+
     }
   },
   "version" : "1.0"
