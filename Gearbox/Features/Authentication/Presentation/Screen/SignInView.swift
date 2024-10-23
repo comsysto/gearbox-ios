@@ -11,14 +11,7 @@ import GearboxDatasource
 struct SignInView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var router: Router
-  @EnvironmentObject private var userViewModel: UserViewModel
-  
-  @State private var email: String = ""
-  @State private var password: String = ""
-  
-  @State private var isLoading: Bool = false
-  @State private var isErrorShown: Bool = false
-  @State private var errorMessage: String = ""
+  @EnvironmentObject private var viewModel: SignInViewModel
   
   @FocusState private var focusedField: FocusedField?
   
@@ -41,11 +34,11 @@ struct SignInView: View {
           .fixedSize()
         
         // MARK: - INPUT
-        GearboxTextField("label.email", text: $email, type: .email)
+        GearboxTextField("label.email", text: $viewModel.state.email, type: .email)
           .focused($focusedField, equals: .email)
           .submitLabel(.next)
         
-        GearboxTextField("label.password", text: $password, type: .password)
+        GearboxTextField("label.password", text: $viewModel.state.password, type: .password)
           .focused($focusedField, equals: .password)
           .submitLabel(.done)
         
@@ -55,7 +48,7 @@ struct SignInView: View {
           .fixedSize()
         
         // MARK: - ACTION
-        GearboxLargeButton(label: "authentication.sign-in", isLoading: $isLoading) {
+        GearboxLargeButton(label: "authentication.sign-in", isLoading: $viewModel.state.isLoading) {
           signIn()
         }
         
@@ -78,12 +71,12 @@ struct SignInView: View {
       } //: VSTACK
       .padding()
       .onSubmit(handleOnSubmit)
-      .onChange(of: userViewModel.authenticationState, perform: handleStateChange)
+      .onChange(of: viewModel.state.authState, perform: handleStateChange)
       // MARK: - ERROR ALERT
-      .alert(isPresented: $isErrorShown) {
+      .alert(isPresented: $viewModel.state.isErrorShown) {
         Alert(
           title: Text("error.title"),
-          message: Text(LocalizedStringKey(errorMessage)),
+          message: Text(LocalizedStringKey(viewModel.state.errorMessage)),
           dismissButton: .default(Text("ok"))
         )
       } //: ALERT
@@ -94,54 +87,28 @@ struct SignInView: View {
   // MARK: - FUNCTIONS
   private func signIn() {
     focusedField = nil
-    
-    if isInputValid() {
-      Task {
-        await userViewModel.signIn(email: email, password: password)
-      }
-    }
-  }
-  
-  private func isInputValid() -> Bool {
-    return email.validateAsEmail() == nil && password.validateAsPassword() == nil
+    viewModel.signIn()
   }
   
   private func handleOnSubmit() {
     focusedField == .email ? focusedField = .password : signIn()
   }
   
-  private func handleStateChange(state: AuthenticationState) {
-    switch state {
-      case .loading:
-        isLoading = true
-      case .authenticated(_):
-        isLoading = false
-        isErrorShown = false
-        router.navigateTo(.home)
-      case .unauthenticated(let error):
-        isLoading = false
-        isErrorShown = true
-        setErrorMessage(error)
-    }
-  }
-  
-  private func setErrorMessage(_ error: AuthError?) {
-    switch error {
-      case .invalidRequest(let message),
-          .userNotFound(let message),
-          .userAlreadyExists(let message),
-          .expiredToken(let message),
-          .serverError(let message):
-        errorMessage = message
-      default:
-        errorMessage = "error.unknown"
+  private func handleStateChange(newState: SignInAuthState) {
+    if newState == .authenticated {
+      router.navigateTo(.home)
     }
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  SignInView()
+  var router = Router()
+  var viewModel = SignInViewModel()
+  ZStack {
+    SignInView()
+  }.environmentObject(router)
+    .environmentObject(viewModel)
 }
 
 // MARK: - FOCUSED FIELD ENUM
