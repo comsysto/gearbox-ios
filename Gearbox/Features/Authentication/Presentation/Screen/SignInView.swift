@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import GearboxDatasource
 
 struct SignInView: View {
   // MARK: - PROPERTIES
@@ -34,13 +33,23 @@ struct SignInView: View {
           .fixedSize()
         
         // MARK: - INPUT
-        GearboxTextField("label.email", text: $viewModel.state.email, type: .email)
-          .focused($focusedField, equals: .email)
-          .submitLabel(.next)
+        GearboxTextField(
+          "label.email",
+          text: $viewModel.state.email,
+          type: .email,
+          validate: { nil }
+        )
+        .focused($focusedField, equals: .email)
+        .submitLabel(.next)
         
-        GearboxTextField("label.password", text: $viewModel.state.password, type: .password)
-          .focused($focusedField, equals: .password)
-          .submitLabel(.done)
+        GearboxTextField(
+          "label.password",
+          text: $viewModel.state.password,
+          type: .password,
+          validate: { nil }
+        )
+        .focused($focusedField, equals: .password)
+        .submitLabel(.done)
         
         
         Spacer()
@@ -48,9 +57,10 @@ struct SignInView: View {
           .fixedSize()
         
         // MARK: - ACTION
-        GearboxLargeButton(label: "authentication.sign-in", isLoading: $viewModel.state.isLoading) {
-          signIn()
-        }
+        GearboxLargeButton(
+          label: "authentication.sign-in",
+          isLoading: $viewModel.state.isLoading
+        ) { signIn() }
         
         Spacer()
         
@@ -94,8 +104,8 @@ struct SignInView: View {
     focusedField == .email ? focusedField = .password : signIn()
   }
   
-  private func handleStateChange(newState: SignInAuthState) {
-    if newState == .authenticated {
+  private func handleStateChange(state: SignInAuthState) {
+    if state == .authenticated {
       router.navigateTo(.home)
     }
   }

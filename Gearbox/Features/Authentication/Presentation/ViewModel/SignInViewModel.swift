@@ -8,7 +8,7 @@ import SwiftUI
 import Dependency
 
 class SignInViewModel: ObservableObject {
-  // MARK: - DEPENDECIES
+  // MARK: - DEPENDENCIES
   @Dependency(\.signInUseCase) private var signInUseCase: SignInUseCase
   
   // MARK: - CACHE STORAGE

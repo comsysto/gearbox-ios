@@ -10,8 +10,10 @@ import SwiftUI
 struct MasterRouteView<Content: View>: View {
   // MARK: - PROPERTIES
   @StateObject var router = Router()
+  
   @StateObject var userViewModel = UserViewModel()
   @StateObject var signInViewModel = SignInViewModel()
+  @StateObject var signUpViewModel = SignUpViewModel()
   
   private let content: Content
   
@@ -30,5 +32,6 @@ struct MasterRouteView<Content: View>: View {
     .environmentObject(router)
     .environmentObject(userViewModel)
     .environmentObject(signInViewModel)
+    .environmentObject(signUpViewModel)
   }
 }

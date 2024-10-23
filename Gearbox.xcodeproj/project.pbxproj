@@ -31,6 +31,7 @@
 		126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 126BEB4B2C6CC8D7000DB687 /* KeychainSwift */; };
 		126D80142C6629EE006FFD3B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D80132C6629EE006FFD3B /* AuthError.swift */; };
 		12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12715B972C760EE600AA37EE /* UserLocalDatasource.swift */; };
+		12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12769EF12CC9236A00F5CEA0 /* FormValidator.swift */; };
 		12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */; };
 		12A810562C3C085F00725C1B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A810552C3C085F00725C1B /* OnBoardingView.swift */; };
 		12A8105B2C3C161900725C1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8105A2C3C161900725C1B /* SignInView.swift */; };
@@ -75,6 +76,7 @@
 		126BEB482C6CC205000DB687 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		126D80132C6629EE006FFD3B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		12715B972C760EE600AA37EE /* UserLocalDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDatasource.swift; sourceTree = "<group>"; };
+		12769EF12CC9236A00F5CEA0 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		12A810552C3C085F00725C1B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		12A8105A2C3C161900725C1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		124F1B452C41406F00897BA3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				12769EF12CC9236A00F5CEA0 /* FormValidator.swift */,
 				124F1B462C41409200897BA3 /* StringValidators.swift */,
 				126BEB482C6CC205000DB687 /* KeychainStorage.swift */,
 			);
@@ -516,6 +519,7 @@
 				12AD4FA82C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift in Sources */,
 				12694BD02C74DBD900E9B44C /* FirstView.swift in Sources */,
 				12A8105B2C3C161900725C1B /* SignInView.swift in Sources */,
+				12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */,
 				12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */,
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
 				12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */,

@@ -10,16 +10,7 @@ import SwiftUI
 struct SignUpView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var router: Router
-  @EnvironmentObject private var userViewModel: UserViewModel
-  
-  @State private var email: String = ""
-  @State private var username: String = ""
-  @State private var password: String = ""
-  @State private var confirmPassword: String = ""
-  
-  @State private var isLoading: Bool = false
-  @State private var isErrorShown: Bool = false
-  @State private var errorMessage: String = ""
+  @EnvironmentObject private var viewModel: SignUpViewModel
   
   @FocusState private var focusedField: FocusedField?
   
@@ -29,39 +20,60 @@ struct SignUpView: View {
       Color(.background)
         .edgesIgnoringSafeArea(.all)
       
-      VStack(alignment: .leading) {
+      VStack (alignment: .leading) {
         // MARK: - HEADING
-        Text("authentication.sign-in.title")
+        Text("authentication.sign-up.title")
           .font(Font.custom("RobotoCondensed-Bold", size: 28))
           .padding(.top, 20)
-        Text("authentication.sign-in.subtitle")
+        Text("authentication.sign-up.subtitle")
           .font(.system(size: 16, design: .rounded))
           .padding(.bottom, 20)
         
-        GearboxTextField("label.email", text: $email, type: .email)
-          .focused($focusedField, equals: .email)
-          .submitLabel(.next)
+        GearboxTextField(
+          "label.email",
+          text: $viewModel.state.email,
+          type: .email,
+          validate: { FormValidator.validate(viewModel.state.email, for: .email) }
+        )
+        .focused($focusedField, equals: .email)
+        .submitLabel(.next)
         
-        GearboxTextField("label.username", text: $username, type: .username)
-          .focused($focusedField, equals: .username)
-          .submitLabel(.next)
+        GearboxTextField(
+          "label.username",
+          text: $viewModel.state.username,
+          type: .username,
+          validate: { FormValidator.validate(viewModel.state.username, for: .username) }
+        )
+        .focused($focusedField, equals: .username)
+        .submitLabel(.next)
         
-        GearboxTextField("label.password", text: $password, type: .password)
-          .focused($focusedField, equals: .password)
-          .submitLabel(.next)
+        GearboxTextField(
+          "label.password",
+          text: $viewModel.state.password,
+          type: .password,
+          validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
+        )
+        .focused($focusedField, equals: .password)
+        .submitLabel(.next)
         
-        GearboxTextField("label.confirm-password", text: $confirmPassword, type: .password)
-          .focused($focusedField, equals: .confirmPassword)
-          .submitLabel(.done)
+        GearboxTextField(
+          "label.confirm-password",
+          text: $viewModel.state.confirmPassword,
+          type: .password,
+          validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
+        )
+        .focused($focusedField, equals: .confirmPassword)
+        .submitLabel(.done)
         
         Spacer()
           .frame(minHeight: 20, idealHeight: 20, maxHeight: 30)
           .fixedSize()
         
         // MARK: - ACTION
-        GearboxLargeButton(label: "authentication.sign-up", isLoading: $isLoading) {
-          signUp()
-        }
+        GearboxLargeButton(
+          label: "authentication.sign-up",
+          isLoading: $viewModel.state.isLoading
+        ) { signUp() }
         
         Spacer()
         
@@ -82,11 +94,11 @@ struct SignUpView: View {
       } //: VSTACK
       .padding()
       .onSubmit(handleOnSubmit)
-      .onChange(of: userViewModel.authenticationState, perform: handleStateChange)
-      .alert(isPresented: $isErrorShown) {
+      .onChange(of: viewModel.state.authState, perform: handleStateChange)
+      .alert(isPresented: $viewModel.state.isErrorShown) {
         Alert(
           title: Text("error.title"),
-          message: Text(LocalizedStringKey(errorMessage)),
+          message: Text(LocalizedStringKey(viewModel.state.errorMessage)),
           dismissButton: .default(Text("ok"))
         )
       }
@@ -96,14 +108,8 @@ struct SignUpView: View {
   
   // MARK: - FUNCTIONS
   private func signUp() {
-    Task {
-      await userViewModel.signUp(
-        email: email,
-        username: username,
-        password: password,
-        confirmPassword: confirmPassword
-      )
-    }
+    focusedField = nil
+    viewModel.signUp()
   }
   
   private func handleOnSubmit() {
@@ -122,31 +128,9 @@ struct SignUpView: View {
     }
   }
   
-  private func handleStateChange(state: AuthenticationState) {
-    switch state {
-      case .loading:
-        isLoading = true
-      case .authenticated(_):
-        isLoading = false
-        isErrorShown = false
-        router.navigateTo(.home)
-      case .unauthenticated(let error):
-        isLoading = false
-        isErrorShown = true
-        setErrorMessage(error)
-    }
-  }
-  
-  private func setErrorMessage(_ error: AuthError?) {
-    switch error {
-      case .invalidRequest(let message),
-          .userNotFound(let message),
-          .userAlreadyExists(let message),
-          .expiredToken(let message),
-          .serverError(let message):
-        errorMessage = message
-      default:
-        errorMessage = "error.unknown"
+  private func handleStateChange(state: SignUpAuthState) {
+    if state == .authenticated {
+      router.navigateTo(.home)
     }
   }
 }
