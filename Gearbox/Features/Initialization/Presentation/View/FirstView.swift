@@ -9,16 +9,14 @@ import SwiftUI
 
 struct FirstView: View {
   // MARK: - PROPERTIES
-  @EnvironmentObject private var viewModel: UserViewModel
-  
-  @AppStorage("shouldShowOnBoarding") private var isOnboarding = true
+  @EnvironmentObject private var viewModel: InitialViewModel
   
   // MARK: - BODY
   var body: some View {
     ZStack {
-      switch viewModel.firstScreen {
+      switch viewModel.firstView {
         case .onboarding:
-          OnBoardingView(isOnboarding: $isOnboarding)
+          OnBoardingView()
             .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
         case .signIn:
           SignInView()
@@ -26,19 +24,19 @@ struct FirstView: View {
         case .home:
           HomeView()
             .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
-        default:
+        case .splash:
           SplashView()
       }
     }
-    .task {
-      await viewModel.setFirstScreen()
+    .onAppear {
+      viewModel.setFirstView()
     }
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  var viewModel = UserViewModel()
+  var viewModel = InitialViewModel()
   return ZStack {
     FirstView()
   }.environmentObject(viewModel)

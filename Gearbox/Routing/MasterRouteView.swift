@@ -11,7 +11,7 @@ struct MasterRouteView<Content: View>: View {
   // MARK: - PROPERTIES
   @StateObject var router = Router()
   
-  @StateObject var userViewModel = UserViewModel()
+  @StateObject var initialViewModel = InitialViewModel()
   @StateObject var signInViewModel = SignInViewModel()
   @StateObject var signUpViewModel = SignUpViewModel()
   
@@ -30,7 +30,7 @@ struct MasterRouteView<Content: View>: View {
       }
     } //: NAVIGATION STACK
     .environmentObject(router)
-    .environmentObject(userViewModel)
+    .environmentObject(initialViewModel)
     .environmentObject(signInViewModel)
     .environmentObject(signUpViewModel)
   }

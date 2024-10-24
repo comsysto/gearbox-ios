@@ -32,6 +32,7 @@
 		126D80142C6629EE006FFD3B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126D80132C6629EE006FFD3B /* AuthError.swift */; };
 		12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12715B972C760EE600AA37EE /* UserLocalDatasource.swift */; };
 		12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12769EF12CC9236A00F5CEA0 /* FormValidator.swift */; };
+		12A212EF2CCA7D55004BAE4D /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A212EE2CCA7D3B004BAE4D /* InitialViewModel.swift */; };
 		12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */; };
 		12A810562C3C085F00725C1B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A810552C3C085F00725C1B /* OnBoardingView.swift */; };
 		12A8105B2C3C161900725C1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8105A2C3C161900725C1B /* SignInView.swift */; };
@@ -45,7 +46,6 @@
 		12C12D752C623CCA00C2B0F4 /* DependecyInjectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */; };
 		12C12D782C624B6E00C2B0F4 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */; };
 		12C12D7A2C624C1B00C2B0F4 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */; };
-		12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */; };
 		12C1EDF52C38000A005783CC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C1EDF42C38000A005783CC /* Localizable.xcstrings */; };
 		12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAFC352C7C8B870038ED40 /* SplashView.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +77,7 @@
 		126D80132C6629EE006FFD3B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		12715B972C760EE600AA37EE /* UserLocalDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDatasource.swift; sourceTree = "<group>"; };
 		12769EF12CC9236A00F5CEA0 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		12A212EE2CCA7D3B004BAE4D /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		12A810552C3C085F00725C1B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		12A8105A2C3C161900725C1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependecyInjectionContainer.swift; sourceTree = "<group>"; };
 		12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
-		12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		12C1EDF42C38000A005783CC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		12CAFC352C7C8B870038ED40 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +299,7 @@
 		12694BCC2C74DBB400E9B44C /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				12A212ED2CCA7D35004BAE4D /* ViewModel */,
 				12694BCD2C74DBC000E9B44C /* View */,
 			);
 			path = Presentation;
@@ -319,6 +320,14 @@
 				12715B972C760EE600AA37EE /* UserLocalDatasource.swift */,
 			);
 			path = Datasource;
+			sourceTree = "<group>";
+		};
+		12A212ED2CCA7D35004BAE4D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				12A212EE2CCA7D3B004BAE4D /* InitialViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		12A8104E2C3BFC5800725C1B /* Model */ = {
@@ -389,7 +398,6 @@
 			children = (
 				1221E4B02CC66FC6004AB984 /* SignUpViewModel.swift */,
 				1221E4AE2CC66FB2004AB984 /* SignInViewModel.swift */,
-				12C12D7C2C624E7A00C2B0F4 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -499,6 +507,7 @@
 				122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */,
 				124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */,
 				122191992C5692D000E3E138 /* Router.swift in Sources */,
+				12A212EF2CCA7D55004BAE4D /* InitialViewModel.swift in Sources */,
 				126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */,
 				12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */,
 				1221E4B12CC66FCA004AB984 /* SignUpViewModel.swift in Sources */,
@@ -522,7 +531,6 @@
 				12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */,
 				12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */,
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
-				12C12D7D2C624E7A00C2B0F4 /* UserViewModel.swift in Sources */,
 				12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */,
 				123BD9062C6B77F3007762EF /* HomeView.swift in Sources */,
 				1221E4B62CC66FE4004AB984 /* SignUpState.swift in Sources */,

@@ -21,49 +21,8 @@ struct SignUpView: View {
         .edgesIgnoringSafeArea(.all)
       
       VStack (alignment: .leading) {
-        // MARK: - HEADING
-        Text("authentication.sign-up.title")
-          .font(Font.custom("RobotoCondensed-Bold", size: 28))
-          .padding(.top, 20)
-        Text("authentication.sign-up.subtitle")
-          .font(.system(size: 16, design: .rounded))
-          .padding(.bottom, 20)
+        header()
         
-        GearboxTextField(
-          "label.email",
-          text: $viewModel.state.email,
-          type: .email,
-          validate: { FormValidator.validate(viewModel.state.email, for: .email) }
-        )
-        .focused($focusedField, equals: .email)
-        .submitLabel(.next)
-        
-        GearboxTextField(
-          "label.username",
-          text: $viewModel.state.username,
-          type: .username,
-          validate: { FormValidator.validate(viewModel.state.username, for: .username) }
-        )
-        .focused($focusedField, equals: .username)
-        .submitLabel(.next)
-        
-        GearboxTextField(
-          "label.password",
-          text: $viewModel.state.password,
-          type: .password,
-          validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
-        )
-        .focused($focusedField, equals: .password)
-        .submitLabel(.next)
-        
-        GearboxTextField(
-          "label.confirm-password",
-          text: $viewModel.state.confirmPassword,
-          type: .password,
-          validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
-        )
-        .focused($focusedField, equals: .confirmPassword)
-        .submitLabel(.done)
         
         Spacer()
           .frame(minHeight: 20, idealHeight: 20, maxHeight: 30)
@@ -77,20 +36,7 @@ struct SignUpView: View {
         
         Spacer()
         
-        // MARK: - FOOTER
-        HStack() {
-          Spacer()
-          Text("authentication.no-account.sign-in.label")
-            .font(.system(size: 16, design: .rounded))
-          Button {
-            router.navigateBack()
-          } label: {
-            Text("authentication.no-account.sign-in.action")
-              .foregroundStyle(Color.brand)
-              .font(.system(size: 16, weight: .bold, design: .rounded))
-          }
-          Spacer()
-        } //: HSTACK
+        footer()
       } //: VSTACK
       .padding()
       .onSubmit(handleOnSubmit)
@@ -132,6 +78,74 @@ struct SignUpView: View {
     if state == .authenticated {
       router.navigateTo(.home)
     }
+  }
+}
+
+private extension SignUpView {
+  @ViewBuilder
+  func header() -> some View {
+    Text("authentication.sign-up.title")
+      .font(Font.custom("RobotoCondensed-Bold", size: 28))
+      .padding(.top, 20)
+    Text("authentication.sign-up.subtitle")
+      .font(.system(size: 16, design: .rounded))
+      .padding(.bottom, 20)
+  }
+  
+  @ViewBuilder
+  func textInput() -> some View {
+    GearboxTextField(
+      "label.email",
+      text: $viewModel.state.email,
+      type: .email,
+      validate: { FormValidator.validate(viewModel.state.email, for: .email) }
+    )
+    .focused($focusedField, equals: .email)
+    .submitLabel(.next)
+    
+    GearboxTextField(
+      "label.username",
+      text: $viewModel.state.username,
+      type: .username,
+      validate: { FormValidator.validate(viewModel.state.username, for: .username) }
+    )
+    .focused($focusedField, equals: .username)
+    .submitLabel(.next)
+    
+    GearboxTextField(
+      "label.password",
+      text: $viewModel.state.password,
+      type: .password,
+      validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
+    )
+    .focused($focusedField, equals: .password)
+    .submitLabel(.next)
+    
+    GearboxTextField(
+      "label.confirm-password",
+      text: $viewModel.state.confirmPassword,
+      type: .password,
+      validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
+    )
+    .focused($focusedField, equals: .confirmPassword)
+    .submitLabel(.done)
+  }
+  
+  @ViewBuilder
+  func footer() -> some View {
+    HStack() {
+      Spacer()
+      Text("authentication.no-account.sign-in.label")
+        .font(.system(size: 16, design: .rounded))
+      Button {
+        router.navigateBack()
+      } label: {
+        Text("authentication.no-account.sign-in.action")
+          .foregroundStyle(Color.brand)
+          .font(.system(size: 16, weight: .bold, design: .rounded))
+      }
+      Spacer()
+    } //: HSTACK
   }
 }
 

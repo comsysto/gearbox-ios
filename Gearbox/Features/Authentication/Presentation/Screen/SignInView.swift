@@ -21,42 +21,18 @@ struct SignInView: View {
         .edgesIgnoringSafeArea(.all)
       
       VStack (alignment: .leading) {
-        // MARK: - HEADING
-        Text("authentication.sign-in.title")
-          .font(Font.custom("RobotoCondensed-Bold", size: 28))
-          .padding(.top, 20)
-        Text("authentication.sign-in.subtitle")
-          .font(.system(size: 16, design: .rounded))
+        header()
         
         Spacer()
           .frame(minHeight: 20, idealHeight: 60, maxHeight: 100)
           .fixedSize()
         
-        // MARK: - INPUT
-        GearboxTextField(
-          "label.email",
-          text: $viewModel.state.email,
-          type: .email,
-          validate: { nil }
-        )
-        .focused($focusedField, equals: .email)
-        .submitLabel(.next)
-        
-        GearboxTextField(
-          "label.password",
-          text: $viewModel.state.password,
-          type: .password,
-          validate: { nil }
-        )
-        .focused($focusedField, equals: .password)
-        .submitLabel(.done)
-        
+        textInput()
         
         Spacer()
           .frame(minHeight: 20, idealHeight: 40, maxHeight: 100)
           .fixedSize()
         
-        // MARK: - ACTION
         GearboxLargeButton(
           label: "authentication.sign-in",
           isLoading: $viewModel.state.isLoading
@@ -64,20 +40,7 @@ struct SignInView: View {
         
         Spacer()
         
-        // MARK: - FOOTER
-        HStack() {
-          Spacer()
-          Text("authentication.no-account.sign-up.label")
-            .font(.system(size: 16, design: .rounded))
-          Button {
-            router.navigateTo(.signUp)
-          } label: {
-            Text("authentication.no-account.sign-up.action")
-              .foregroundStyle(Color.brand)
-              .font(.system(size: 16, weight: .bold, design: .rounded))
-          }
-          Spacer()
-        } //: HSTACK
+        footer()
       } //: VSTACK
       .padding()
       .onSubmit(handleOnSubmit)
@@ -108,6 +71,55 @@ struct SignInView: View {
     if state == .authenticated {
       router.navigateTo(.home)
     }
+  }
+}
+
+private extension SignInView {
+  @ViewBuilder
+  func header() -> some View {
+    Text("authentication.sign-in.title")
+      .font(Font.custom("RobotoCondensed-Bold", size: 28))
+      .padding(.top, 20)
+    Text("authentication.sign-in.subtitle")
+      .font(.system(size: 16, design: .rounded))
+  }
+  
+  @ViewBuilder
+  func textInput() -> some View {
+    GearboxTextField(
+      "label.email",
+      text: $viewModel.state.email,
+      type: .email,
+      validate: { nil }
+    )
+    .focused($focusedField, equals: .email)
+    .submitLabel(.next)
+    
+    GearboxTextField(
+      "label.password",
+      text: $viewModel.state.password,
+      type: .password,
+      validate: { nil }
+    )
+    .focused($focusedField, equals: .password)
+    .submitLabel(.done)
+  }
+  
+  @ViewBuilder
+  func footer() -> some View {
+    HStack() {
+      Spacer()
+      Text("authentication.no-account.sign-up.label")
+        .font(.system(size: 16, design: .rounded))
+      Button {
+        router.navigateTo(.signUp)
+      } label: {
+        Text("authentication.no-account.sign-up.action")
+          .foregroundStyle(Color.brand)
+          .font(.system(size: 16, weight: .bold, design: .rounded))
+      }
+      Spacer()
+    } //: HSTACK
   }
 }
 
