@@ -11,16 +11,23 @@ struct GearboxTextField: View {
   // MARK: - PROPERTIES
   let placeholder: String
   let type: InputType
+  let validate: () -> String?
   
   @Binding var text: String
   
   @State private var errorMessage: String = .empty()
   
   // MARK: - INITIALIZER
-  init(_ placeholder: String, text: Binding<String>, type: InputType) {
+  init(
+    _ placeholder: String,
+    text: Binding<String>,
+    type: InputType,
+    validate: @escaping () -> String?
+  ) {
     self.placeholder = placeholder
     self._text = text
     self.type = type
+    self.validate = validate
   }
   
   // MARK: - BODY
@@ -29,13 +36,13 @@ struct GearboxTextField: View {
       if type == .password {
         SecureField(LocalizedStringKey(placeholder), text: $text)
           .modifier(GearboxInputFieldModifier())
-          .onChange(of: text, validate)
+          .onChange(of: text, validateValue)
           .keyboardType(getKeyboardType())
           .textContentType(getTextContentType())
       } else {
         TextField(LocalizedStringKey(placeholder), text: $text)
           .modifier(GearboxInputFieldModifier())
-          .onChange(of: text, validate)
+          .onChange(of: text, validateValue)
           .keyboardType(getKeyboardType())
           .textContentType(getTextContentType())
       }
@@ -48,15 +55,8 @@ struct GearboxTextField: View {
   }
   
   // MARK: - FUNCTIONS
-  private func validate() {
-    switch type {
-      case .email:
-        errorMessage = text.validateAsEmail() ?? .empty()
-      case .password:
-        errorMessage = text.validateAsPassword() ?? .empty()
-      case .username:
-        errorMessage = text.validateAsUsername() ?? .empty()
-    }
+  private func validateValue() {
+    errorMessage = validate() ?? .empty()
   }
   
   private func getKeyboardType() -> UIKeyboardType {
@@ -107,8 +107,13 @@ struct RoundedGearboxTextStyle: TextFieldStyle {
 
 // MARK: - PREVIEW
 #Preview(traits: .sizeThatFitsLayout) {
-  @State var text: String = ""
-  return GearboxTextField("label.email", text: $text, type: .email).padding(10)
+  @Previewable @State var text: String = ""
+  return GearboxTextField(
+    "label.email",
+    text: $text,
+    type: .email,
+    validate: { FormValidator.validate(text, for: .passwordObeyPolicy) }
+  ).padding(10)
 }
 
 enum InputType {

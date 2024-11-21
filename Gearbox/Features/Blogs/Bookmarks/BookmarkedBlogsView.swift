@@ -2,19 +2,12 @@
 //  BookmarkedBlogsView.swift
 //  Gearbox
 //
-//  Created by Filip Kisić on 28.08.2024..
+//  Created by Filip Kisić on 21.11.2024..
 //
-
 import SwiftUI
 
 struct BookmarkedBlogsView: View {
-  // MARK: - BODY
   var body: some View {
-    Text("Bookmarks🔖")
+    Text("Bookmarked blogs")
   }
-}
-
-// MARK: - PREVIEW
-#Preview {
-  BookmarkedBlogsView()
 }

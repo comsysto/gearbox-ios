@@ -344,7 +344,13 @@
         }
       }
     },
-    "Bookmarks🔖" : {
+    "authentication.sign-up.subtitle" : {
+
+    },
+    "authentication.sign-up.title" : {
+
+    },
+    "Bookmarked blogs" : {
 
     },
     "button.finish" : {
@@ -381,7 +387,7 @@
         }
       }
     },
-    "Create new👷🏼‍♂️➕" : {
+    "Create new" : {
 
     },
     "error.server-error" : {
@@ -435,7 +441,7 @@
         }
       }
     },
-    "Explore🌎🔎" : {
+    "Explore" : {
 
     },
     "label.bookmarks" : {
@@ -746,7 +752,7 @@
         }
       }
     },
-    "Profile View🏠🚗" : {
+    "ProfileView" : {
 
     },
     "Trending" : {

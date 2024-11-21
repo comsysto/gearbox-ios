@@ -18,22 +18,17 @@ private struct AuthenticationResponseToUserEntityConverterKey: DependencyKey {
   static var currentValue: AuthenticationResponseToUserEntityConverter = AuthenticationResponseToUserEntityConverter()
 }
 
-private struct RefreshTokenResponseToTokenEntityConverterKey: DependencyKey {
-  static var currentValue: RefreshTokenResponseToTokenEntityConverter = RefreshTokenResponseToTokenEntityConverter()
-}
 
 // MARK: - REPOSITORY
 private struct AuthenticationRepositoryKey: DependencyKey {
   @Dependency(\.authenticationDatasourceKey) private static var authDatasource
   @Dependency(\.userLocalDatasourceKey) private static var userLocalDatasource
   @Dependency(\.authenticationResponseToUserEntityConverterKey) private static var authenticationResponseToUserEntityConverterKey
-  @Dependency(\.refreshTokenResponseToTokenEntityConverterKey) private static var refreshTokenResponseToTokenEntityConverterKey
   
   static var currentValue: AuthenticationRepository = AuthenticationRepositoryImpl(
     authDatasource,
     userLocalDatasource,
-    authenticationResponseToUserEntityConverterKey,
-    refreshTokenResponseToTokenEntityConverterKey
+    authenticationResponseToUserEntityConverterKey
   )
 }
 
@@ -67,11 +62,6 @@ extension DependencyValues {
   var authenticationResponseToUserEntityConverterKey: AuthenticationResponseToUserEntityConverter {
     get { Self[AuthenticationResponseToUserEntityConverterKey.self] }
     set { Self[AuthenticationResponseToUserEntityConverterKey.self] = newValue }
-  }
-  
-  var refreshTokenResponseToTokenEntityConverterKey: RefreshTokenResponseToTokenEntityConverter {
-    get { Self[RefreshTokenResponseToTokenEntityConverterKey.self] }
-    set { Self[RefreshTokenResponseToTokenEntityConverterKey.self] = newValue }
   }
   
   var authenticationRepository: AuthenticationRepository {

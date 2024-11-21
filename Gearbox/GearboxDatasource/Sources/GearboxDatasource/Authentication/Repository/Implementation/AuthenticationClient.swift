@@ -13,43 +13,25 @@ class AuthenticationClient: AuthenticationDatasource {
   private let baseUrl = "http://localhost:8080/api/auth"
   
   func signIn(request: SignInRequest) async throws -> AuthenticationResponse {
-    guard let jsonBody = try? JSONEncoder().encode(request) else {
-      throw AuthenticationException.invalidRequest("Invalid request.")
-    }
-    
-    let (response, status) = try await sendRequest(endpoint: "/signIn", jsonBody: jsonBody)
-    
-    return try mapResponseToApplicationObject(response, status)
+    return try await executeTheRequest("/signIn", request)
   }
   
   func signUp(request: SignUpRequest) async throws -> AuthenticationResponse {
-    guard let jsonBody = try? JSONEncoder().encode(request) else {
-      throw AuthenticationException.invalidRequest("Invalid request.")
-    }
-    
-    let (response, status) = try await sendRequest(endpoint: "/signUp", jsonBody: jsonBody)
-    
-    return try mapResponseToApplicationObject(response, status)
+    return try await executeTheRequest("/signUp", request)
   }
   
-  func refreshToken(request: RefreshTokenRequest) async throws -> RefreshTokenResponse {
+  func refreshToken(request: RefreshTokenRequest) async throws -> AuthenticationResponse {
+    return try await executeTheRequest("/refreshToken", request)
+  }
+  
+  private func executeTheRequest(_ endpoint: String, _ request: Codable) async throws -> AuthenticationResponse {
     guard let jsonBody = try? JSONEncoder().encode(request) else {
       throw AuthenticationException.invalidRequest("Invalid request.")
     }
     
-    let (response, status) = try await sendRequest(endpoint: "/refreshToken", jsonBody: jsonBody)
+    let (response, status) = try await sendRequest(endpoint: endpoint, jsonBody: jsonBody)
     
-    let httpResponse = status as? HTTPURLResponse
-    
-    switch httpResponse?.statusCode {
-      case 200:
-        let decodedResponse = try JSONDecoder().decode(RefreshTokenResponse.self, from: response)
-        return decodedResponse
-      case 403:
-        throw AuthenticationException.expiredToken("Refresh token is expired.")
-      default:
-        throw AuthenticationException.serverError("error.server-error")
-    }
+    return try mapResponseToApplicationObject(response, status)
   }
   
   private func sendRequest(endpoint: String, jsonBody: Data) async throws -> (Data, URLResponse){
@@ -81,6 +63,8 @@ class AuthenticationClient: AuthenticationDatasource {
           default:
             throw AuthenticationException.serverError(errorResponse.message)
         }
+      case 403:
+        throw AuthenticationException.expiredToken("Refresh token is expired.")
       case 404:
         throw AuthenticationException.userNotFound("authentication.error.user-not-found")
       default:

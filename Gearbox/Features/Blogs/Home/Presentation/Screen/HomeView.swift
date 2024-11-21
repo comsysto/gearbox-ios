@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
   // MARK: - PROPERTIES
-  @EnvironmentObject private var userViewModel: UserViewModel
   @State private var currentTrendingIndex = 0
   
   private let trendingBlogsMock = [
@@ -97,12 +96,10 @@ struct HomeView: View {
 
 // MARK: - PREVIEW
 #Preview {
-  var viewModel = UserViewModel()
   return ZStack {
     NavigationView {
       HomeView()
     }
-    .environmentObject(viewModel)
   }
 }
 

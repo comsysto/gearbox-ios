@@ -32,14 +32,11 @@ struct BottomTabMenuView: View {
           Label("label.garage", systemImage: "gear")
         }
     }
+    .navigationBarBackButtonHidden()
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  var viewModel = UserViewModel()
-  return ZStack {
-    BottomTabMenuView()
-  }
-  .environmentObject(viewModel)
+  BottomTabMenuView()
 }

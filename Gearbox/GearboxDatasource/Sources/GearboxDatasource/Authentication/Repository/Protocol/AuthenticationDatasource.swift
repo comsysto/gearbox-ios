@@ -11,7 +11,7 @@ import Foundation
 public protocol AuthenticationDatasource {
   func signIn(request: SignInRequest) async throws -> AuthenticationResponse
   func signUp(request: SignUpRequest) async throws -> AuthenticationResponse
-  func refreshToken(request: RefreshTokenRequest) async throws -> RefreshTokenResponse
+  func refreshToken(request: RefreshTokenRequest) async throws -> AuthenticationResponse
 }
 
 public enum AuthenticationException: Error {

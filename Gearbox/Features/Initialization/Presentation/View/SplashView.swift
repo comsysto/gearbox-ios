@@ -9,10 +9,35 @@ import SwiftUI
 
 struct SplashView: View {
   // MARK: - PROPERTIES
+  @EnvironmentObject private var viewModel: SplashViewModel
   @State private var isScaleAnimating = false
   
   // MARK: - BODY
   var body: some View {
+    ZStack {
+      switch viewModel.firstView {
+        case .onboarding:
+          OnBoardingView()
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
+        case .signIn:
+          SignInView()
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
+        case .home:
+          BottomTabMenuView()
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
+        case .splash:
+          splash()
+      }
+    } //: ZSTACK
+    .onAppear {
+      viewModel.setFirstView()
+    }
+  }
+}
+
+private extension SplashView {
+  @ViewBuilder
+  func splash() -> some View {
     ZStack {
       Color.background.ignoresSafeArea(.all)
       
