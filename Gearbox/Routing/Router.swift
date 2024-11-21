@@ -19,13 +19,12 @@ class Router: ObservableObject {
   
   // MARK: - PROPERTIES
   @Published var path = NavigationPath()
-  @AppStorage("shouldShowOnBoarding") var isOnboarding = true
   
   // MARK: - VIEW BUILDER
   @ViewBuilder func view(for route: Route) -> some View {
     switch route {
       case .onboarding:
-        OnBoardingView(isOnboarding: $isOnboarding)
+        OnBoardingView()
       case .signIn:
         SignInView()
       case .signUp:

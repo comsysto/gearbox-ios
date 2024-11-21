@@ -341,6 +341,40 @@
         }
       }
     },
+    "authentication.sign-up.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Join the community and fuel your love for cars."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pridruži se zajednici i uživaj u svijetu automobila."
+          }
+        }
+      }
+    },
+    "authentication.sign-up.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shift into the gear, sign up!"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubaci u brzinu, registriraj se!"
+          }
+        }
+      }
+    },
     "button.finish" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -425,6 +459,9 @@
           }
         }
       }
+    },
+    "Hello stranger" : {
+
     },
     "label.confirm-password" : {
       "extractionState" : "manual",

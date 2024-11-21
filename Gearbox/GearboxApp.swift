@@ -12,7 +12,7 @@ struct GearboxApp: App {
   var body: some Scene {
     WindowGroup {
       MasterRouteView {
-        FirstView()
+        SplashView()
       }
     }
   }

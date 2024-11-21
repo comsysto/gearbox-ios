@@ -8,21 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
-  // MARK: - PROPERTIES
-  @EnvironmentObject private var userViewModel: UserViewModel
-  
-  // MARK: - BODY
   var body: some View {
-    Text("Hello \(userViewModel.currentUser?.username ?? "stranger")")
+    Text("Hello stranger")
       .navigationBarBackButtonHidden()
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
-  var viewModel = UserViewModel()
-  return ZStack {
-    HomeView()
-      .environmentObject(viewModel)
-  }
+  HomeView()
 }

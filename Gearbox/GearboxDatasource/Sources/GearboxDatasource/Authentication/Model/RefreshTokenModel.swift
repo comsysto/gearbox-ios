@@ -7,20 +7,10 @@
 
 import Foundation
 
-public struct RefreshTokenRequest: Encodable {
+public struct RefreshTokenRequest: Codable {
   let refreshToken: String
   
   public init(_ refreshToken: String) {
-    self.refreshToken = refreshToken
-  }
-}
-
-public struct RefreshTokenResponse: Decodable {
-  public let token: String
-  public let refreshToken: String
-  
-  public init(token: String, refreshToken: String) {
-    self.token = token
     self.refreshToken = refreshToken
   }
 }

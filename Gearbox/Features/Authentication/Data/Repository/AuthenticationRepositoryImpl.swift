@@ -14,19 +14,16 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
   private let userLocalDataSource: UserLocalDatasource
   
   private let authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
-  private let refreshTokenResponseToTokenEntityConverter: RefreshTokenResponseToTokenEntityConverter
   
   // MARK: - CONSTRUCTOR
   init(
     _ authenticationDatasource: AuthenticationDatasource,
     _ userLocalDataSource: UserLocalDatasource,
-    _ authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter,
-    _ refreshTokenResponseToTokenEntityConverter: RefreshTokenResponseToTokenEntityConverter
+    _ authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
   ) {
     self.authApi = authenticationDatasource
     self.userLocalDataSource = userLocalDataSource
     self.authenticationResponseToUserEntityConverter = authenticationResponseToUserEntityConverter
-    self.refreshTokenResponseToTokenEntityConverter = refreshTokenResponseToTokenEntityConverter
   }
   
   // MARK: - FUNCTIONS
@@ -36,7 +33,7 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
       let response = try await authApi.signIn(request: request)
       let user = authenticationResponseToUserEntityConverter.convert(response)
       
-      userLocalDataSource.saveUser(user)
+      userLocalDataSource.cacheToken(user.token)
       
       return .success(user)
     } catch {
@@ -55,7 +52,7 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
       let response = try await authApi.signUp(request: request)
       let user = authenticationResponseToUserEntityConverter.convert(response)
       
-      userLocalDataSource.saveUser(user)
+      userLocalDataSource.cacheToken(user.token)
       
       return .success(user)
     } catch {
@@ -69,14 +66,13 @@ class AuthenticationRepositoryImpl: AuthenticationRepository {
       
       let request = RefreshTokenRequest(token.refreshToken)
       let response = try await authApi.refreshToken(request: request)
-      let newToken = refreshTokenResponseToTokenEntityConverter.convert(response)
+      let user = authenticationResponseToUserEntityConverter.convert(response)
       
-      userLocalDataSource.saveToken(newToken)
-      let user = userLocalDataSource.loadUser()
+      userLocalDataSource.cacheToken(user.token)
       
       return .success(user)
     } catch {
-      userLocalDataSource.clearUser()
+      userLocalDataSource.clearCache()
       return .failure(handleAuthExceptions(error))
     }
   }
