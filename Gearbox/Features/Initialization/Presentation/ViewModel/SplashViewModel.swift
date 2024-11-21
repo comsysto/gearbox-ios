@@ -7,7 +7,7 @@
 import SwiftUI
 import Dependency
 
-class InitialViewModel: ObservableObject {
+class SplashViewModel: ObservableObject {
   // MARK: - PROPERTIES
   @Dependency(\.refreshUserSessionUseCase) private var refreshUserSessionUseCase: RefreshUserSessionUseCase
   

@@ -2,7 +2,7 @@
 //  SignInView.swift
 //  Gearbox
 //
-//  Created by Filip Kisić on 08.07.2024..
+//  Created by Filip Kisić on 08.07.2024.
 //
 
 import SwiftUI
@@ -90,7 +90,7 @@ private extension SignInView {
       "label.email",
       text: $viewModel.state.email,
       type: .email,
-      validate: { nil }
+      validate: { FormValidator.validate(viewModel.state.email, for: .email) }
     )
     .focused($focusedField, equals: .email)
     .submitLabel(.next)
@@ -99,7 +99,7 @@ private extension SignInView {
       "label.password",
       text: $viewModel.state.password,
       type: .password,
-      validate: { nil }
+      validate: { FormValidator.validate(viewModel.state.password, for: .passwordObeyPolicy) }
     )
     .focused($focusedField, equals: .password)
     .submitLabel(.done)

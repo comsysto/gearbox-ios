@@ -11,7 +11,7 @@ struct MasterRouteView<Content: View>: View {
   // MARK: - PROPERTIES
   @StateObject var router = Router()
   
-  @StateObject var initialViewModel = InitialViewModel()
+  @StateObject var initialViewModel = SplashViewModel()
   @StateObject var signInViewModel = SignInViewModel()
   @StateObject var signUpViewModel = SignUpViewModel()
   

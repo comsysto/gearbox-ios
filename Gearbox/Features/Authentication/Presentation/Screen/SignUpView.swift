@@ -23,7 +23,7 @@ struct SignUpView: View {
       VStack (alignment: .leading) {
         header()
         
-        
+        textInput()
         Spacer()
           .frame(minHeight: 20, idealHeight: 20, maxHeight: 30)
           .fixedSize()

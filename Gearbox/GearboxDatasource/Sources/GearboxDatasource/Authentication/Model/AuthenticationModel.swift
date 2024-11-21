@@ -17,7 +17,7 @@ public struct SignInRequest: Codable {
   }
 }
 
-public struct SignUpRequest: Codable{
+public struct SignUpRequest: Codable {
   let email: String
   let username: String
   let password: String
