@@ -15,6 +15,7 @@
 		1221E4B12CC66FCA004AB984 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221E4B02CC66FC6004AB984 /* SignUpViewModel.swift */; };
 		1221E4B42CC66FDF004AB984 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221E4B32CC66FDB004AB984 /* SignInState.swift */; };
 		123BD9062C6B77F3007762EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123BD9052C6B77F3007762EF /* HomeView.swift */; };
+		124A198D2CF0BA84005B97CA /* BlogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A198C2CF0BA84005B97CA /* BlogCard.swift */; };
 		124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */; };
 		124F1B472C41409200897BA3 /* StringValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B462C41409200897BA3 /* StringValidators.swift */; };
 		1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1251E63D2C36E61F00FE8E93 /* GearboxApp.swift */; };
@@ -34,13 +35,21 @@
 		126E78132CEF7E0B00181484 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221E4B52CC66FE2004AB984 /* SignUpState.swift */; };
 		12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12715B972C760EE600AA37EE /* UserLocalDatasource.swift */; };
 		12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12769EF12CC9236A00F5CEA0 /* FormValidator.swift */; };
+		1297A7572D01DFB600DF3BBD /* BlogRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A7562D01DFAC00DF3BBD /* BlogRepositoryType.swift */; };
+		1297A75A2D01DFF600DF3BBD /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A7592D01DFF300DF3BBD /* Blog.swift */; };
+		1297A75D2D01E2A000DF3BBD /* BlogRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A75C2D01E29C00DF3BBD /* BlogRepositoryImpl.swift */; };
+		1297A75F2D01E36B00DF3BBD /* BlogError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A75E2D01E36700DF3BBD /* BlogError.swift */; };
+		1297A7622D01E94200DF3BBD /* BlogResponseToBlogEntityConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A7612D01E93600DF3BBD /* BlogResponseToBlogEntityConverter.swift */; };
+		1297A7672D01EB4100DF3BBD /* GetTrendingBlogsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A7662D01EB3C00DF3BBD /* GetTrendingBlogsUseCase.swift */; };
+		1297A76B2D01EBF500DF3BBD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A76A2D01EBF000DF3BBD /* HomeViewModel.swift */; };
+		1297A76D2D01EC7A00DF3BBD /* HomeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A76C2D01EC7300DF3BBD /* HomeState.swift */; };
 		12A212EF2CCA7D55004BAE4D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A212EE2CCA7D3B004BAE4D /* SplashViewModel.swift */; };
 		12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */; };
 		12A810562C3C085F00725C1B /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A810552C3C085F00725C1B /* OnBoardingView.swift */; };
 		12A8105B2C3C161900725C1B /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A8105A2C3C161900725C1B /* SignInView.swift */; };
 		12AD4F9F2C5F96040081E9F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4F9E2C5F96040081E9F1 /* User.swift */; };
 		12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA02C5F961D0081E9F1 /* Token.swift */; };
-		12AD4FA42C5F967D0081E9F1 /* AuthenticationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA32C5F967D0081E9F1 /* AuthenticationRepository.swift */; };
+		12AD4FA42C5F967D0081E9F1 /* AuthenticationRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA32C5F967D0081E9F1 /* AuthenticationRepositoryType.swift */; };
 		12AD4FA82C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */; };
 		12AD4FAB2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */; };
 		12AD4FAD2C5F992F0081E9F1 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FAC2C5F992F0081E9F1 /* Converter.swift */; };
@@ -52,6 +61,7 @@
 		12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAFC352C7C8B870038ED40 /* SplashView.swift */; };
 		12F3C3282C906D75003F8F88 /* DateTimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3C3272C906D75003F8F88 /* DateTimeUtils.swift */; };
 		12F3C32A2C9071AD003F8F88 /* TrendingBlogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3C3292C9071AD003F8F88 /* TrendingBlogCard.swift */; };
+		12F6C7EE2CF606C900905DBB /* BlogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F6C7ED2CF606C900905DBB /* BlogDetailView.swift */; };
 		12FAD8912C7F6250007EAB59 /* BottomTabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FAD8902C7F6250007EAB59 /* BottomTabMenuView.swift */; };
 		12FD83162C930C8C00A9739E /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD83152C930C8C00A9739E /* TODO.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +76,7 @@
 		1221E4B32CC66FDB004AB984 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 		1221E4B52CC66FE2004AB984 /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		123BD9052C6B77F3007762EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		124A198C2CF0BA84005B97CA /* BlogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCard.swift; sourceTree = "<group>"; };
 		124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearboxLargeButton.swift; sourceTree = "<group>"; };
 		124F1B462C41409200897BA3 /* StringValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidators.swift; sourceTree = "<group>"; };
 		1251E63A2C36E61F00FE8E93 /* Gearbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gearbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,13 +96,21 @@
 		126E78112CEF7C9B00181484 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		12715B972C760EE600AA37EE /* UserLocalDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDatasource.swift; sourceTree = "<group>"; };
 		12769EF12CC9236A00F5CEA0 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		1297A7562D01DFAC00DF3BBD /* BlogRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogRepositoryType.swift; sourceTree = "<group>"; };
+		1297A7592D01DFF300DF3BBD /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
+		1297A75C2D01E29C00DF3BBD /* BlogRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogRepositoryImpl.swift; sourceTree = "<group>"; };
+		1297A75E2D01E36700DF3BBD /* BlogError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogError.swift; sourceTree = "<group>"; };
+		1297A7612D01E93600DF3BBD /* BlogResponseToBlogEntityConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogResponseToBlogEntityConverter.swift; sourceTree = "<group>"; };
+		1297A7662D01EB3C00DF3BBD /* GetTrendingBlogsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTrendingBlogsUseCase.swift; sourceTree = "<group>"; };
+		1297A76A2D01EBF000DF3BBD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1297A76C2D01EC7300DF3BBD /* HomeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeState.swift; sourceTree = "<group>"; };
 		12A212EE2CCA7D3B004BAE4D /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		12A8104F2C3BFC7600725C1B /* OnBoardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingContent.swift; sourceTree = "<group>"; };
 		12A810552C3C085F00725C1B /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		12A8105A2C3C161900725C1B /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		12AD4F9E2C5F96040081E9F1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		12AD4FA02C5F961D0081E9F1 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		12AD4FA32C5F967D0081E9F1 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
+		12AD4FA32C5F967D0081E9F1 /* AuthenticationRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryType.swift; sourceTree = "<group>"; };
 		12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryImpl.swift; sourceTree = "<group>"; };
 		12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResponseToUserEntityConverter.swift; sourceTree = "<group>"; };
 		12AD4FAC2C5F992F0081E9F1 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
@@ -102,6 +121,7 @@
 		12CAFC352C7C8B870038ED40 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		12F3C3272C906D75003F8F88 /* DateTimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtils.swift; sourceTree = "<group>"; };
 		12F3C3292C9071AD003F8F88 /* TrendingBlogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBlogCard.swift; sourceTree = "<group>"; };
+		12F6C7ED2CF606C900905DBB /* BlogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailView.swift; sourceTree = "<group>"; };
 		12FAD8902C7F6250007EAB59 /* BottomTabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabMenuView.swift; sourceTree = "<group>"; };
 		12FD83152C930C8C00A9739E /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +143,7 @@
 		1212F5732C3ECE8E00B1DDCF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1297A7632D01E96200DF3BBD /* Mapper */,
 				12FAD88F2C7F6237007EAB59 /* Screen */,
 				1212F5742C3ECE9500B1DDCF /* Widget */,
 			);
@@ -134,6 +155,7 @@
 			children = (
 				1212F5752C3ECEC100B1DDCF /* GearboxTextField.swift */,
 				124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */,
+				124A198C2CF0BA84005B97CA /* BlogCard.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -160,6 +182,7 @@
 		123BD8FF2C6B76D0007762EF /* Blogs */ = {
 			isa = PBXGroup;
 			children = (
+				12F6C7EB2CF6068C00905DBB /* Details */,
 				126E78082CEF7B6900181484 /* CreateNew */,
 				126E78072CEF7B5F00181484 /* Bookmarks */,
 				126E78062CEF7B5A00181484 /* Explore */,
@@ -171,8 +194,10 @@
 		123BD9002C6B774D007762EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				12F3C3252C906D62003F8F88 /* Utils */,
+				1297A7522D01DF5300DF3BBD /* Data */,
+				1297A7542D01DF8900DF3BBD /* Domain */,
 				12404D5B2C90686C00661C41 /* Presentation */,
+				12F3C3252C906D62003F8F88 /* Utils */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -196,6 +221,8 @@
 		12404D5B2C90686C00661C41 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1297A7692D01EBEB00DF3BBD /* State */,
+				1297A7682D01EBDE00DF3BBD /* ViewModel */,
 				12404D592C90686000661C41 /* Widget */,
 				12404D5A2C90686600661C41 /* Screen */,
 			);
@@ -397,6 +424,90 @@
 			path = Datasource;
 			sourceTree = "<group>";
 		};
+		1297A7522D01DF5300DF3BBD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1297A7602D01E92400DF3BBD /* Mapper */,
+				1297A7532D01DF6000DF3BBD /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1297A7532D01DF6000DF3BBD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1297A7612D01E93600DF3BBD /* BlogResponseToBlogEntityConverter.swift */,
+				1297A75C2D01E29C00DF3BBD /* BlogRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1297A7542D01DF8900DF3BBD /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1297A7552D01DFA200DF3BBD /* Repository */,
+				1297A7582D01DFE200DF3BBD /* Entity */,
+				1297A7652D01EB2F00DF3BBD /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1297A7552D01DFA200DF3BBD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1297A7562D01DFAC00DF3BBD /* BlogRepositoryType.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1297A7582D01DFE200DF3BBD /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1297A75E2D01E36700DF3BBD /* BlogError.swift */,
+				1297A7592D01DFF300DF3BBD /* Blog.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1297A7602D01E92400DF3BBD /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		1297A7632D01E96200DF3BBD /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				12AD4FAC2C5F992F0081E9F1 /* Converter.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		1297A7652D01EB2F00DF3BBD /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				1297A7662D01EB3C00DF3BBD /* GetTrendingBlogsUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		1297A7682D01EBDE00DF3BBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1297A76A2D01EBF000DF3BBD /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1297A7692D01EBEB00DF3BBD /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1297A76C2D01EC7300DF3BBD /* HomeState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		12A212ED2CCA7D35004BAE4D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,7 +546,7 @@
 		12AD4FA22C5F965C0081E9F1 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				12AD4FA32C5F967D0081E9F1 /* AuthenticationRepository.swift */,
+				12AD4FA32C5F967D0081E9F1 /* AuthenticationRepositoryType.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -452,7 +563,6 @@
 			isa = PBXGroup;
 			children = (
 				12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */,
-				12AD4FAC2C5F992F0081E9F1 /* Converter.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -499,6 +609,22 @@
 				12F3C3272C906D75003F8F88 /* DateTimeUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		12F6C7EB2CF6068C00905DBB /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				12F6C7EC2CF606A500905DBB /* Presentation */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		12F6C7EC2CF606A500905DBB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				12F6C7ED2CF606C900905DBB /* BlogDetailView.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		12FAD88F2C7F6237007EAB59 /* Screen */ = {
@@ -592,6 +718,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				126E78132CEF7E0B00181484 /* SignUpState.swift in Sources */,
+				1297A7572D01DFB600DF3BBD /* BlogRepositoryType.swift in Sources */,
+				1297A75F2D01E36B00DF3BBD /* BlogError.swift in Sources */,
+				1297A75D2D01E2A000DF3BBD /* BlogRepositoryImpl.swift in Sources */,
 				12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */,
 				126E78122CEF7CA200181484 /* ProfileView.swift in Sources */,
 				1252167C2C5A5DDF00A0185B /* NavigationUtils.swift in Sources */,
@@ -599,16 +728,21 @@
 				122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */,
 				124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */,
 				12FD83162C930C8C00A9739E /* TODO.swift in Sources */,
+				1297A75A2D01DFF600DF3BBD /* Blog.swift in Sources */,
 				122191992C5692D000E3E138 /* Router.swift in Sources */,
 				12A212EF2CCA7D55004BAE4D /* SplashViewModel.swift in Sources */,
 				126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */,
 				12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */,
+				1297A76D2D01EC7A00DF3BBD /* HomeState.swift in Sources */,
 				1221E4B12CC66FCA004AB984 /* SignUpViewModel.swift in Sources */,
+				12F6C7EE2CF606C900905DBB /* BlogDetailView.swift in Sources */,
 				12694BCA2C74C13A00E9B44C /* RefreshUserSessionUseCase.swift in Sources */,
 				1212F5762C3ECEC100B1DDCF /* GearboxTextField.swift in Sources */,
 				12AD4FAB2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift in Sources */,
 				1221919B2C56975F00E3E138 /* SignUpView.swift in Sources */,
 				12C12D752C623CCA00C2B0F4 /* DependecyInjectionContainer.swift in Sources */,
+				1297A76B2D01EBF500DF3BBD /* HomeViewModel.swift in Sources */,
+				1297A7622D01E94200DF3BBD /* BlogResponseToBlogEntityConverter.swift in Sources */,
 				12AD4F9F2C5F96040081E9F1 /* User.swift in Sources */,
 				1221E4AF2CC66FB9004AB984 /* SignInViewModel.swift in Sources */,
 				12AD4FAD2C5F992F0081E9F1 /* Converter.swift in Sources */,
@@ -620,6 +754,7 @@
 				1221E4B42CC66FDF004AB984 /* SignInState.swift in Sources */,
 				12C12D782C624B6E00C2B0F4 /* SignInUseCase.swift in Sources */,
 				12F3C3282C906D75003F8F88 /* DateTimeUtils.swift in Sources */,
+				1297A7672D01EB4100DF3BBD /* GetTrendingBlogsUseCase.swift in Sources */,
 				12AD4FA82C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift in Sources */,
 				12A8105B2C3C161900725C1B /* SignInView.swift in Sources */,
 				12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */,
@@ -628,9 +763,10 @@
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
 				12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */,
 				123BD9062C6B77F3007762EF /* HomeView.swift in Sources */,
-				12AD4FA42C5F967D0081E9F1 /* AuthenticationRepository.swift in Sources */,
+				12AD4FA42C5F967D0081E9F1 /* AuthenticationRepositoryType.swift in Sources */,
 				126E78102CEF7C0400181484 /* ExploreView.swift in Sources */,
 				126E780C2CEF7BE100181484 /* CreateNewView.swift in Sources */,
+				124A198D2CF0BA84005B97CA /* BlogCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

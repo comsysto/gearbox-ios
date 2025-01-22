@@ -14,6 +14,7 @@ struct MasterRouteView<Content: View>: View {
   @StateObject var initialViewModel = SplashViewModel()
   @StateObject var signInViewModel = SignInViewModel()
   @StateObject var signUpViewModel = SignUpViewModel()
+  @StateObject var homeViewModel = HomeViewModel()
   
   private let content: Content
   
@@ -33,5 +34,6 @@ struct MasterRouteView<Content: View>: View {
     .environmentObject(initialViewModel)
     .environmentObject(signInViewModel)
     .environmentObject(signUpViewModel)
+    .environmentObject(homeViewModel)
   }
 }

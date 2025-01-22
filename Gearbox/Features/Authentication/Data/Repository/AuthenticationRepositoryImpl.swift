@@ -8,7 +8,7 @@
 import Foundation
 import GearboxDatasource
 
-class AuthenticationRepositoryImpl: AuthenticationRepository {
+class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
   // MARK: - DEPENDECIES
   private let authApi: AuthenticationDatasource
   private let userLocalDataSource: UserLocalDatasource

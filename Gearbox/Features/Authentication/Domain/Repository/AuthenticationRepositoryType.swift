@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AuthenticationRepository {
+protocol AuthenticationRepositoryType {
   func signIn(email: String, password: String) async -> Result<User, AuthError>
   
   func signUp(

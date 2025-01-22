@@ -20,11 +20,14 @@ struct TrendingBlogCard: View {
     ZStack {
       VStack(alignment: .leading) {
         ZStack {
-          Image(imageUrl)
-            .resizable()
-            .scaledToFill()
-            .frame(maxWidth: 323, maxHeight: 200)
-            .clipShape(RoundedRectangle(cornerRadius: 5))
+          AsyncImage(url: URL(string: imageUrl)) { image in
+            image.resizable()
+          } placeholder: {
+            Color.gray.opacity(0.3)
+          }
+          .scaledToFill()
+          .frame(maxWidth: UIScreen.main.bounds.size.width - 60, maxHeight: 200)
+          .clipShape(RoundedRectangle(cornerRadius: 5))
           
           Text("Trending")
             .padding(.horizontal, 10)
@@ -33,7 +36,7 @@ struct TrendingBlogCard: View {
             .foregroundStyle(.white)
             .font(.system(size: 14, weight: .bold, design: .rounded))
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            .offset(x: -113, y: -77)
+            .offset(x: -120, y: -77)
         } //: ZSTACK
         Text(title)
           .font(Font.custom("RobotoCondensed-Bold", size: 20))

@@ -8,7 +8,7 @@
 import Foundation
 import GearboxDatasource
 
-class AuthenticationResponseToUserEntityConverter: Converter {
+class AuthenticationResponseToUserEntityConverter: ConverterType {
   typealias Source = AuthenticationResponse
   typealias Target = User
   
