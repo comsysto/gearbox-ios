@@ -35,6 +35,8 @@
 		126E78132CEF7E0B00181484 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221E4B52CC66FE2004AB984 /* SignUpState.swift */; };
 		12715B982C760EE600AA37EE /* UserLocalDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12715B972C760EE600AA37EE /* UserLocalDatasource.swift */; };
 		12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12769EF12CC9236A00F5CEA0 /* FormValidator.swift */; };
+		128F3DE92D438D6700A58921 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F3DE82D438D6400A58921 /* CacheManager.swift */; };
+		128F3DED2D43CB1500A58921 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128F3DEC2D43CB0A00A58921 /* Shimmer.swift */; };
 		1297A7572D01DFB600DF3BBD /* BlogRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A7562D01DFAC00DF3BBD /* BlogRepositoryType.swift */; };
 		1297A75A2D01DFF600DF3BBD /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A7592D01DFF300DF3BBD /* Blog.swift */; };
 		1297A75D2D01E2A000DF3BBD /* BlogRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1297A75C2D01E29C00DF3BBD /* BlogRepositoryImpl.swift */; };
@@ -96,6 +98,8 @@
 		126E78112CEF7C9B00181484 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		12715B972C760EE600AA37EE /* UserLocalDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDatasource.swift; sourceTree = "<group>"; };
 		12769EF12CC9236A00F5CEA0 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		128F3DE82D438D6400A58921 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		128F3DEC2D43CB0A00A58921 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		1297A7562D01DFAC00DF3BBD /* BlogRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogRepositoryType.swift; sourceTree = "<group>"; };
 		1297A7592D01DFF300DF3BBD /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		1297A75C2D01E29C00DF3BBD /* BlogRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		1212F5732C3ECE8E00B1DDCF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				128F3DE72D438D4500A58921 /* Utils */,
 				1297A7632D01E96200DF3BBD /* Mapper */,
 				12FAD88F2C7F6237007EAB59 /* Screen */,
 				1212F5742C3ECE9500B1DDCF /* Widget */,
@@ -153,6 +158,7 @@
 		1212F5742C3ECE9500B1DDCF /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				128F3DEC2D43CB0A00A58921 /* Shimmer.swift */,
 				1212F5752C3ECEC100B1DDCF /* GearboxTextField.swift */,
 				124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */,
 				124A198C2CF0BA84005B97CA /* BlogCard.swift */,
@@ -422,6 +428,14 @@
 				12715B972C760EE600AA37EE /* UserLocalDatasource.swift */,
 			);
 			path = Datasource;
+			sourceTree = "<group>";
+		};
+		128F3DE72D438D4500A58921 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				128F3DE82D438D6400A58921 /* CacheManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		1297A7522D01DF5300DF3BBD /* Data */ = {
@@ -717,6 +731,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				128F3DE92D438D6700A58921 /* CacheManager.swift in Sources */,
 				126E78132CEF7E0B00181484 /* SignUpState.swift in Sources */,
 				1297A7572D01DFB600DF3BBD /* BlogRepositoryType.swift in Sources */,
 				1297A75F2D01E36B00DF3BBD /* BlogError.swift in Sources */,
@@ -743,6 +758,7 @@
 				12C12D752C623CCA00C2B0F4 /* DependecyInjectionContainer.swift in Sources */,
 				1297A76B2D01EBF500DF3BBD /* HomeViewModel.swift in Sources */,
 				1297A7622D01E94200DF3BBD /* BlogResponseToBlogEntityConverter.swift in Sources */,
+				128F3DED2D43CB1500A58921 /* Shimmer.swift in Sources */,
 				12AD4F9F2C5F96040081E9F1 /* User.swift in Sources */,
 				1221E4AF2CC66FB9004AB984 /* SignInViewModel.swift in Sources */,
 				12AD4FAD2C5F992F0081E9F1 /* Converter.swift in Sources */,

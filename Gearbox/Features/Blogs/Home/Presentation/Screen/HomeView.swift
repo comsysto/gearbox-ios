@@ -69,9 +69,9 @@ struct HomeView: View {
     ZStack {
       Color.background.ignoresSafeArea()
       ScrollView {
-          renderTrendingBlogs()
-          renderLatestBlogs()
-            .padding(.horizontal, 20)
+        renderTrendingBlogs()
+        renderLatestBlogs()
+          .padding(.horizontal, 20)
       } //: SCROLL VIEW
       .safeAreaInset(edge: .top) {
         renderNavigationBar()
@@ -128,7 +128,10 @@ private extension HomeView {
   @ViewBuilder
   func renderTrendingBlogs() -> some View {
     if viewModel.state.isLoading {
-      ProgressView()
+      ShimmerTrendingBlogCard()
+        .frame(height: 380)
+        .offset(y: -50)
+        .padding(.horizontal, 10)
     } else {
       TabView(selection: $viewModel.state.currentTrendingBlogIndex) {
         ForEach(0..<viewModel.state.trendingBlogs.count, id: \.self) { index in
@@ -184,6 +187,7 @@ private extension HomeView {
 // MARK: - PREVIEW
 #Preview {
   let viewModel = HomeViewModel()
+  viewModel.state.isLoading = true
   return ZStack {
     NavigationView {
       HomeView()
