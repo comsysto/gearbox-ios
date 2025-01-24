@@ -30,7 +30,7 @@ class Router: ObservableObject {
       case .signUp:
         SignUpView()
       case .home:
-        HomeView()
+        BottomTabMenuView()
     }
   }
   

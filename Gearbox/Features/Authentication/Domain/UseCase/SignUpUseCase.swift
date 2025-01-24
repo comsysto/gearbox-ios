@@ -8,9 +8,9 @@
 import Foundation
 
 class SignUpUseCase {
-  private let repository: AuthenticationRepository
+  private let repository: AuthenticationRepositoryType
   
-  init(_ repository: AuthenticationRepository) {
+  init(_ repository: AuthenticationRepositoryType) {
     self.repository = repository
   }
   

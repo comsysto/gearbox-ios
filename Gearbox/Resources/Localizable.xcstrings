@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "@brunobenner" : {
+
+    },
+    "%lld" : {
+
+    },
     "authentication.else" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -342,24 +348,22 @@
       }
     },
     "authentication.sign-up.subtitle" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Join the community and fuel your love for cars."
+            "value" : "Join the community and fuel your love for cars"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pridruži se zajednici i uživaj u svijetu automobila."
+            "value" : "Pridruži se zajednici, svijet automobila čeka"
           }
         }
       }
     },
     "authentication.sign-up.title" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -370,7 +374,17 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ubaci u brzinu, registriraj se!"
+            "value" : "Ubaci u brzinu, regisriraj se!"
+          }
+        }
+      }
+    },
+    "Bookmarked blogs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarked blogs"
           }
         }
       }
@@ -405,6 +419,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sljedeće"
+          }
+        }
+      }
+    },
+    "Create new" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novi blog"
           }
         }
       }
@@ -460,8 +484,49 @@
         }
       }
     },
-    "Hello stranger" : {
-
+    "Explore" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istraži"
+          }
+        }
+      }
+    },
+    "label.back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazad"
+          }
+        }
+      }
+    },
+    "label.bookmarks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookmarks"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spremljeno"
+          }
+        }
+      }
     },
     "label.confirm-password" : {
       "extractionState" : "manual",
@@ -476,6 +541,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Potvrdi lozinku"
+          }
+        }
+      }
+    },
+    "label.create" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreiraj"
           }
         }
       }
@@ -497,6 +579,68 @@
         }
       }
     },
+    "label.explore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istraži"
+          }
+        }
+      }
+    },
+    "label.garage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garage"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garaža"
+          }
+        }
+      }
+    },
+    "label.home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogs"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogovi"
+          }
+        }
+      }
+    },
+    "label.latest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest"
+          }
+        }
+      }
+    },
     "label.password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -510,6 +654,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lozinka"
+          }
+        }
+      }
+    },
+    "label.trending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trending"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popularno"
           }
         }
       }
@@ -531,6 +692,23 @@
         }
       }
     },
+    "label.view-more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "view more"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vidi još"
+          }
+        }
+      }
+    },
     "loading.three.dots" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -544,6 +722,19 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Učitavanje..."
+          }
+        }
+      }
+    },
+    "Next-generation CarPlay will have deeper integration with a vehicle's instrument cluster, climate controls, FM radio, and more. It will also support multiple displays across the dashboard, and offer a variety of personalization options.\n\nAston Martin and Porsche previewed their customized next-generation CarPlay designs in December. Aston Martin said it would release its first vehicles with next-generation CarPlay support in 2024, including a new model of its high-end DB12 sports car. Porsche did not provide a timeframe or specific details about its own plans.\n\nA spokesperson for Porsche this week told us that it has no update to provide about next-generation CarPlay availability at this time, while a spokesperson for Aston Martin has yet to respond to our request for comment. In January, Apple updated its website to confirm that the first vehicle models with support for next-generation CarPlay will debut in 2024, but it has yet to provide a more specific timeframe. This wording is shown on Apple's websites for several countries, including the U.S., Canada, Australia, New Zealand, and others." : {
+
+    },
+    "Notifications" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obavijesti"
           }
         }
       }
@@ -665,6 +856,12 @@
           }
         }
       }
+    },
+    "ProfileView" : {
+
+    },
+    "Trending" : {
+
     }
   },
   "version" : "1.0"

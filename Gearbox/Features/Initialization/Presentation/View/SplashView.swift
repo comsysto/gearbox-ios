@@ -23,7 +23,7 @@ struct SplashView: View {
           SignInView()
             .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
         case .home:
-          HomeView()
+          BottomTabMenuView()
             .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
         case .splash:
           splash()

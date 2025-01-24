@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Converter  {
+protocol ConverterType  {
   associatedtype Source
   associatedtype Target
   
