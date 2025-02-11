@@ -8,7 +8,8 @@
 import Foundation
 
 public protocol BlogDatasource {
-  func getTrending(blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
+  func getTrending(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
+  func getLatest(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
 }
 
 public enum BlogException: Error {

@@ -10,6 +10,7 @@ import Dependency
 class HomeViewModel: ObservableObject {
   // MARK: - DEPENDECIES
   @Dependency(\.getTrendingBlogsUseCase) private var getTrendingBlogsUseCase: GetTrendingBlogsUseCase
+  
   private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
   
   // MARK: - STATE
@@ -23,7 +24,7 @@ class HomeViewModel: ObservableObject {
   // MARK: - FUNCTIONS
   @MainActor
   func getTrendingBlogs() {
-    state.isLoading = true
+    state.isTrendingLoading = true
     
     Task {
       let result = await getTrendingBlogsUseCase.execute()
@@ -32,10 +33,10 @@ class HomeViewModel: ObservableObject {
         case .success(let blogs):
           await downloadImages(for: blogs)
           state.trendingBlogs = blogs
-          state.isLoading = false
+          state.isTrendingLoading = false
         case .failure(let error):
           setErrorMessage(error)
-          state.isLoading = false
+          state.isTrendingLoading = false
       }
     }
   }
@@ -51,15 +52,9 @@ class HomeViewModel: ObservableObject {
             self.imageCache.save(image, forKey: blog.thumbnailImageUrl)
           }
         } catch {
-          print("No image found...")
+          let image = UIImage(named: "photo_icon")!
+          self.imageCache.save(image, forKey: blog.thumbnailImageUrl)
         }
-        //        URLSession.shared.dataTask(with: url) { data, _, _ in
-        //          if let data = data, let image = UIImage(data: data) {
-        //            DispatchQueue.main.async {
-        //              self.imageCache.save(image, forKey: blog.thumbnailImageUrl)
-        //            }
-        //          }
-        //        }.resume()
       }
     }
   }

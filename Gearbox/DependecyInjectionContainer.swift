@@ -72,6 +72,12 @@ private struct GetTrendingBlogsUseCaseKey: DependencyKey {
   static var currentValue: GetTrendingBlogsUseCase = GetTrendingBlogsUseCase(repository)
 }
 
+private struct GetLatestBlogsUseCaseKey: DependencyKey {
+  @Dependency(\.blogRepository) private static var repository
+  
+  static var currentValue: GetLatestBlogsUseCase = GetLatestBlogsUseCase(repository)
+}
+
 
 // MARK: - GETTERS
 extension DependencyValues {
@@ -122,6 +128,11 @@ extension DependencyValues {
   var getTrendingBlogsUseCase: GetTrendingBlogsUseCase {
     get { Self[GetTrendingBlogsUseCaseKey.self] }
     set { Self[GetTrendingBlogsUseCaseKey.self] = newValue }
+  }
+  
+  var getLatestBlogsUseCase: GetLatestBlogsUseCase {
+    get { Self[GetLatestBlogsUseCaseKey.self] }
+    set { Self[GetLatestBlogsUseCaseKey.self] = newValue }
   }
 }
 
