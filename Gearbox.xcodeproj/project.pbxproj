@@ -16,6 +16,7 @@
 		1221E4B42CC66FDF004AB984 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1221E4B32CC66FDB004AB984 /* SignInState.swift */; };
 		123BD9062C6B77F3007762EF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123BD9052C6B77F3007762EF /* HomeView.swift */; };
 		124A198D2CF0BA84005B97CA /* BlogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A198C2CF0BA84005B97CA /* BlogCard.swift */; };
+		124C1DA42D66014800407A82 /* CacheNewImagesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C1DA32D66013B00407A82 /* CacheNewImagesUseCase.swift */; };
 		124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */; };
 		124F1B472C41409200897BA3 /* StringValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F1B462C41409200897BA3 /* StringValidators.swift */; };
 		1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1251E63D2C36E61F00FE8E93 /* GearboxApp.swift */; };
@@ -55,6 +56,10 @@
 		12AD4FA82C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */; };
 		12AD4FAB2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */; };
 		12AD4FAD2C5F992F0081E9F1 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD4FAC2C5F992F0081E9F1 /* Converter.swift */; };
+		12B2042C2D47A030004D9EA5 /* GetLatestBlogsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B2042B2D47A028004D9EA5 /* GetLatestBlogsUseCase.swift */; };
+		12BD55832D4A61B300DCDC6E /* LatestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD55822D4A61AE00DCDC6E /* LatestView.swift */; };
+		12BD55862D4A651D00DCDC6E /* LatestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD55852D4A651900DCDC6E /* LatestState.swift */; };
+		12BD55892D4A658900DCDC6E /* LatestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD55882D4A658600DCDC6E /* LatestViewModel.swift */; };
 		12C12D732C623CA600C2B0F4 /* Dependency in Frameworks */ = {isa = PBXBuildFile; productRef = 12C12D722C623CA600C2B0F4 /* Dependency */; };
 		12C12D752C623CCA00C2B0F4 /* DependecyInjectionContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */; };
 		12C12D782C624B6E00C2B0F4 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */; };
@@ -79,6 +84,7 @@
 		1221E4B52CC66FE2004AB984 /* SignUpState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
 		123BD9052C6B77F3007762EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		124A198C2CF0BA84005B97CA /* BlogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCard.swift; sourceTree = "<group>"; };
+		124C1DA32D66013B00407A82 /* CacheNewImagesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheNewImagesUseCase.swift; sourceTree = "<group>"; };
 		124F1B402C41284B00897BA3 /* GearboxLargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearboxLargeButton.swift; sourceTree = "<group>"; };
 		124F1B462C41409200897BA3 /* StringValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidators.swift; sourceTree = "<group>"; };
 		1251E63A2C36E61F00FE8E93 /* Gearbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gearbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +124,10 @@
 		12AD4FA72C5F97CD0081E9F1 /* AuthenticationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepositoryImpl.swift; sourceTree = "<group>"; };
 		12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationResponseToUserEntityConverter.swift; sourceTree = "<group>"; };
 		12AD4FAC2C5F992F0081E9F1 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		12B2042B2D47A028004D9EA5 /* GetLatestBlogsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestBlogsUseCase.swift; sourceTree = "<group>"; };
+		12BD55822D4A61AE00DCDC6E /* LatestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestView.swift; sourceTree = "<group>"; };
+		12BD55852D4A651900DCDC6E /* LatestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestState.swift; sourceTree = "<group>"; };
+		12BD55882D4A658600DCDC6E /* LatestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestViewModel.swift; sourceTree = "<group>"; };
 		12C12D742C623CCA00C2B0F4 /* DependecyInjectionContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependecyInjectionContainer.swift; sourceTree = "<group>"; };
 		12C12D772C624B6E00C2B0F4 /* SignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		12C12D792C624C1B00C2B0F4 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
@@ -188,11 +198,10 @@
 		123BD8FF2C6B76D0007762EF /* Blogs */ = {
 			isa = PBXGroup;
 			children = (
-				12F6C7EB2CF6068C00905DBB /* Details */,
-				126E78082CEF7B6900181484 /* CreateNew */,
-				126E78072CEF7B5F00181484 /* Bookmarks */,
-				126E78062CEF7B5A00181484 /* Explore */,
-				123BD9002C6B774D007762EF /* Home */,
+				1297A7522D01DF5300DF3BBD /* Data */,
+				1297A7542D01DF8900DF3BBD /* Domain */,
+				12BD557C2D4A567B00DCDC6E /* Presentation */,
+				12F3C3252C906D62003F8F88 /* Utils */,
 			);
 			path = Blogs;
 			sourceTree = "<group>";
@@ -200,10 +209,10 @@
 		123BD9002C6B774D007762EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1297A7522D01DF5300DF3BBD /* Data */,
-				1297A7542D01DF8900DF3BBD /* Domain */,
-				12404D5B2C90686C00661C41 /* Presentation */,
-				12F3C3252C906D62003F8F88 /* Utils */,
+				1297A7692D01EBEB00DF3BBD /* State */,
+				1297A7682D01EBDE00DF3BBD /* ViewModel */,
+				12404D592C90686000661C41 /* Widget */,
+				12404D5A2C90686600661C41 /* Screen */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -222,17 +231,6 @@
 				123BD9052C6B77F3007762EF /* HomeView.swift */,
 			);
 			path = Screen;
-			sourceTree = "<group>";
-		};
-		12404D5B2C90686C00661C41 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				1297A7692D01EBEB00DF3BBD /* State */,
-				1297A7682D01EBDE00DF3BBD /* ViewModel */,
-				12404D592C90686000661C41 /* Widget */,
-				12404D5A2C90686600661C41 /* Screen */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		124F1B452C41406F00897BA3 /* Utils */ = {
@@ -441,7 +439,7 @@
 		1297A7522D01DF5300DF3BBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1297A7602D01E92400DF3BBD /* Mapper */,
+				12BD557D2D4A602F00DCDC6E /* Mapper */,
 				1297A7532D01DF6000DF3BBD /* Repository */,
 			);
 			path = Data;
@@ -450,7 +448,6 @@
 		1297A7532D01DF6000DF3BBD /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1297A7612D01E93600DF3BBD /* BlogResponseToBlogEntityConverter.swift */,
 				1297A75C2D01E29C00DF3BBD /* BlogRepositoryImpl.swift */,
 			);
 			path = Repository;
@@ -483,13 +480,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		1297A7602D01E92400DF3BBD /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Mapper;
-			sourceTree = "<group>";
-		};
 		1297A7632D01E96200DF3BBD /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +491,8 @@
 		1297A7652D01EB2F00DF3BBD /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				124C1DA32D66013B00407A82 /* CacheNewImagesUseCase.swift */,
+				12B2042B2D47A028004D9EA5 /* GetLatestBlogsUseCase.swift */,
 				1297A7662D01EB3C00DF3BBD /* GetTrendingBlogsUseCase.swift */,
 			);
 			path = UseCase;
@@ -579,6 +571,61 @@
 				12AD4FAA2C5F99140081E9F1 /* AuthenticationResponseToUserEntityConverter.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		12BD557C2D4A567B00DCDC6E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				12BD55802D4A61A500DCDC6E /* Latest */,
+				12F6C7EB2CF6068C00905DBB /* Details */,
+				126E78082CEF7B6900181484 /* CreateNew */,
+				126E78072CEF7B5F00181484 /* Bookmarks */,
+				126E78062CEF7B5A00181484 /* Explore */,
+				123BD9002C6B774D007762EF /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		12BD557D2D4A602F00DCDC6E /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				1297A7612D01E93600DF3BBD /* BlogResponseToBlogEntityConverter.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		12BD55802D4A61A500DCDC6E /* Latest */ = {
+			isa = PBXGroup;
+			children = (
+				12BD55842D4A651500DCDC6E /* State */,
+				12BD55872D4A658000DCDC6E /* ViewModel */,
+				12BD55812D4A61A900DCDC6E /* Screen */,
+			);
+			path = Latest;
+			sourceTree = "<group>";
+		};
+		12BD55812D4A61A900DCDC6E /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				12BD55822D4A61AE00DCDC6E /* LatestView.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		12BD55842D4A651500DCDC6E /* State */ = {
+			isa = PBXGroup;
+			children = (
+				12BD55852D4A651900DCDC6E /* LatestState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		12BD55872D4A658000DCDC6E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				12BD55882D4A658600DCDC6E /* LatestViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		12C12D762C624B5900C2B0F4 /* UseCase */ = {
@@ -732,9 +779,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				128F3DE92D438D6700A58921 /* CacheManager.swift in Sources */,
+				12BD55892D4A658900DCDC6E /* LatestViewModel.swift in Sources */,
 				126E78132CEF7E0B00181484 /* SignUpState.swift in Sources */,
 				1297A7572D01DFB600DF3BBD /* BlogRepositoryType.swift in Sources */,
 				1297A75F2D01E36B00DF3BBD /* BlogError.swift in Sources */,
+				12BD55862D4A651D00DCDC6E /* LatestState.swift in Sources */,
 				1297A75D2D01E2A000DF3BBD /* BlogRepositoryImpl.swift in Sources */,
 				12A810502C3BFC7600725C1B /* OnBoardingContent.swift in Sources */,
 				126E78122CEF7CA200181484 /* ProfileView.swift in Sources */,
@@ -742,6 +791,7 @@
 				12A810562C3C085F00725C1B /* OnBoardingView.swift in Sources */,
 				122191972C56925A00E3E138 /* MasterRouteView.swift in Sources */,
 				124F1B412C41284B00897BA3 /* GearboxLargeButton.swift in Sources */,
+				124C1DA42D66014800407A82 /* CacheNewImagesUseCase.swift in Sources */,
 				12FD83162C930C8C00A9739E /* TODO.swift in Sources */,
 				1297A75A2D01DFF600DF3BBD /* Blog.swift in Sources */,
 				122191992C5692D000E3E138 /* Router.swift in Sources */,
@@ -766,6 +816,7 @@
 				12FAD8912C7F6250007EAB59 /* BottomTabMenuView.swift in Sources */,
 				12C12D7A2C624C1B00C2B0F4 /* SignUpUseCase.swift in Sources */,
 				12F3C32A2C9071AD003F8F88 /* TrendingBlogCard.swift in Sources */,
+				12BD55832D4A61B300DCDC6E /* LatestView.swift in Sources */,
 				126D80142C6629EE006FFD3B /* AuthError.swift in Sources */,
 				1221E4B42CC66FDF004AB984 /* SignInState.swift in Sources */,
 				12C12D782C624B6E00C2B0F4 /* SignInUseCase.swift in Sources */,
@@ -775,6 +826,7 @@
 				12A8105B2C3C161900725C1B /* SignInView.swift in Sources */,
 				12769EF22CC9236E00F5CEA0 /* FormValidator.swift in Sources */,
 				12AD4FA12C5F961D0081E9F1 /* Token.swift in Sources */,
+				12B2042C2D47A030004D9EA5 /* GetLatestBlogsUseCase.swift in Sources */,
 				126E780E2CEF7BF300181484 /* BookmarkedBlogsView.swift in Sources */,
 				1251E63E2C36E61F00FE8E93 /* GearboxApp.swift in Sources */,
 				12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */,

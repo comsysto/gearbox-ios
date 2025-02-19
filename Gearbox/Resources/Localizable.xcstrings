@@ -638,6 +638,12 @@
             "state" : "translated",
             "value" : "Latest"
           }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Najnovije"
+          }
         }
       }
     },

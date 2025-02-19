@@ -12,6 +12,9 @@ class BlogRepositoryImpl: BlogRepositoryType {
   private let userLocalDataSource: UserLocalDatasource
   private let blogResponseToBlogEntity: BlogResponseToBlogEntityConverter
   
+  private var currentPage: Int = 0
+  private var isLastPage: Bool = false
+  
   init(
     _ blogApi: BlogDatasource,
     _ userlocalDataSource: UserLocalDatasource,
@@ -25,21 +28,47 @@ class BlogRepositoryImpl: BlogRepositoryType {
   func getTrendingBlogs() async -> Result<[Blog], BlogError> {
     do {
       let accessToken = userLocalDataSource.loadToken()
-      let request = BlogPageableSecureRequest(token: accessToken.token, page: 0, size: 10) //TODO: Refactor this values
+      let request = BlogPageableSecureRequest(token: accessToken.token, page: 0, size: 5)
       
-      let response = try await blogApi.getTrending(blogRequest: request)
-      
-      print("Response: \(response)")
+      let response = try await blogApi.getTrending(request)
       
       let blogList = response.content.map(blogResponseToBlogEntity.convert)
       return .success(blogList)
     } catch {
       switch error as? BlogError {
         case .serverError(let message):
-          print("Server error: \(message)")
           return .failure(.serverError(message))
         default:
-          print("Unknown error")
+          return .failure(.serverError("error.unknown"))
+      }
+    }
+  }
+  
+  func getLatestBlogs(_ nextPage: Bool) async -> Result<[Blog], BlogError> {
+    do {
+      if nextPage == false {
+        currentPage = 0
+        isLastPage = false
+      }
+      
+      guard !isLastPage else { return .success([])}
+      
+      if nextPage { currentPage += 1 }
+      
+      let accessToken = userLocalDataSource.loadToken()
+      let request = BlogPageableSecureRequest(token: accessToken.token, page: currentPage, size: 6)
+      
+      let response = try await blogApi.getLatest(request)
+      
+      isLastPage = response.last
+      
+      let blogList = response.content.map(blogResponseToBlogEntity.convert)
+      return .success(blogList)
+    } catch {
+      switch error as? BlogError {
+        case .serverError(let message):
+          return .failure(.serverError(message))
+        default:
           return .failure(.serverError("error.unknown"))
       }
     }

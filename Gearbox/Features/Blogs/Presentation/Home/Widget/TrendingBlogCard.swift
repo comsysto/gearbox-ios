@@ -29,8 +29,9 @@ struct TrendingBlogCard: View {
               .frame(maxWidth: UIScreen.main.bounds.size.width - 60, maxHeight: 200)
               .clipShape(RoundedRectangle(cornerRadius: 5))
           } else {
-            Color.gray.opacity(0.3)
-              .scaledToFill()
+            Image("photo_icon")
+              .resizable()
+              .scaledToFit()
               .frame(maxWidth: UIScreen.main.bounds.size.width - 60, maxHeight: 200)
               .clipShape(RoundedRectangle(cornerRadius: 5))
           }
@@ -82,6 +83,7 @@ struct TrendingBlogCard: View {
   }
 }
 
+// MARK: - SHIMMER
 struct ShimmerTrendingBlogCard: View {
   var body: some View {
     ZStack {

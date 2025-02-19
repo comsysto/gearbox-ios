@@ -15,6 +15,8 @@ struct BlogCard: View {
   let timePassed: String
   let numOfLikes: Int
   
+  private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
+  
   // MARK: - BODY
   var body: some View {
     HStack {
@@ -47,12 +49,53 @@ struct BlogCard: View {
         } //: HSTACK
       } //: VSTACK
       Spacer()
-      
-      Image(imageUrl)
-        .resizable()
-        .scaledToFill()
+    
+      if let cachedImage = imageCache.load(forKey: imageUrl) {
+        Image(uiImage: cachedImage)
+          .resizable()
+          .scaledToFill()
+          .frame(width: 90, height: 80)
+          .clipShape(RoundedRectangle(cornerRadius: 5))
+      } else {
+        Image("photo_icon")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 90, height: 80)
+          .clipShape(RoundedRectangle(cornerRadius: 5))
+      }
+    } //: HSTACK
+    .padding()
+    .background(Color.background)
+    .clipShape(RoundedRectangle(cornerRadius: 8))
+    .shadow(color: .shadow, radius: 10, y: 5)
+  }
+}
+
+// MARK: - SHIMMER
+struct ShimmerBlogCard: View {
+  var body: some View {
+    HStack {
+      VStack (alignment: .leading) {
+        ShimmerView()
+          .frame(width: 70, height: 10)
+          .cornerRadius(2)
+        ShimmerView()
+          .frame(width: 200, height: 30)
+          .cornerRadius(5)
+        
+        HStack {
+          ShimmerView()
+            .frame(width: 80, height: 10)
+            .cornerRadius(2)
+          ShimmerView()
+            .frame(width: 30, height: 10)
+            .cornerRadius(2)
+        } //: HSTACK
+      } //: VSTACK
+      Spacer()
+      ShimmerView()
         .frame(width: 90, height: 80)
-        .clipShape(RoundedRectangle(cornerRadius: 5))
+        .cornerRadius(5)
     } //: HSTACK
     .padding()
     .background(Color.background)
@@ -65,13 +108,16 @@ struct BlogCard: View {
 #Preview {
   return ZStack {
     Color.background.ignoresSafeArea()
-    BlogCard(
-      imageUrl: "trending_placeholder",
-      title: "Next generation Apple Car Play integration started",
-      category: "Technology",
-      timePassed: "30 min ago",
-      numOfLikes: 13
-    )
+    VStack {
+      BlogCard(
+        imageUrl: "trending_placeholder",
+        title: "Next generation Apple Car Play integration started",
+        category: "Technology",
+        timePassed: "30 min ago",
+        numOfLikes: 13
+      )
+      ShimmerBlogCard()
+    } //: VSTACK
     .padding()
   }
 }

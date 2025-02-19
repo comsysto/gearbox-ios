@@ -6,7 +6,8 @@
 //
 
 struct HomeState: Equatable {
-  var isLoading: Bool = false
+  // MARK: - TRENDING BLOGS
+  var isTrendingLoading: Bool = true
   var trendingBlogs: [Blog] = []
   var currentTrendingBlogIndex: Int = 0
   

@@ -9,55 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
   // MARK: - PROPERTIES
-  @EnvironmentObject private var viewModel: HomeViewModel
-  
-  private let trendingBlogsMock = [
-    MockTrendingBlog(
-      imageUrl: "trending_placeholder",
-      title: "BMW released a new concept car",
-      category: "Concepts",
-      timePassed: "1 day ago",
-      numOfLikes: 69
-    ),
-    MockTrendingBlog(
-      imageUrl: "trending_placeholder",
-      title: "BMW Touring Coupe concept",
-      category: "Concepts",
-      timePassed: "2 days ago",
-      numOfLikes: 13
-    ),
-    MockTrendingBlog(
-      imageUrl: "trending_placeholder",
-      title: "One of a kind tribute",
-      category: "Concepts",
-      timePassed: "46 min ago",
-      numOfLikes: 2
-    ),
-  ]
-  
-  private let latestBlogsMock = [
-    MockTrendingBlog(
-      imageUrl: "trending_placeholder",
-      title: "Next generation Apple Car Play integration started",
-      category: "Technology",
-      timePassed: "30 min ago",
-      numOfLikes: 3
-    ),
-    MockTrendingBlog(
-      imageUrl: "trending_placeholder",
-      title: "GTI Clubsport confirmed as the Most Powerful FWD Golf",
-      category: "Hot news",
-      timePassed: "47 min ago",
-      numOfLikes: 11
-    ),
-    MockTrendingBlog(
-      imageUrl: "trending_placeholder",
-      title: "Kia confirms EV3 is coming to the market in 2025",
-      category: "Electric cars",
-      timePassed: "52 min ago",
-      numOfLikes: 13
-    ),
-  ]
+  @EnvironmentObject private var homeViewModel: HomeViewModel
+  @EnvironmentObject private var latestViewModel: LatestViewModel
   
   init() {
     UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.text)
@@ -80,17 +33,10 @@ struct HomeView: View {
       .scrollIndicators(.hidden)
     } //: ZSTACK
     .onAppear {
-      viewModel.getTrendingBlogs()
+      homeViewModel.getTrendingBlogs()
+      latestViewModel.getLatestBlogs()
     }
-    .onChange(of: viewModel.state.isLoading, perform: handleStateChange)
     .navigationBarBackButtonHidden()
-  }
-  
-  // MARK: - FUNCTIONS
-  private func handleStateChange(isLoading: Bool) {
-    if isLoading {
-      //toggle loading icon on trending blogs
-    }
   }
 }
 
@@ -102,7 +48,7 @@ private extension HomeView {
         Text("label.home")
           .font(.largeTitle.bold())
         
-        Text(DateTimeUtils.getFormattedDay())
+        Text(DateTimeUtils.formatAsFullDay())
           .font(.caption2)
           .foregroundColor(.gray)
       }
@@ -127,14 +73,14 @@ private extension HomeView {
   
   @ViewBuilder
   func renderTrendingBlogs() -> some View {
-    if viewModel.state.isLoading {
+    if homeViewModel.state.isTrendingLoading {
       ShimmerTrendingBlogCard()
         .frame(height: 380)
         .offset(y: -50)
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 20)
     } else {
-      TabView(selection: $viewModel.state.currentTrendingBlogIndex) {
-        ForEach(0..<viewModel.state.trendingBlogs.count, id: \.self) { index in
+      TabView(selection: $homeViewModel.state.currentTrendingBlogIndex) {
+        ForEach(0..<homeViewModel.state.trendingBlogs.count, id: \.self) { index in
           renderTrendingCard(at: index)
         }
       }
@@ -147,12 +93,12 @@ private extension HomeView {
   
   @ViewBuilder
   func renderTrendingCard(at index: Int) -> some View {
-    let blog = viewModel.state.trendingBlogs[index]
+    let blog = homeViewModel.state.trendingBlogs[index]
     TrendingBlogCard(
       imageUrl: blog.thumbnailImageUrl,
       title: blog.title,
       category: blog.category,
-      timePassed: blog.createDate.ISO8601Format(),
+      timePassed: blog.createDate.formatAsTimePassed(),
       numOfLikes: blog.numberOfLikes
     )
     .padding(.horizontal, 20)
@@ -165,29 +111,48 @@ private extension HomeView {
         Text("label.latest")
           .font(.custom("RobotoCondensed-Bold", size: 16))
         Spacer()
-        Text("label.view-more")
-          .font(.caption)
-          .foregroundStyle(.brand)
+        NavigationLink {
+          LatestView()
+        } label: {
+          Text("label.view-more")
+            .font(.caption)
+            .foregroundStyle(.brand)
+        }
       } //: HSTACK
-      ForEach(0..<latestBlogsMock.count, id: \.self) { index in
-        BlogCard(
-          imageUrl: latestBlogsMock[index].imageUrl,
-          title: latestBlogsMock[index].title,
-          category: latestBlogsMock[index].category,
-          timePassed: latestBlogsMock[index].timePassed,
-          numOfLikes: latestBlogsMock[index].numOfLikes
-        )
-        .frame(height: 120)
+      if latestViewModel.state.isLoading {
+        ShimmerBlogCard()
+          .frame(height: 120)
+        ShimmerBlogCard()
+          .frame(height: 120)
+        ShimmerBlogCard()
+          .frame(height: 120)
+      } else {
+        ForEach(0..<3, id: \.self) { index in
+          renderBlogCard(at: index)
+        }
       }
     } //: VSTACK
     .offset(y: -70)
+  }
+  
+  @ViewBuilder
+  func renderBlogCard(at index: Int) -> some View {
+    let blog = latestViewModel.state.latestBlogs[index]
+    BlogCard(
+      imageUrl: blog.thumbnailImageUrl,
+      title: blog.title,
+      category: blog.category,
+      timePassed: blog.createDate.formatAsTimePassed(),
+      numOfLikes: blog.numberOfLikes
+    )
+    .frame(height: 120)
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
   let viewModel = HomeViewModel()
-  viewModel.state.isLoading = true
+  viewModel.state.isTrendingLoading = false
   return ZStack {
     NavigationView {
       HomeView()
