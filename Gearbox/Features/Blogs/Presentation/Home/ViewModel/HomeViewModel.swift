@@ -10,6 +10,7 @@ import Dependency
 class HomeViewModel: ObservableObject {
   // MARK: - DEPENDECIES
   @Dependency(\.getTrendingBlogsUseCase) private var getTrendingBlogsUseCase: GetTrendingBlogsUseCase
+  @Dependency(\.cacheNewImagesUseCase) private var cacheNewImagesUseCase: CacheNewImagesUseCase
   
   private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
   
@@ -31,30 +32,13 @@ class HomeViewModel: ObservableObject {
       
       switch result {
         case .success(let blogs):
-          await downloadImages(for: blogs)
+          await cacheNewImagesUseCase.execute(for: blogs)
+          
           state.trendingBlogs = blogs
           state.isTrendingLoading = false
         case .failure(let error):
           setErrorMessage(error)
           state.isTrendingLoading = false
-      }
-    }
-  }
-  
-  private func downloadImages(for blogs: [Blog]) async {
-    for blog in blogs {
-      guard let url = URL(string: blog.thumbnailImageUrl) else { return }
-      
-      if self.imageCache.load(forKey: blog.thumbnailImageUrl) == nil {
-        do {
-          let (data, _) = try await URLSession.shared.data(from: url)
-          if let image = UIImage(data: data) {
-            self.imageCache.save(image, forKey: blog.thumbnailImageUrl)
-          }
-        } catch {
-          let image = UIImage(named: "photo_icon")!
-          self.imageCache.save(image, forKey: blog.thumbnailImageUrl)
-        }
       }
     }
   }

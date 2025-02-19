@@ -10,8 +10,7 @@ import Dependency
 class LatestViewModel: ObservableObject {
   // MARK: - DEPENDECIES
   @Dependency(\.getLatestBlogsUseCase) private var getLatestBlogsUseCase: GetLatestBlogsUseCase
-  
-  private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
+  @Dependency(\.cacheNewImagesUseCase) private var cacheNewImagesUseCase: CacheNewImagesUseCase
   
   // MARK: - STATE
   @Published var state: LatestState
@@ -31,7 +30,8 @@ class LatestViewModel: ObservableObject {
       
       switch result {
         case .success(let blogs):
-          await cacheNewImages(for: blogs)
+          await cacheNewImagesUseCase.execute(for: blogs)
+          
           state.latestBlogs = blogs
           state.isLoading = false
           state.isLastPage = false
@@ -59,34 +59,14 @@ class LatestViewModel: ObservableObject {
             return
           }
           
-          await cacheNewImages(for: blogs)
+          await cacheNewImagesUseCase.execute(for: blogs)
+          
           state.latestBlogs.append(contentsOf: blogs)
           state.isLoadingMore = false
         case .failure(let error):
           setErrorMessage(error)
           state.isLoadingMore = false
       }
-    }
-  }
-  
-  private func cacheNewImages(for blogs: [Blog]) async {
-    for blog in blogs {
-      if self.imageCache.load(forKey: blog.thumbnailImageUrl) == nil {
-        await downloadImageFromUrlWithFallback(blog.thumbnailImageUrl)
-      }
-    }
-  }
-  
-  private func downloadImageFromUrlWithFallback(_ imageUrl: String) async {
-    guard let url = URL(string: imageUrl) else { return }
-    do {
-      let (data, _) = try await URLSession.shared.data(from: url)
-      if let image = UIImage(data: data) {
-        self.imageCache.save(image, forKey: imageUrl)
-      }
-    } catch {
-      let image = UIImage(named: "photo_icon")!
-      self.imageCache.save(image, forKey: imageUrl)
     }
   }
   
