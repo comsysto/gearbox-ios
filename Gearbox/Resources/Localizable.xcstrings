@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "@brunobenner" : {
+    "@%@" : {
 
     },
     "%lld" : {
@@ -380,14 +380,7 @@
       }
     },
     "Bookmarked blogs" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bookmarked blogs"
-          }
-        }
-      }
+
     },
     "button.finish" : {
       "extractionState" : "manual",
@@ -424,14 +417,7 @@
       }
     },
     "Create new" : {
-      "localizations" : {
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Novi blog"
-          }
-        }
-      }
+
     },
     "error.server-error" : {
       "extractionState" : "manual",
@@ -485,14 +471,7 @@
       }
     },
     "Explore" : {
-      "localizations" : {
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Istraži"
-          }
-        }
-      }
+
     },
     "label.back" : {
       "extractionState" : "manual",
@@ -524,6 +503,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spremljeno"
+          }
+        }
+      }
+    },
+    "label.comments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comments"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komentari"
           }
         }
       }
@@ -732,18 +728,8 @@
         }
       }
     },
-    "Next-generation CarPlay will have deeper integration with a vehicle's instrument cluster, climate controls, FM radio, and more. It will also support multiple displays across the dashboard, and offer a variety of personalization options.\n\nAston Martin and Porsche previewed their customized next-generation CarPlay designs in December. Aston Martin said it would release its first vehicles with next-generation CarPlay support in 2024, including a new model of its high-end DB12 sports car. Porsche did not provide a timeframe or specific details about its own plans.\n\nA spokesperson for Porsche this week told us that it has no update to provide about next-generation CarPlay availability at this time, while a spokesperson for Aston Martin has yet to respond to our request for comment. In January, Apple updated its website to confirm that the first vehicle models with support for next-generation CarPlay will debut in 2024, but it has yet to provide a more specific timeframe. This wording is shown on Apple's websites for several countries, including the U.S., Canada, Australia, New Zealand, and others." : {
-
-    },
     "Notifications" : {
-      "localizations" : {
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obavijesti"
-          }
-        }
-      }
+
     },
     "ok" : {
       "localizations" : {
@@ -859,6 +845,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kreni na cestu"
+          }
+        }
+      }
+    },
+    "placeholder.comment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your comment"
           }
         }
       }

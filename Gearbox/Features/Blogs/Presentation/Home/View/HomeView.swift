@@ -11,6 +11,7 @@ struct HomeView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var homeViewModel: HomeViewModel
   @EnvironmentObject private var latestViewModel: LatestViewModel
+  @EnvironmentObject private var router: Router
   
   init() {
     UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.text)
@@ -111,13 +112,12 @@ private extension HomeView {
         Text("label.latest")
           .font(.custom("RobotoCondensed-Bold", size: 16))
         Spacer()
-        NavigationLink {
-          LatestView()
-        } label: {
-          Text("label.view-more")
-            .font(.caption)
-            .foregroundStyle(.brand)
-        }
+        Text("label.view-more")
+          .font(.caption)
+          .foregroundStyle(.brand)
+          .onTapGesture {
+            router.navigateTo(.latest)
+          }
       } //: HSTACK
       if latestViewModel.state.isLoading {
         ShimmerBlogCard()
@@ -138,14 +138,8 @@ private extension HomeView {
   @ViewBuilder
   func renderBlogCard(at index: Int) -> some View {
     let blog = latestViewModel.state.latestBlogs[index]
-    BlogCard(
-      imageUrl: blog.thumbnailImageUrl,
-      title: blog.title,
-      category: blog.category,
-      timePassed: blog.createDate.formatAsTimePassed(),
-      numOfLikes: blog.numberOfLikes
-    )
-    .frame(height: 120)
+    BlogCard(for: blog)
+      .frame(height: 120)
   }
 }
 

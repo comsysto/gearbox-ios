@@ -33,6 +33,7 @@ struct LatestView: View {
   }
 }
 
+// MARK: - VIEW EXTENSIONS
 private extension LatestView {
   @ViewBuilder
   func renderLatestBlogs() -> some View {
@@ -44,13 +45,7 @@ private extension LatestView {
   @ViewBuilder
   func renderBlogCard(at index: Int) -> some View {
     let blog = viewModel.state.latestBlogs[index]
-    BlogCard(
-      imageUrl: blog.thumbnailImageUrl,
-      title: blog.title,
-      category: blog.category,
-      timePassed: blog.createDate.formatAsTimePassed(),
-      numOfLikes: blog.numberOfLikes
-    )
+    BlogCard(for: blog)
     .frame(height: 120)
     .padding(.horizontal, 20)
     .padding(.vertical, 5)

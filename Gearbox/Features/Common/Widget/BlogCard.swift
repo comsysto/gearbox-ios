@@ -9,11 +9,15 @@ import SwiftUI
 
 struct BlogCard: View {
   // MARK: - PROPERTIES
-  let imageUrl: String
-  let title: String
-  let category: String
-  let timePassed: String
-  let numOfLikes: Int
+  @EnvironmentObject private var router: Router
+  @EnvironmentObject private var detailsViewModel: BlogDetailsViewModel
+  
+  let blog: Blog
+  
+  // MARK: - CONSTRUCTOR
+  init(for blog: Blog) {
+    self.blog = blog
+  }
   
   private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
   
@@ -22,10 +26,10 @@ struct BlogCard: View {
     HStack {
       VStack (alignment: .leading) {
         
-        Text(category)
+        Text(blog.category)
           .font(.caption)
           .foregroundStyle(.gray)
-        Text(title)
+        Text(blog.title)
           .font(Font.custom("RobotoCondensed-Medium", size: 16))
           .truncationMode(.tail)
           .padding(.bottom, 7)
@@ -34,7 +38,7 @@ struct BlogCard: View {
           Image(systemName: "clock")
             .font(.caption)
             .foregroundStyle(.gray)
-          Text(timePassed)
+          Text(blog.createDate.formatAsTimePassed())
             .font(.caption2)
             .foregroundStyle(.gray)
             .offset(x:-5)
@@ -43,14 +47,14 @@ struct BlogCard: View {
             .font(.caption)
             .offset(x:5)
             .foregroundStyle(.gray)
-          Text("\(numOfLikes)")
+          Text("\(blog.numberOfLikes)")
             .font(.caption2)
             .foregroundStyle(.gray)
         } //: HSTACK
       } //: VSTACK
       Spacer()
     
-      if let cachedImage = imageCache.load(forKey: imageUrl) {
+      if let cachedImage = imageCache.load(forKey: blog.thumbnailImageUrl) {
         Image(uiImage: cachedImage)
           .resizable()
           .scaledToFill()
@@ -68,6 +72,10 @@ struct BlogCard: View {
     .background(Color.background)
     .clipShape(RoundedRectangle(cornerRadius: 8))
     .shadow(color: .shadow, radius: 10, y: 5)
+    .onTapGesture {
+      detailsViewModel.select(blog)
+      router.navigateTo(.details)
+    }
   }
 }
 
@@ -106,18 +114,26 @@ struct ShimmerBlogCard: View {
 
 // MARK: - PREVIEW
 #Preview {
-  return ZStack {
+  var router = Router()
+  var viewModel = BlogDetailsViewModel()
+  let blog = Blog(
+    id: "",
+    title: "Next generation Apple Car Play integration started",
+    content: "",
+    thumbnailImageUrl: "trending_placeholder",
+    createDate: Date().addingTimeInterval(-3600),
+    numberOfLikes: 13,
+    category: "Technology",
+    author: Author(id: "", username: "filipkisic", profileImageUrl: nil)
+  )
+  ZStack {
     Color.background.ignoresSafeArea()
     VStack {
-      BlogCard(
-        imageUrl: "trending_placeholder",
-        title: "Next generation Apple Car Play integration started",
-        category: "Technology",
-        timePassed: "30 min ago",
-        numOfLikes: 13
-      )
+      BlogCard(for: blog)
       ShimmerBlogCard()
     } //: VSTACK
     .padding()
+    .environmentObject(router)
+    .environmentObject(viewModel)
   }
 }

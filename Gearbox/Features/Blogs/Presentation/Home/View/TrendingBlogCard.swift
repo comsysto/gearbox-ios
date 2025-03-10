@@ -9,11 +9,15 @@ import SwiftUI
 
 struct TrendingBlogCard: View {
   // MARK: - PROPERTIES
-  let imageUrl: String
-  let title: String
-  let category: String
-  let timePassed: String
-  let numOfLikes: Int
+  @EnvironmentObject private var router: Router
+  @EnvironmentObject private var detailsViewModel: BlogDetailsViewModel
+  
+  let blog: Blog
+  
+  // MARK: - CONSTRUCTOR
+  init(for blog: Blog) {
+    self.blog = blog
+  }
   
   private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
   
@@ -22,7 +26,7 @@ struct TrendingBlogCard: View {
     ZStack {
       VStack(alignment: .leading) {
         ZStack {
-          if let cachedImage = imageCache.load(forKey: imageUrl) {
+          if let cachedImage = imageCache.load(forKey: blog.thumbnailImageUrl) {
             Image(uiImage: cachedImage)
               .resizable()
               .scaledToFill()
@@ -45,14 +49,14 @@ struct TrendingBlogCard: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .offset(x: -120, y: -77)
         } //: ZSTACK
-        Text(title)
+        Text(blog.title)
           .font(Font.custom("RobotoCondensed-Bold", size: 20))
           .frame(width: 323, height: 27, alignment: .leading)
           .truncationMode(.tail)
           .padding(.bottom, 2)
         
         HStack {
-          Text(category)
+          Text(blog.category)
             .font(.caption2)
             .foregroundStyle(.gray)
           
@@ -62,7 +66,7 @@ struct TrendingBlogCard: View {
             .font(.caption)
             .offset(x:5)
             .foregroundStyle(.gray)
-          Text(timePassed)
+          Text(blog.createDate.formatAsTimePassed())
             .font(.caption2)
             .foregroundStyle(.gray)
           
@@ -70,7 +74,7 @@ struct TrendingBlogCard: View {
             .font(.caption)
             .offset(x:5)
             .foregroundStyle(.gray)
-          Text("\(numOfLikes)")
+          Text("\(blog.numberOfLikes)")
             .font(.caption2)
             .foregroundStyle(.gray)
         } //: HSTACK
@@ -80,6 +84,10 @@ struct TrendingBlogCard: View {
       .clipShape(RoundedRectangle(cornerRadius: 8))
       .shadow(color: .shadow, radius: 10, y: 5)
     } //: ZSTACK
+    .onTapGesture {
+      detailsViewModel.select(blog)
+      router.navigateTo(.details)
+    }
   }
 }
 
