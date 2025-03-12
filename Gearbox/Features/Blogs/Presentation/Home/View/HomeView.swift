@@ -95,14 +95,8 @@ private extension HomeView {
   @ViewBuilder
   func renderTrendingCard(at index: Int) -> some View {
     let blog = homeViewModel.state.trendingBlogs[index]
-    TrendingBlogCard(
-      imageUrl: blog.thumbnailImageUrl,
-      title: blog.title,
-      category: blog.category,
-      timePassed: blog.createDate.formatAsTimePassed(),
-      numOfLikes: blog.numberOfLikes
-    )
-    .padding(.horizontal, 20)
+    TrendingBlogCard(for: blog)
+      .padding(.horizontal, 20)
   }
   
   @ViewBuilder
