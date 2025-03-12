@@ -15,6 +15,8 @@ class Router: ObservableObject {
     case signIn
     case signUp
     case home
+    case details
+    case latest
   }
   
   // MARK: - PROPERTIES
@@ -31,6 +33,10 @@ class Router: ObservableObject {
         SignUpView()
       case .home:
         BottomTabMenuView()
+      case .details:
+        BlogDetailView()
+      case .latest:
+        LatestView()
     }
   }
   

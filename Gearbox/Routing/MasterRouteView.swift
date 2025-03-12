@@ -16,6 +16,7 @@ struct MasterRouteView<Content: View>: View {
   @StateObject var signUpViewModel = SignUpViewModel()
   @StateObject var homeViewModel = HomeViewModel()
   @StateObject var latestViewModel = LatestViewModel()
+  @StateObject var blogDetailsViewModel = BlogDetailsViewModel()
   
   private let content: Content
   
@@ -37,5 +38,6 @@ struct MasterRouteView<Content: View>: View {
     .environmentObject(signUpViewModel)
     .environmentObject(homeViewModel)
     .environmentObject(latestViewModel)
+    .environmentObject(blogDetailsViewModel)
   }
 }
