@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "@%@" : {
+
+    },
+    "%lld" : {
+
+    },
     "authentication.else" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -373,6 +379,9 @@
         }
       }
     },
+    "Bookmarked blogs" : {
+
+    },
     "button.finish" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -406,6 +415,9 @@
           }
         }
       }
+    },
+    "Create new" : {
+
     },
     "error.server-error" : {
       "extractionState" : "manual",
@@ -815,6 +827,9 @@
         }
       }
     },
+    "Notifications" : {
+
+    },
     "ok" : {
       "localizations" : {
         "en" : {
@@ -949,6 +964,15 @@
           }
         }
       }
+    },
+    "ProfileView" : {
+
+    },
+    "Search category" : {
+
+    },
+    "Trending" : {
+
     }
   },
   "version" : "1.0"

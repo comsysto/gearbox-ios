@@ -29,7 +29,6 @@
 		1251E6452C36E62100FE8E93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1251E6442C36E62100FE8E93 /* Preview Assets.xcassets */; };
 		1251E65A2C36F0E500FE8E93 /* RobotoCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1251E6592C36F0E500FE8E93 /* RobotoCondensed.ttf */; };
 		1252167C2C5A5DDF00A0185B /* NavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252167B2C5A5DDF00A0185B /* NavigationUtils.swift */; };
-		125216852C5BDE2F00A0185B /* GearboxDatasource in Frameworks */ = {isa = PBXBuildFile; productRef = 125216842C5BDE2F00A0185B /* GearboxDatasource */; };
 		12694BCA2C74C13A00E9B44C /* RefreshUserSessionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12694BC92C74C13A00E9B44C /* RefreshUserSessionUseCase.swift */; };
 		126BEB492C6CC205000DB687 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126BEB482C6CC205000DB687 /* KeychainStorage.swift */; };
 		126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 126BEB4B2C6CC8D7000DB687 /* KeychainSwift */; };
@@ -77,12 +76,28 @@
 		12C1EDF52C38000A005783CC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12C1EDF42C38000A005783CC /* Localizable.xcstrings */; };
 		12CAFC362C7C8B870038ED40 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CAFC352C7C8B870038ED40 /* SplashView.swift */; };
 		12E8FC532D92AF8200618755 /* SearchBlogsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E8FC522D92AF7100618755 /* SearchBlogsUseCase.swift */; };
+		12EFFABE2D9AD24100003E90 /* RemoteDatasource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12EFFABD2D9AD24100003E90 /* RemoteDatasource.framework */; };
+		12EFFABF2D9AD24100003E90 /* RemoteDatasource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12EFFABD2D9AD24100003E90 /* RemoteDatasource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12F3C3282C906D75003F8F88 /* DateTimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3C3272C906D75003F8F88 /* DateTimeUtils.swift */; };
 		12F3C32A2C9071AD003F8F88 /* TrendingBlogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3C3292C9071AD003F8F88 /* TrendingBlogCard.swift */; };
 		12F6C7EE2CF606C900905DBB /* BlogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F6C7ED2CF606C900905DBB /* BlogDetailView.swift */; };
 		12FAD8912C7F6250007EAB59 /* BottomTabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FAD8902C7F6250007EAB59 /* BottomTabMenuView.swift */; };
 		12FD83162C930C8C00A9739E /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD83152C930C8C00A9739E /* TODO.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		12EFFAC02D9AD24100003E90 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				12EFFABF2D9AD24100003E90 /* RemoteDatasource.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1212F5752C3ECEC100B1DDCF /* GearboxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearboxTextField.swift; sourceTree = "<group>"; };
@@ -110,7 +125,6 @@
 		1251E6592C36F0E500FE8E93 /* RobotoCondensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RobotoCondensed.ttf; sourceTree = "<group>"; };
 		1251E65B2C36F15000FE8E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1252167B2C5A5DDF00A0185B /* NavigationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtils.swift; sourceTree = "<group>"; };
-		125216822C5BDE0A00A0185B /* GearboxDatasource */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GearboxDatasource; path = Gearbox/GearboxDatasource; sourceTree = "<group>"; };
 		12694BC92C74C13A00E9B44C /* RefreshUserSessionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshUserSessionUseCase.swift; sourceTree = "<group>"; };
 		126BEB482C6CC205000DB687 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		126C80BF2D689D7E00482539 /* BlogDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -155,6 +169,7 @@
 		12C1EDF42C38000A005783CC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		12CAFC352C7C8B870038ED40 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		12E8FC522D92AF7100618755 /* SearchBlogsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBlogsUseCase.swift; sourceTree = "<group>"; };
+		12EFFABD2D9AD24100003E90 /* RemoteDatasource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RemoteDatasource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F3C3272C906D75003F8F88 /* DateTimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtils.swift; sourceTree = "<group>"; };
 		12F3C3292C9071AD003F8F88 /* TrendingBlogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingBlogCard.swift; sourceTree = "<group>"; };
 		12F6C7ED2CF606C900905DBB /* BlogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogDetailView.swift; sourceTree = "<group>"; };
@@ -168,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				126BEB4C2C6CC8D7000DB687 /* KeychainSwift in Frameworks */,
-				125216852C5BDE2F00A0185B /* GearboxDatasource in Frameworks */,
+				12EFFABE2D9AD24100003E90 /* RemoteDatasource.framework in Frameworks */,
 				12C12D732C623CA600C2B0F4 /* Dependency in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +275,6 @@
 		1251E6312C36E61F00FE8E93 = {
 			isa = PBXGroup;
 			children = (
-				125216822C5BDE0A00A0185B /* GearboxDatasource */,
 				1251E63C2C36E61F00FE8E93 /* Gearbox */,
 				1251E63B2C36E61F00FE8E93 /* Products */,
 				125216832C5BDE2F00A0185B /* Frameworks */,
@@ -373,6 +387,7 @@
 		125216832C5BDE2F00A0185B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12EFFABD2D9AD24100003E90 /* RemoteDatasource.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -771,6 +786,7 @@
 				1251E6362C36E61F00FE8E93 /* Sources */,
 				1251E6372C36E61F00FE8E93 /* Frameworks */,
 				1251E6382C36E61F00FE8E93 /* Resources */,
+				12EFFAC02D9AD24100003E90 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -778,7 +794,6 @@
 			);
 			name = Gearbox;
 			packageProductDependencies = (
-				125216842C5BDE2F00A0185B /* GearboxDatasource */,
 				12C12D722C623CA600C2B0F4 /* Dependency */,
 				126BEB4B2C6CC8D7000DB687 /* KeychainSwift */,
 			);
@@ -1041,6 +1056,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gearbox/Preview Content\"";
@@ -1053,7 +1069,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1076,6 +1092,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Gearbox/Preview Content\"";
@@ -1088,7 +1105,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1149,10 +1166,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		125216842C5BDE2F00A0185B /* GearboxDatasource */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GearboxDatasource;
-		};
 		126BEB4B2C6CC8D7000DB687 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 126BEB4A2C6CC8D7000DB687 /* XCRemoteSwiftPackageReference "keychain-swift" */;

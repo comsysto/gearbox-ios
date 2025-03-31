@@ -5,7 +5,7 @@
 //  Created by Filip Kisić on 31.03.2025..
 //
 import Foundation
-import GearboxDatasource
+import RemoteDatasource
 
 class AuthorRepositoryImpl: AuthorRepositoryType {
   private let userApi: UserDatasourceType

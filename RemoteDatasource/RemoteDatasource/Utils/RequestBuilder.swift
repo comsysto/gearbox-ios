@@ -1,6 +1,6 @@
 //
 //  TestModel.swift
-//  GearboxDatasource
+//  RemoteDatasource
 //
 //  Created by Filip Kisić on 24.03.2025..
 //

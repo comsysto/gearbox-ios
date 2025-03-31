@@ -1,6 +1,6 @@
 //
 //  UserClient.swift
-//  GearboxDatasource
+//  RemoteDatasource
 //
 //  Created by Filip Kisić on 31.03.2025..
 //
@@ -33,8 +33,6 @@ class UserClient: UserDatasourceType {
   }
   
   private func mapResponseToApplicationObject(response: HTTPURLResponse?, data: Data) async throws -> PageableResponse<[UserResponse]> {
-    print("response.statusCode: \(response?.statusCode)")
-    
     switch response?.statusCode {
       case 200:
         return try JSONDecoder().decode(PageableResponse<[UserResponse]>.self, from: data)

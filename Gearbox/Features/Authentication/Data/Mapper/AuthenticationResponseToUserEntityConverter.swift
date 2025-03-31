@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import GearboxDatasource
+import RemoteDatasource
 
 class AuthenticationResponseToUserEntityConverter: ConverterType {
   typealias Source = AuthenticationResponse

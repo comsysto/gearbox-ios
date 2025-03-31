@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import GearboxDatasource
+import RemoteDatasource
 
 class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
   // MARK: - DEPENDECIES

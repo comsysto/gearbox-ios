@@ -4,7 +4,7 @@
 //
 //  Created by Filip Kisić on 05.12.2024..
 //
-import GearboxDatasource
+import RemoteDatasource
 
 class BlogResponseToBlogEntityConverter: ConverterType {
   typealias Source = BlogResponse
