@@ -22,7 +22,7 @@ struct GearboxTextField: View {
     _ placeholder: String,
     text: Binding<String>,
     type: InputType,
-    validate: @escaping () -> String?
+    validate: @escaping () -> String? = { nil }
   ) {
     self.placeholder = placeholder
     self._text = text
@@ -66,6 +66,8 @@ struct GearboxTextField: View {
       case .password:
           .asciiCapable
       case .username:
+          .default
+      case .text:
           .default
     }
   }
@@ -117,5 +119,5 @@ struct RoundedGearboxTextStyle: TextFieldStyle {
 }
 
 enum InputType {
-  case email, password, username
+  case email, password, username, text
 }

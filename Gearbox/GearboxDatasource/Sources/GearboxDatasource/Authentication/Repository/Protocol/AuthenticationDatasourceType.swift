@@ -8,7 +8,7 @@
 import Foundation
 
 @available(iOS 13.0.0, *)
-public protocol AuthenticationDatasource {
+public protocol AuthenticationDatasourceType {
   func signIn(request: SignInRequest) async throws -> AuthenticationResponse
   func signUp(request: SignUpRequest) async throws -> AuthenticationResponse
   func refreshToken(request: RefreshTokenRequest) async throws -> AuthenticationResponse

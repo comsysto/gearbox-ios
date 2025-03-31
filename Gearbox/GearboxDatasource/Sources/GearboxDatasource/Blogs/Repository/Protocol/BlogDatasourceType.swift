@@ -7,9 +7,10 @@
 
 import Foundation
 
-public protocol BlogDatasource {
+public protocol BlogDatasourceType {
   func getTrending(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
   func getLatest(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
+  func search(_ blogRequest: BlogPageableSecureRequest, query: String) async throws -> PageableResponse<[BlogResponse]>
 }
 
 public enum BlogException: Error {

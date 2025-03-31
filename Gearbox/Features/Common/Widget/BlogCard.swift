@@ -25,7 +25,6 @@ struct BlogCard: View {
   var body: some View {
     HStack {
       VStack (alignment: .leading) {
-        
         Text(blog.category)
           .font(.caption)
           .foregroundStyle(.gray)
@@ -68,10 +67,11 @@ struct BlogCard: View {
           .clipShape(RoundedRectangle(cornerRadius: 5))
       }
     } //: HSTACK
-    .padding()
+    .padding(10)
     .background(Color.background)
     .clipShape(RoundedRectangle(cornerRadius: 8))
     .shadow(color: .shadow, radius: 10, y: 5)
+    .frame(height: 110)
     .onTapGesture {
       detailsViewModel.select(blog)
       router.navigateTo(.details)

@@ -1,12 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "@%@" : {
-
-    },
-    "%lld" : {
-
-    },
     "authentication.else" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -379,9 +373,6 @@
         }
       }
     },
-    "Bookmarked blogs" : {
-
-    },
     "button.finish" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -415,9 +406,6 @@
           }
         }
       }
-    },
-    "Create new" : {
-
     },
     "error.server-error" : {
       "extractionState" : "manual",
@@ -470,8 +458,73 @@
         }
       }
     },
-    "Explore" : {
-
+    "explore.label.blog-no-result.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogs with matching title will appear here."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogovi istog naslova prikazat će se ovdje."
+          }
+        }
+      }
+    },
+    "explore.label.blog-no-result.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Blogs"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nema blogova"
+          }
+        }
+      }
+    },
+    "explore.label.user-no-result.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Users with matching username will appear here."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korisnici istog korisničkog imena prikazat će se ovdje."
+          }
+        }
+      }
+    },
+    "explore.label.user-no-result.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Users"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nema korisnika"
+          }
+        }
+      }
     },
     "label.back" : {
       "extractionState" : "manual",
@@ -486,6 +539,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nazad"
+          }
+        }
+      }
+    },
+    "label.blogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogs"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blogovi"
           }
         }
       }
@@ -694,6 +764,23 @@
         }
       }
     },
+    "label.users" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Users"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korisnici"
+          }
+        }
+      }
+    },
     "label.view-more" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -727,9 +814,6 @@
           }
         }
       }
-    },
-    "Notifications" : {
-
     },
     "ok" : {
       "localizations" : {
@@ -857,14 +941,14 @@
             "state" : "translated",
             "value" : "Your comment"
           }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tvoj komentar"
+          }
         }
       }
-    },
-    "ProfileView" : {
-
-    },
-    "Trending" : {
-
     }
   },
   "version" : "1.0"

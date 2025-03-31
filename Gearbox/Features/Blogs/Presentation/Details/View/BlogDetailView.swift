@@ -195,7 +195,8 @@ private extension BlogDetailView {
     category: "Technology",
     author: Author(id: "", username: "filipkisic", profileImageUrl: nil)
   )
-  ZStack {
+  viewModel.state.blog = blog
+  return ZStack {
     NavigationView {
       BlogDetailView()
     }

@@ -26,7 +26,7 @@ public struct BlogResponse: Identifiable, Decodable {
   public let createDate: Date
   public let numberOfLikes: Int
   public let category: String
-  public let author: UserResponse
+  public let author: AuthorResponse
   
   public init(
     id: String,
@@ -36,7 +36,7 @@ public struct BlogResponse: Identifiable, Decodable {
     createDate: Date,
     numberOfLikes: Int,
     category: String,
-    author: UserResponse
+    author: AuthorResponse
   ) {
     self.id = id
     self.title = title
@@ -49,7 +49,7 @@ public struct BlogResponse: Identifiable, Decodable {
   }
 }
 
-public struct UserResponse: Identifiable, Decodable {
+public struct AuthorResponse: Identifiable, Decodable {
   public let id: String
   public let username: String
   public let profileImageUrl: String?

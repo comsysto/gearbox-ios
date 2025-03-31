@@ -7,7 +7,7 @@
 import Foundation
 
 @available(iOS 15.0, *)
-class BlogClient : BlogDatasource {
+class BlogClient : BlogDatasourceType {
   
   private let baseUrl = "http://localhost:8080/api/blog"
   
@@ -19,13 +19,23 @@ class BlogClient : BlogDatasource {
     return try await  sendPageableSecureRequest("latest", blogRequest)
   }
   
+  func search(_ blogRequest: BlogPageableSecureRequest, query: String) async throws -> PageableResponse<[BlogResponse]> {
+    let body = serializeStringToJSONData(query)
+    return try await sendPageableSecureRequest("search", blogRequest, method: "POST", body: body)
+  }
+  
   private func sendPageableSecureRequest(
     _ endpoint: String,
     _ blogRequest: BlogPageableSecureRequest,
-    method: String = "GET"
+    method: String = "GET",
+    body: Data? = nil
   ) async throws -> PageableResponse<[BlogResponse]> {
     let url = URL(string: baseUrl + "/\(endpoint)/\(blogRequest.page)/\(blogRequest.size)")!
-    let request = buildRequestBody(url: url, token: blogRequest.token, method: method)
+    
+    let request = URLRequestBuilder(url: url)
+      .setAuthorization(token: blogRequest.token, method: method)
+      .setBody(data: body)
+      .build()
     
     let (data, status) = try await URLSession.shared.data(for: request)
     let httpResponse = status as? HTTPURLResponse
@@ -33,14 +43,9 @@ class BlogClient : BlogDatasource {
     return try await mapResponseToApplicationObject(response: httpResponse, data: data)
   }
   
-  private func buildRequestBody(url: URL, token: String, method: String) -> URLRequest {
-    var request = URLRequest(url: url)
-    
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    request.httpMethod = method
-    
-    return request
+  private func serializeStringToJSONData(_ string: String) -> Data? {
+    guard let data = string.data(using: .utf8) else { return nil }
+    return data
   }
   
   private func mapResponseToApplicationObject(response: HTTPURLResponse?, data: Data) async throws -> PageableResponse<[BlogResponse]> {

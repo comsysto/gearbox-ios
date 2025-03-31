@@ -8,7 +8,7 @@
 import Foundation
 
 @available(iOS 15.0, *)
-class AuthenticationClient: AuthenticationDatasource {
+class AuthenticationClient: AuthenticationDatasourceType {
   
   private let baseUrl = "http://localhost:8080/api/auth"
   

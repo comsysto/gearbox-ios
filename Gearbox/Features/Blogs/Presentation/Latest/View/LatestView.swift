@@ -46,9 +46,7 @@ private extension LatestView {
   func renderBlogCard(at index: Int) -> some View {
     let blog = viewModel.state.latestBlogs[index]
     BlogCard(for: blog)
-    .frame(height: 120)
     .padding(.horizontal, 20)
-    .padding(.vertical, 5)
     .onAppear {
       if index == viewModel.state.latestBlogs.count - 1 {
         viewModel.getNextPage()
