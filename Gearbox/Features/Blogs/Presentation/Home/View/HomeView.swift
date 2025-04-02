@@ -133,7 +133,6 @@ private extension HomeView {
   func renderBlogCard(at index: Int) -> some View {
     let blog = latestViewModel.state.latestBlogs[index]
     BlogCard(for: blog)
-      .frame(height: 120)
   }
 }
 

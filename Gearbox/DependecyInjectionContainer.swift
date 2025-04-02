@@ -22,6 +22,10 @@ private struct BlogResponseToBlogEntityConverterKey: DependencyKey {
   static var currentValue: BlogResponseToBlogEntityConverter = BlogResponseToBlogEntityConverter()
 }
 
+private struct AuthorResponseToAuthorEntityConverterKey: DependencyKey {
+  static var currentValue: AuthorResponseToAuthorEntityConverter = AuthorResponseToAuthorEntityConverter()
+}
+
 // MARK: - REPOSITORY
 private struct AuthenticationRepositoryKey: DependencyKey {
   @Dependency(\.authenticationDatasourceKey) private static var authDatasource
@@ -38,12 +42,24 @@ private struct AuthenticationRepositoryKey: DependencyKey {
 private struct BlogRepositoryKey: DependencyKey {
   @Dependency(\.blogDatasourceKey) private static var blogDatasource
   @Dependency(\.userLocalDatasourceKey) private static var userLocalDatasource
-  @Dependency(\.blogResponseToBlogEntityConverterKey) private static var blogResponseToBlogEntityConverterKey
+  @Dependency(\.blogResponseToBlogEntityConverterKey) private static var blogResponseToBlogEntityConverter
   
   static var currentValue: BlogRepositoryType = BlogRepositoryImpl(
     blogDatasource,
     userLocalDatasource,
-    blogResponseToBlogEntityConverterKey
+    blogResponseToBlogEntityConverter
+  )
+}
+
+private struct AuthorRepositoryKey: DependencyKey {
+  @Dependency(\.userDatasourceKey) private static var authorDatasource
+  @Dependency(\.userLocalDatasourceKey) private static var userLocalDatasource
+  @Dependency(\.authorResponseToAuthorEntityConverterKey) private static var authorResponseToAuthorEntityConverter
+  
+  static var currentValue: AuthorRepositoryType = AuthorRepositoryImpl(
+    authorDatasource,
+    userLocalDatasource,
+    authorResponseToAuthorEntityConverter
   )
 }
 
@@ -78,6 +94,18 @@ private struct GetLatestBlogsUseCaseKey: DependencyKey {
   static var currentValue: GetLatestBlogsUseCase = GetLatestBlogsUseCase(repository)
 }
 
+private struct SearchBlogsUseCaseKey: DependencyKey {
+  @Dependency(\.blogRepository) private static var repository
+  
+  static var currentValue: SearchBlogsUseCase = SearchBlogsUseCase(repository)
+}
+
+private struct SearchUsersUseCaseKey: DependencyKey {
+  @Dependency(\.authorRepository) private static var repository
+  
+  static var currentValue: SearchUsersUseCase = SearchUsersUseCase(repository)
+}
+
 private struct CacheNewImagesUseCaseKey: DependencyKey {
   static var currentValue: CacheNewImagesUseCase = CacheNewImagesUseCase()
 }
@@ -101,6 +129,11 @@ extension DependencyValues {
     set { Self[BlogResponseToBlogEntityConverterKey.self] = newValue }
   }
   
+  var authorResponseToAuthorEntityConverterKey: AuthorResponseToAuthorEntityConverter {
+    get { Self[AuthorResponseToAuthorEntityConverterKey.self] }
+    set { Self[AuthorResponseToAuthorEntityConverterKey.self] = newValue }
+  }
+  
   // MARK: - REPOSITORY
   var authenticationRepository: AuthenticationRepositoryType {
     get { Self[AuthenticationRepositoryKey.self] }
@@ -111,6 +144,11 @@ extension DependencyValues {
     get { Self[BlogRepositoryKey.self] }
     set { Self[BlogRepositoryKey.self] = newValue}
   }  
+  
+  var authorRepository: AuthorRepositoryType {
+    get { Self[AuthorRepositoryKey.self] }
+    set { Self[AuthorRepositoryKey.self] = newValue}
+  }
   
   // MARK: - USE CASE
   var signInUseCase: SignInUseCase {
@@ -136,6 +174,16 @@ extension DependencyValues {
   var getLatestBlogsUseCase: GetLatestBlogsUseCase {
     get { Self[GetLatestBlogsUseCaseKey.self] }
     set { Self[GetLatestBlogsUseCaseKey.self] = newValue }
+  }
+  
+  var searchBlogsUseCase: SearchBlogsUseCase {
+    get { Self[SearchBlogsUseCaseKey.self] }
+    set { Self[SearchBlogsUseCaseKey.self] = newValue }
+  }
+  
+  var searchUsersUseCase: SearchUsersUseCase {
+    get { Self[SearchUsersUseCaseKey.self] }
+    set { Self[SearchUsersUseCaseKey.self] = newValue }
   }
   
   var cacheNewImagesUseCase: CacheNewImagesUseCase {

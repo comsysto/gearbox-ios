@@ -6,18 +6,18 @@
 //
 
 import Foundation
-import GearboxDatasource
+import RemoteDatasource
 
 class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
   // MARK: - DEPENDECIES
-  private let authApi: AuthenticationDatasource
+  private let authApi: AuthenticationDatasourceType
   private let userLocalDataSource: UserLocalDatasource
   
   private let authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
   
   // MARK: - CONSTRUCTOR
   init(
-    _ authenticationDatasource: AuthenticationDatasource,
+    _ authenticationDatasource: AuthenticationDatasourceType,
     _ userLocalDataSource: UserLocalDatasource,
     _ authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
   ) {
