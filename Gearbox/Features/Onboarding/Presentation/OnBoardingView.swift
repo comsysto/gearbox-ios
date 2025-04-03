@@ -22,28 +22,19 @@ struct OnBoardingView: View {
       Color(.background)
         .edgesIgnoringSafeArea(.all)
       
-      backgroundImage()
-      
-      backgroundColor()
-      
-      VStack(alignment: .leading) {
-        Spacer()
-          .frame(height: 450)
-        
-        titleAndPageIndicator()
-        
-        Spacer()
-          .frame(height: 20)
-        
-        // MARK: - CONTENT TEXT
-        Text(LocalizedStringKey(onboardingViews[pageIndex].content))
-          .font(.system(size: 16, design: .rounded))
-        
-        Spacer()
-        
-        button()
-      } //: VSTACK
-      .padding(20)
+      TabView(selection: $pageIndex) {
+        ForEach (0..<onboardingViews.count, id: \.self) { index in
+          renderOnboardingPage(onboardingViews[index])
+        }
+      } //: TAB VIEW
+      .tabViewStyle(.page(indexDisplayMode: .never))
+      .onChange(of: pageIndex) { _, newIndex in
+        withAnimation {
+          pageIndex = newIndex
+          isLast = pageIndex == onboardingViews.count - 1
+        }
+      }
+      .edgesIgnoringSafeArea(.all)
     } //: ZSTACK
   }
 }
@@ -63,28 +54,48 @@ struct PageIndicator: View {
 }
 
 private extension OnBoardingView {
+  @ViewBuilder
+  func renderOnboardingPage(_ content: OnBoardingContent) -> some View {
+    ZStack {
+      renderBackgroundImage(content)
+      
+      renderBackgroundColor()
+      
+      VStack(alignment: .leading) {
+        Spacer()
+          .frame(height: 450)
+        
+        renderTitleAndPageIndicator(content)
+        
+        Spacer()
+          .frame(height: 20)
+        
+        // MARK: - CONTENT TEXT
+        Text(LocalizedStringKey(content.content))
+          .font(.system(size: 16, design: .rounded))
+        
+        Spacer()
+        
+        renderButton()
+      } //: VSTACK
+      .padding(20)
+    }
+  }
   
   @ViewBuilder
-  func backgroundImage() -> some View {
+  func renderBackgroundImage(_ content: OnBoardingContent) -> some View {
     VStack (alignment: .leading) {
-      Image(onboardingViews[pageIndex].imageName)
+      Image(content.imageName)
         .resizable()
         .frame(height: 550)
         .scaledToFit()
         .edgesIgnoringSafeArea(.all)
-        .transition(
-          .asymmetric(
-            insertion: .move(edge: .trailing),
-            removal: .move(edge: .leading)
-          )
-        )
-        .id(UUID())
       Spacer()
     } //: VSTACK
   }
   
   @ViewBuilder
-  func backgroundColor() -> some View {
+  func renderBackgroundColor() -> some View {
     VStack {
       LinearGradient(
         gradient: Gradient(colors: [.background.opacity(0.0), .background]),
@@ -98,18 +109,17 @@ private extension OnBoardingView {
   }
   
   @ViewBuilder
-  func titleAndPageIndicator() -> some View {
+  func renderTitleAndPageIndicator(_ content: OnBoardingContent) -> some View {
     HStack {
-      Text(LocalizedStringKey(onboardingViews[pageIndex].title))
+      Text(LocalizedStringKey(content.title))
         .font(Font.custom("RobotoCondensed-Bold", size: 28))
-        .id(UUID())
       Spacer()
       PageIndicator(pageNumber: onboardingViews.count, currentPageIndex: pageIndex)
     } //: HSTACK
   }
   
   @ViewBuilder
-  func button() -> some View {
+  func renderButton() -> some View {
     HStack {
       Spacer()
       Button {

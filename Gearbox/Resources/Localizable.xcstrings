@@ -965,6 +965,84 @@
         }
       }
     },
+    "profile.image-setup.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from the photo gallery your profile photo."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izaberi fotografiju iz galerije za svoj profil."
+          }
+        }
+      }
+    },
+    "profile.image-setup.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrap the garage door."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotografija profila"
+          }
+        }
+      }
+    },
+    "profile.label.empty.placeholder.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the photo in the gallery that you want to be your new profile photo."
+          }
+        }
+      }
+    },
+    "profile.label.empty.placeholder.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your profile photo"
+          }
+        }
+      }
+    },
+    "profile.label.filled.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wow, nice photo!"
+          }
+        }
+      }
+    },
+    "profile.label.upload-image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit image"
+          }
+        }
+      }
+    },
     "ProfileView" : {
 
     },

@@ -18,6 +18,7 @@ struct MasterRouteView<Content: View>: View {
   @StateObject var latestViewModel = LatestViewModel()
   @StateObject var blogDetailsViewModel = BlogDetailsViewModel()
   @StateObject var exploreViewModel = ExploreViewModel()
+  @StateObject var profileImageSetupViewModel = ProfileImageSetupViewModel()
   
   private let content: Content
   
@@ -41,5 +42,6 @@ struct MasterRouteView<Content: View>: View {
     .environmentObject(latestViewModel)
     .environmentObject(blogDetailsViewModel)
     .environmentObject(exploreViewModel)
+    .environmentObject(profileImageSetupViewModel)
   }
 }
