@@ -8,11 +8,6 @@
 import Foundation
 import Dependency
 
-// MARK: - DATASOURCE
-private struct UserLocalDatasourceKey: DependencyKey {
-  static var currentValue: UserLocalDatasource = UserLocalDatasource()
-}
-
 // MARK: - MAPPER
 private struct AuthenticationResponseToUserEntityConverterKey: DependencyKey {
   static var currentValue: AuthenticationResponseToUserEntityConverter = AuthenticationResponseToUserEntityConverter()
@@ -26,40 +21,60 @@ private struct AuthorResponseToAuthorEntityConverterKey: DependencyKey {
   static var currentValue: AuthorResponseToAuthorEntityConverter = AuthorResponseToAuthorEntityConverter()
 }
 
+private struct UserResponseToProfileDataConverterKey: DependencyKey {
+  static var currentValue: UserResponseToProfileDataConverter = UserResponseToProfileDataConverter()
+}
+
 // MARK: - REPOSITORY
+private struct UserSessionRepositoryKey: DependencyKey {
+  static var currentValue: UserSessionRepositoryType = KeychainUserSessionRepository()
+}
+
 private struct AuthenticationRepositoryKey: DependencyKey {
   @Dependency(\.authenticationDatasourceKey) private static var authDatasource
-  @Dependency(\.userLocalDatasourceKey) private static var userLocalDatasource
-  @Dependency(\.authenticationResponseToUserEntityConverterKey) private static var authenticationResponseToUserEntityConverterKey
+  @Dependency(\.userSessionRepositoryKey) private static var userSesssionRepository
+  @Dependency(\.authenticationResponseToUserEntityConverterKey) private static var authenticationResponseToUserEntityConverter
   
   static var currentValue: AuthenticationRepositoryType = AuthenticationRepositoryImpl(
     authDatasource,
-    userLocalDatasource,
-    authenticationResponseToUserEntityConverterKey
+    userSesssionRepository,
+    authenticationResponseToUserEntityConverter
   )
 }
 
 private struct BlogRepositoryKey: DependencyKey {
   @Dependency(\.blogDatasourceKey) private static var blogDatasource
-  @Dependency(\.userLocalDatasourceKey) private static var userLocalDatasource
+  @Dependency(\.userSessionRepositoryKey) private static var userSesssionRepository
   @Dependency(\.blogResponseToBlogEntityConverterKey) private static var blogResponseToBlogEntityConverter
   
   static var currentValue: BlogRepositoryType = BlogRepositoryImpl(
     blogDatasource,
-    userLocalDatasource,
+    userSesssionRepository,
     blogResponseToBlogEntityConverter
   )
 }
 
 private struct AuthorRepositoryKey: DependencyKey {
   @Dependency(\.userDatasourceKey) private static var authorDatasource
-  @Dependency(\.userLocalDatasourceKey) private static var userLocalDatasource
+  @Dependency(\.userSessionRepositoryKey) private static var userSesssionRepository
   @Dependency(\.authorResponseToAuthorEntityConverterKey) private static var authorResponseToAuthorEntityConverter
   
   static var currentValue: AuthorRepositoryType = AuthorRepositoryImpl(
     authorDatasource,
-    userLocalDatasource,
+    userSesssionRepository,
     authorResponseToAuthorEntityConverter
+  )
+}
+
+private struct ProfileRepositoryKey: DependencyKey {
+  @Dependency(\.userDatasourceKey) private static var userDatasource
+  @Dependency(\.userSessionRepositoryKey) private static var userSesssionRepository
+  @Dependency(\.userResponseToProfileDataConverterKey) private static var userResponseToProfileDataConverter
+  
+  static var currentValue: ProfileRepositoryType = ProfileRepositoryImpl(
+    userDatasource,
+    userSesssionRepository,
+    userResponseToProfileDataConverter
   )
 }
 
@@ -110,14 +125,14 @@ private struct CacheNewImagesUseCaseKey: DependencyKey {
   static var currentValue: CacheNewImagesUseCase = CacheNewImagesUseCase()
 }
 
+private struct UploadProfileImageUseCaseKey: DependencyKey {
+  @Dependency(\.profileRepository) private static var repository
+  
+  static var currentValue: UploadProfileImageUseCase = UploadProfileImageUseCase(repository)
+}
+
 // MARK: - GETTERS
 extension DependencyValues {
-  // MARK: - DATASOURCE
-  var userLocalDatasourceKey: UserLocalDatasource {
-    get { Self[UserLocalDatasourceKey.self] }
-    set { Self[UserLocalDatasourceKey.self] = newValue }
-  }
-  
   // MARK: - MAPPER
   var authenticationResponseToUserEntityConverterKey: AuthenticationResponseToUserEntityConverter {
     get { Self[AuthenticationResponseToUserEntityConverterKey.self] }
@@ -134,7 +149,17 @@ extension DependencyValues {
     set { Self[AuthorResponseToAuthorEntityConverterKey.self] = newValue }
   }
   
+  var userResponseToProfileDataConverterKey: UserResponseToProfileDataConverter {
+    get { Self[UserResponseToProfileDataConverterKey.self] }
+    set { Self[UserResponseToProfileDataConverterKey.self] = newValue }
+  }
+  
   // MARK: - REPOSITORY
+  var userSessionRepositoryKey: UserSessionRepositoryType {
+    get { Self[UserSessionRepositoryKey.self] }
+    set { Self[UserSessionRepositoryKey.self] = newValue }
+  }
+  
   var authenticationRepository: AuthenticationRepositoryType {
     get { Self[AuthenticationRepositoryKey.self] }
     set { Self[AuthenticationRepositoryKey.self] = newValue}
@@ -143,11 +168,16 @@ extension DependencyValues {
   var blogRepository: BlogRepositoryType {
     get { Self[BlogRepositoryKey.self] }
     set { Self[BlogRepositoryKey.self] = newValue}
-  }  
+  }
   
   var authorRepository: AuthorRepositoryType {
     get { Self[AuthorRepositoryKey.self] }
     set { Self[AuthorRepositoryKey.self] = newValue}
+  }
+  
+  var profileRepository: ProfileRepositoryType {
+    get { Self[ProfileRepositoryKey.self] }
+    set { Self[ProfileRepositoryKey.self] = newValue}
   }
   
   // MARK: - USE CASE
@@ -189,6 +219,11 @@ extension DependencyValues {
   var cacheNewImagesUseCase: CacheNewImagesUseCase {
     get { Self[CacheNewImagesUseCaseKey.self] }
     set { Self[CacheNewImagesUseCaseKey.self] = newValue }
+  }
+  
+  var uploadProfileImageUseCase: UploadProfileImageUseCase {
+    get { Self[UploadProfileImageUseCaseKey.self] }
+    set { Self[UploadProfileImageUseCaseKey.self] = newValue }
   }
 }
 

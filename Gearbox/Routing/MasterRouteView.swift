@@ -18,7 +18,7 @@ struct MasterRouteView<Content: View>: View {
   @StateObject var latestViewModel = LatestViewModel()
   @StateObject var blogDetailsViewModel = BlogDetailsViewModel()
   @StateObject var exploreViewModel = ExploreViewModel()
-  @StateObject var profileImageSetupViewModel = ProfileImageSetupViewModel()
+  @StateObject var profileImageSetupViewModel = ProfileViewModel()
   
   private let content: Content
   

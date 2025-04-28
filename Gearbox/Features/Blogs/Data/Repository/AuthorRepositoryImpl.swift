@@ -9,7 +9,7 @@ import RemoteDatasource
 
 class AuthorRepositoryImpl: AuthorRepositoryType {
   private let userApi: UserDatasourceType
-  private let userLocalDataSource: UserLocalDatasource
+  private let userSessionRepository: UserSessionRepositoryType
   private let authorResponseToAuthorEntity: AuthorResponseToAuthorEntityConverter
   
   private var currentPage: Int = 0
@@ -17,11 +17,11 @@ class AuthorRepositoryImpl: AuthorRepositoryType {
   
   init(
     _ userApi: UserDatasourceType,
-    _ userLocalDataSource: UserLocalDatasource,
+    _ userSessionRepository: UserSessionRepositoryType,
     _ authorResponseToAuthorEntity: AuthorResponseToAuthorEntityConverter
   ) {
     self.userApi = userApi
-    self.userLocalDataSource = userLocalDataSource
+    self.userSessionRepository = userSessionRepository
     self.authorResponseToAuthorEntity = authorResponseToAuthorEntity
   }
   
@@ -34,8 +34,8 @@ class AuthorRepositoryImpl: AuthorRepositoryType {
       
       guard !isLastPage else { return .success([])}
       
-      let accessToken = userLocalDataSource.loadToken()
-      let request = UserPageableSecureRequest(token: accessToken.token, page: 0, size: 5)
+      let token = userSessionRepository.getSession().token
+      let request = UserPageableSecureRequest(token: token.accessToken, page: 0, size: 5)
       
       let response = try await userApi.search(request, query: query)
       

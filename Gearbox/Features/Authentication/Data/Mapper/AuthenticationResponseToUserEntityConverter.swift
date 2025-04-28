@@ -19,7 +19,7 @@ class AuthenticationResponseToUserEntityConverter: ConverterType {
       username: source.username,
       profileImageUrl: source.profileImageUrl,
       token: Token(
-        token: source.token,
+        accessToken: source.token,
         refreshToken: source.refreshToken
       )
     )

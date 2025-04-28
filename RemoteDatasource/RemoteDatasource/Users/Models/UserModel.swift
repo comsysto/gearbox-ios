@@ -17,8 +17,19 @@ public struct UserPageableSecureRequest: Codable {
   }
 }
 
+public struct UserSecureRequest: Codable {
+  public let token: String
+  public let id: String?
+  
+  public init(token: String, id: String) {
+    self.token = token
+    self.id = id
+  }
+}
+
 public struct UserResponse: Identifiable, Decodable {
   public let id: String
   public let username: String
   public let profileImageUrl: String?
+  public let isProfileOwner: Bool
 }

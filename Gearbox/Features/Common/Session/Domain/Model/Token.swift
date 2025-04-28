@@ -8,6 +8,6 @@
 import Foundation
 
 struct Token: Equatable {
-  let token: String
+  let accessToken: String
   let refreshToken: String
 }

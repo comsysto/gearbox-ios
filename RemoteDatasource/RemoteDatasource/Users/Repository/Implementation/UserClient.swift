@@ -24,7 +24,38 @@ class UserClient: UserDatasourceType {
     let (data, status) = try await URLSession.shared.data(for: request)
     let httpResponse = status as? HTTPURLResponse
     
-    return try await mapResponseToApplicationObject(response: httpResponse, data: data)
+    return try mapResponseToApplicationObject(response: httpResponse, data: data)
+  }
+  
+  func getProfileData(_ userRequest: UserSecureRequest) async throws -> UserResponse {
+    let url = URL(string: "\(baseUrl)/\(userRequest.id!)")!
+    
+    let request = URLRequestBuilder(url: url)
+      .setAuthorization(token: userRequest.token, method: "GET")
+      .build()
+    
+    let (data, status) = try await URLSession.shared.data(for: request)
+    let httpResponse = status as? HTTPURLResponse
+    
+    return try mapResponseToApplicationObject(response: httpResponse, data: data)
+  }
+  
+  func uploadProfileImage(token: String, userId: String, image: Data) async throws -> UserResponse {
+    let url = URL(string: "\(baseUrl)/profile/uploadImage")!
+    
+    let multipartRequest = MultipartRequest()
+      .addPair(key: "userId", value: userId)
+      .addFile(key: "image", fileName: "profileImage.jpg", imageData: image)
+      .build()
+    
+    let request = URLRequestBuilder(url: url)
+      .setAuthorization(token: token, method: "POST")
+      .setBody(data: multipartRequest, contentType: "multipart/form-data")
+      .build()
+    
+    let (data, status) = try await URLSession.shared.data(for: request)
+    
+    return try JSONDecoder().decode(UserResponse.self, from: data)
   }
   
   private func serializeStringToJSONData(_ string: String) -> Data? {
@@ -32,10 +63,19 @@ class UserClient: UserDatasourceType {
     return data
   }
   
-  private func mapResponseToApplicationObject(response: HTTPURLResponse?, data: Data) async throws -> PageableResponse<[UserResponse]> {
+  private func mapResponseToApplicationObject(response: HTTPURLResponse?, data: Data) throws -> PageableResponse<[UserResponse]> {
     switch response?.statusCode {
       case 200:
         return try JSONDecoder().decode(PageableResponse<[UserResponse]>.self, from: data)
+      default:
+        throw UserException.serverError("error.server-error")
+    }
+  }
+  
+  private func mapResponseToApplicationObject(response: HTTPURLResponse?, data: Data) throws -> UserResponse {
+    switch response?.statusCode {
+      case 200:
+        return try JSONDecoder().decode(UserResponse.self, from: data)
       default:
         throw UserException.serverError("error.server-error")
     }

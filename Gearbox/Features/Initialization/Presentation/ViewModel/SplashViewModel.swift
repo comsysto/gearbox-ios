@@ -36,7 +36,7 @@ class SplashViewModel: ObservableObject {
       
       switch result {
         case .success(let user):
-          accessToken = user.token.token
+          accessToken = user.token.accessToken
           refreshToken = user.token.refreshToken
           firstView = .home
         case .failure:

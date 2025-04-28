@@ -46,7 +46,7 @@ class SignUpViewModel: ObservableObject {
           state.isLoading = false
           resetValidationState()
           
-          accessToken = user.token.token
+          accessToken = user.token.accessToken
           refreshToken = user.token.refreshToken
           
           state.authState = .authenticated

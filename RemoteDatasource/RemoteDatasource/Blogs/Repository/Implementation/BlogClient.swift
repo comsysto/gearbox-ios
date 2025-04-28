@@ -8,7 +8,6 @@ import Foundation
 
 @available(iOS 15.0, *)
 class BlogClient : BlogDatasourceType {
-  
   private let baseUrl = "http://localhost:8080/api/blog"
   
   func getTrending(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]> {
@@ -22,6 +21,14 @@ class BlogClient : BlogDatasourceType {
   func search(_ blogRequest: BlogPageableSecureRequest, query: String) async throws -> PageableResponse<[BlogResponse]> {
     let body = serializeStringToJSONData(query)
     return try await sendPageableSecureRequest("search", blogRequest, method: "POST", body: body)
+  }
+  
+  func getByAuthor(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]> {
+    return try await sendPageableSecureRequest("byAuthor/\(userId)", blogRequest)
+  }
+
+  func getLikedBy(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]> {
+    return try await sendPageableSecureRequest("likedBy/\(userId)", blogRequest)
   }
   
   private func sendPageableSecureRequest(

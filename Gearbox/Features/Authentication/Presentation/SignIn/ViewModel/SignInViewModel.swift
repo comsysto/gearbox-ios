@@ -45,7 +45,7 @@ class SignInViewModel: ObservableObject {
           state.emailValidationMessage = nil
           state.passwordValidationMessage = nil
           
-          accessToken = user.token.token
+          accessToken = user.token.accessToken
           refreshToken = user.token.refreshToken
           
           state.authState = .authenticated

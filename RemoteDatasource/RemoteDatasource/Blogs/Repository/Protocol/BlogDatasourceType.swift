@@ -11,6 +11,8 @@ public protocol BlogDatasourceType {
   func getTrending(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
   func getLatest(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]>
   func search(_ blogRequest: BlogPageableSecureRequest, query: String) async throws -> PageableResponse<[BlogResponse]>
+  func getByAuthor(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]>
+  func getLikedBy(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]>
 }
 
 public enum BlogException: Error {

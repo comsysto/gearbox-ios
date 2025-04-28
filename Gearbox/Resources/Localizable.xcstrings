@@ -4,6 +4,9 @@
     "@%@" : {
 
     },
+    "@filipkisic" : {
+
+    },
     "%lld" : {
 
     },
@@ -419,6 +422,20 @@
     "Create new" : {
 
     },
+    "Developed by Filip Kisic" : {
+
+    },
+    "error.image-compression" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error while compressing the image."
+          }
+        }
+      }
+    },
     "error.server-error" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -537,6 +554,9 @@
           }
         }
       }
+    },
+    "Gearbox, Comsysto Reply" : {
+
     },
     "label.back" : {
       "extractionState" : "manual",
@@ -742,6 +762,17 @@
         }
       }
     },
+    "label.profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        }
+      }
+    },
     "label.trending" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -810,6 +841,12 @@
         }
       }
     },
+    "Liked" : {
+
+    },
+    "Liked Blogs" : {
+
+    },
     "loading.three.dots" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -826,6 +863,9 @@
           }
         }
       }
+    },
+    "My Blogs" : {
+
     },
     "Notifications" : {
 
@@ -1043,13 +1083,13 @@
         }
       }
     },
-    "ProfileView" : {
-
-    },
     "Search category" : {
 
     },
     "Trending" : {
+
+    },
+    "Upload profile image" : {
 
     }
   },

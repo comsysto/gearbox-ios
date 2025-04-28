@@ -9,7 +9,7 @@ import RemoteDatasource
 
 class BlogRepositoryImpl: BlogRepositoryType {
   private let blogApi: BlogDatasourceType
-  private let userLocalDataSource: UserLocalDatasource
+  private let userSessionRepository: UserSessionRepositoryType
   private let blogResponseToBlogEntity: BlogResponseToBlogEntityConverter
   
   private var currentPage: Int = 0
@@ -17,18 +17,18 @@ class BlogRepositoryImpl: BlogRepositoryType {
   
   init(
     _ blogApi: BlogDatasourceType,
-    _ userlocalDataSource: UserLocalDatasource,
+    _ userSessionRepository: UserSessionRepositoryType,
     _ blogResponseToBlogEntity: BlogResponseToBlogEntityConverter
   ) {
     self.blogApi = blogApi
-    self.userLocalDataSource = userlocalDataSource
+    self.userSessionRepository = userSessionRepository
     self.blogResponseToBlogEntity = blogResponseToBlogEntity
   }
   
   func getTrendingBlogs() async -> Result<[Blog], BlogError> {
     do {
-      let accessToken = userLocalDataSource.loadToken()
-      let request = BlogPageableSecureRequest(token: accessToken.token, page: 0, size: 5)
+      let token = userSessionRepository.getSession().token
+      let request = BlogPageableSecureRequest(token: token.accessToken, page: 0, size: 5)
       
       let response = try await blogApi.getTrending(request)
       
@@ -55,8 +55,8 @@ class BlogRepositoryImpl: BlogRepositoryType {
       
       if nextPage { currentPage += 1 }
       
-      let accessToken = userLocalDataSource.loadToken()
-      let request = BlogPageableSecureRequest(token: accessToken.token, page: currentPage, size: 6)
+      let token = userSessionRepository.getSession().token
+      let request = BlogPageableSecureRequest(token: token.accessToken, page: currentPage, size: 6)
       
       let response = try await blogApi.getLatest(request)
       
@@ -85,8 +85,8 @@ class BlogRepositoryImpl: BlogRepositoryType {
       
       if nextPage { currentPage += 1 }
       
-      let accessToken = userLocalDataSource.loadToken()
-      let request = BlogPageableSecureRequest(token: accessToken.token, page: currentPage, size: 8)
+      let token = userSessionRepository.getSession().token
+      let request = BlogPageableSecureRequest(token: token.accessToken, page: currentPage, size: 8)
       
       let response = try await blogApi.search(request, query: query)
       

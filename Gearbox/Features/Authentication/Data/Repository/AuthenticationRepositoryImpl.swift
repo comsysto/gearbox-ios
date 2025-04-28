@@ -11,18 +11,18 @@ import RemoteDatasource
 class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
   // MARK: - DEPENDECIES
   private let authApi: AuthenticationDatasourceType
-  private let userLocalDataSource: UserLocalDatasource
+  private let userSessionRepository: UserSessionRepositoryType
   
   private let authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
   
   // MARK: - CONSTRUCTOR
   init(
     _ authenticationDatasource: AuthenticationDatasourceType,
-    _ userLocalDataSource: UserLocalDatasource,
+    _ userSessionRepository: UserSessionRepositoryType,
     _ authenticationResponseToUserEntityConverter: AuthenticationResponseToUserEntityConverter
   ) {
     self.authApi = authenticationDatasource
-    self.userLocalDataSource = userLocalDataSource
+    self.userSessionRepository = userSessionRepository
     self.authenticationResponseToUserEntityConverter = authenticationResponseToUserEntityConverter
   }
   
@@ -33,7 +33,8 @@ class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
       let response = try await authApi.signIn(request: request)
       let user = authenticationResponseToUserEntityConverter.convert(response)
       
-      userLocalDataSource.cacheToken(user.token)
+      let session = UserSession(userId: user.id, token: user.token)
+      userSessionRepository.saveSession(session)
       
       return .success(user)
     } catch {
@@ -52,7 +53,8 @@ class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
       let response = try await authApi.signUp(request: request)
       let user = authenticationResponseToUserEntityConverter.convert(response)
       
-      userLocalDataSource.cacheToken(user.token)
+      let session = UserSession(userId: user.id, token: user.token)
+      userSessionRepository.saveSession(session)
       
       return .success(user)
     } catch {
@@ -62,17 +64,18 @@ class AuthenticationRepositoryImpl: AuthenticationRepositoryType {
   
   func refreshUserSession() async -> Result<User, AuthError> {
     do {
-      let token = userLocalDataSource.loadToken()
+      let token = userSessionRepository.getSession().token
       
       let request = RefreshTokenRequest(token.refreshToken)
       let response = try await authApi.refreshToken(request: request)
       let user = authenticationResponseToUserEntityConverter.convert(response)
       
-      userLocalDataSource.cacheToken(user.token)
+      let session = UserSession(userId: user.id, token: user.token)
+      userSessionRepository.saveSession(session)
       
       return .success(user)
     } catch {
-      userLocalDataSource.clearCache()
+      userSessionRepository.clearSession()
       return .failure(handleAuthExceptions(error))
     }
   }

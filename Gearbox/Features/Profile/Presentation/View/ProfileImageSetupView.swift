@@ -10,8 +10,7 @@ import PhotosUI
 
 struct ProfileImageSetupView: View {
   // MARK: - PROPERTIES
-  @EnvironmentObject private var viewModel: ProfileImageSetupViewModel
-  @State private var photosPickerItem: PhotosPickerItem?
+  @EnvironmentObject private var viewModel: ProfileViewModel
   
   // MARK: - BODY
   var body: some View {
@@ -37,10 +36,8 @@ struct ProfileImageSetupView: View {
       } //: VSTACK
       .frame(minWidth:0, maxWidth: .infinity)
       .padding(20)
-      .onChange(of: photosPickerItem) {
-        Task {
-          viewModel.state.profileImage = try? await photosPickerItem?.loadTransferable(type: Data.self)
-        }
+      .onChange(of: viewModel.selectedImage) {
+        viewModel.chooseImage()
       }
     } //: ZSTACK
   }
@@ -61,7 +58,7 @@ private extension ProfileImageSetupView {
   @ViewBuilder
   func renderImagePicker() -> some View {
     VStack {
-      PhotosPicker(selection: $photosPickerItem, matching: .images) {
+      PhotosPicker(selection: $viewModel.selectedImage, matching: .images) {
         Circle()
           .fill(.brand)
           .overlay{
@@ -88,10 +85,10 @@ private extension ProfileImageSetupView {
   @ViewBuilder
   func renderChosenImage() -> some View {
     VStack {
-      PhotosPicker(selection: $photosPickerItem, matching: .images) {
+      PhotosPicker(selection: $viewModel.selectedImage, matching: .images) {
         Circle()
           .overlay{
-            Image(uiImage: UIImage(data: viewModel.state.profileImage!)!)
+            Image(uiImage: viewModel.state.profileImage!)
               .resizable()
               .scaledToFill()
               .frame(width: 200, height: 200)
@@ -110,5 +107,5 @@ private extension ProfileImageSetupView {
 // MARK: - PREVIEW
 #Preview {
   ProfileImageSetupView()
-    .environmentObject(ProfileImageSetupViewModel())
+    .environmentObject(ProfileViewModel())
 }

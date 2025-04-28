@@ -8,6 +8,8 @@ import Foundation
 
 public protocol UserDatasourceType {
   func search(_ userRequest: UserPageableSecureRequest, query: String) async throws -> PageableResponse<[UserResponse]>
+  func getProfileData(_ userRequest: UserSecureRequest) async throws -> UserResponse
+  func uploadProfileImage(token: String, userId: String, image: Data) async throws -> UserResponse
 }
 
 public enum UserException: Error {
