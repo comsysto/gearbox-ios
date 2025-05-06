@@ -425,6 +425,17 @@
     "Developed by Filip Kisic" : {
 
     },
+    "error.blogs-not-found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error while searching for blogs."
+          }
+        }
+      }
+    },
     "error.image-compression" : {
       "extractionState" : "manual",
       "localizations" : {

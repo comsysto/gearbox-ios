@@ -68,13 +68,17 @@ private struct AuthorRepositoryKey: DependencyKey {
 
 private struct ProfileRepositoryKey: DependencyKey {
   @Dependency(\.userDatasourceKey) private static var userDatasource
+  @Dependency(\.blogDatasourceKey) private static var blogDatasource
   @Dependency(\.userSessionRepositoryKey) private static var userSesssionRepository
   @Dependency(\.userResponseToProfileDataConverterKey) private static var userResponseToProfileDataConverter
+  @Dependency(\.blogResponseToBlogEntityConverterKey) private static var blogResponseToBlogEntityConverter
   
   static var currentValue: ProfileRepositoryType = ProfileRepositoryImpl(
     userDatasource,
+    blogDatasource,
     userSesssionRepository,
-    userResponseToProfileDataConverter
+    userResponseToProfileDataConverter,
+    blogResponseToBlogEntityConverter
   )
 }
 
@@ -129,6 +133,18 @@ private struct UploadProfileImageUseCaseKey: DependencyKey {
   @Dependency(\.profileRepository) private static var repository
   
   static var currentValue: UploadProfileImageUseCase = UploadProfileImageUseCase(repository)
+}
+
+private struct GetProfileDataUseCaseKey: DependencyKey {
+  @Dependency(\.profileRepository) private static var repository
+  
+  static var currentValue: GetProfileDataUseCase = GetProfileDataUseCase(repository)
+}
+
+private struct GetBlogsByAuthorIdUseCaseKey: DependencyKey {
+  @Dependency(\.profileRepository) private static var repository
+  
+  static var currentValue: GetBlogsByAuthorIdUseCase = GetBlogsByAuthorIdUseCase(repository)
 }
 
 // MARK: - GETTERS
@@ -224,6 +240,16 @@ extension DependencyValues {
   var uploadProfileImageUseCase: UploadProfileImageUseCase {
     get { Self[UploadProfileImageUseCaseKey.self] }
     set { Self[UploadProfileImageUseCaseKey.self] = newValue }
+  }
+  
+  var getProfileDataUseCase: GetProfileDataUseCase {
+    get { Self[GetProfileDataUseCaseKey.self] }
+    set { Self[GetProfileDataUseCaseKey.self] = newValue }
+  }
+  
+  var getBlogsByAuthorIdUseCase: GetBlogsByAuthorIdUseCase {
+    get { Self[GetBlogsByAuthorIdUseCaseKey.self] }
+    set { Self[GetBlogsByAuthorIdUseCaseKey.self] = newValue }
   }
 }
 
