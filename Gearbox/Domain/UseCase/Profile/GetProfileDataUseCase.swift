@@ -12,7 +12,7 @@ class GetProfileDataUseCase {
     self.profileRepostiory = profileRepostiory
   }
   
-  func execute(userId: String) async -> Result<ProfileData, ProfileError> {
+  func execute(for userId: String?) async -> Result<ProfileData, ProfileError> {
     return await profileRepostiory.getProfileData(userId: userId)
   }
 }

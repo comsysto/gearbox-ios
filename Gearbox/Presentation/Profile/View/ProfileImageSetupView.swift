@@ -22,7 +22,7 @@ struct ProfileImageSetupView: View {
         renderTitle()
           .padding(.bottom, 50)
         
-        if (viewModel.state.profileImage == nil) {
+        if (viewModel.state.photoPickerImage == nil) {
           renderImagePicker()
         } else {
           renderChosenImage()
@@ -88,7 +88,7 @@ private extension ProfileImageSetupView {
       PhotosPicker(selection: $viewModel.selectedImage, matching: .images) {
         Circle()
           .overlay{
-            Image(uiImage: viewModel.state.profileImage!)
+            Image(uiImage: viewModel.state.photoPickerImage!)
               .resizable()
               .scaledToFill()
               .frame(width: 200, height: 200)

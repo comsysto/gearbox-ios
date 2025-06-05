@@ -180,7 +180,7 @@ private extension ExploreView {
   func renderProfileInfo(at index: Int) -> some View {
     let user = viewModel.state.authorResultList[index]
     HStack {
-      Image(systemName: "person.circle.fill") //TODO: Replace with cached image later
+      Image(systemName: "person.circle.fill") //TODO: Replace with AsyncImage or cached image
         .resizable()
         .frame(width: 50, height: 50)
         .padding(.trailing, 5)

@@ -4,9 +4,6 @@
     "@%@" : {
 
     },
-    "@filipkisic" : {
-
-    },
     "%lld" : {
 
     },
@@ -422,9 +419,6 @@
     "Create new" : {
 
     },
-    "Developed by Filip Kisic" : {
-
-    },
     "error.blogs-not-found" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -566,8 +560,8 @@
         }
       }
     },
-    "Gearbox, Comsysto Reply" : {
-
+    "Key" : {
+      "extractionState" : "manual"
     },
     "label.back" : {
       "extractionState" : "manual",
@@ -852,12 +846,6 @@
         }
       }
     },
-    "Liked" : {
-
-    },
-    "Liked Blogs" : {
-
-    },
     "loading.three.dots" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -874,9 +862,6 @@
           }
         }
       }
-    },
-    "My Blogs" : {
-
     },
     "Notifications" : {
 
@@ -1083,6 +1068,72 @@
         }
       }
     },
+    "profile.label.liked-blogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liked blogs"
+          }
+        }
+      }
+    },
+    "profile.label.liked-blogs-empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have not liked any blog yet."
+          }
+        }
+      }
+    },
+    "profile.label.liked-blogs-empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No blogs"
+          }
+        }
+      }
+    },
+    "profile.label.posted-blogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posted blogs"
+          }
+        }
+      }
+    },
+    "profile.label.posted-blogs-empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No published blog yet."
+          }
+        }
+      }
+    },
+    "profile.label.posted-blogs-empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No blogs"
+          }
+        }
+      }
+    },
     "profile.label.upload-image" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1100,7 +1151,7 @@
     "Trending" : {
 
     },
-    "Upload profile image" : {
+    "Username not found" : {
 
     }
   },

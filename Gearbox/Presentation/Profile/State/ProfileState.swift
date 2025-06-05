@@ -8,11 +8,11 @@ import Foundation
 import SwiftUI
 
 struct ProfileState {
-  var profileImage: UIImage?
-  var isGuest: Bool = false
+  var profileData: ProfileData?
+  var photoPickerImage: UIImage?
   
-  var isLoading: Bool = false
-  var isLoadingBlogs: Bool = false
+  var isLoading: Bool = true
+  var isLoadingBlogs: Bool = true
   var isLoadingMore: Bool = false
   var isLastPage: Bool = false
   

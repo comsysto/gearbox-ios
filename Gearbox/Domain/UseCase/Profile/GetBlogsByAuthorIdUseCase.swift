@@ -12,7 +12,7 @@ class GetBlogsByAuthorIdUseCase {
     self.repository = repository
   }
   
-  func execute(userId: String, page: Int, size: Int) async -> Result<Paginated<Blog>, ProfileError> {
+  func execute(userId: String?, page: Int, size: Int) async -> Result<Paginated<Blog>, ProfileError> {
     return await repository.getBlogsForProfile(userId: userId, page: page, size: size)
   }
 }

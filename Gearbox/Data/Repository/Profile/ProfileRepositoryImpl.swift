@@ -31,11 +31,11 @@ class ProfileRepositoryImpl: ProfileRepositoryType {
     self.blogResponseToBlogEntity = blogResponseToBlogEntity
   }
   
-  func getProfileData(userId: String) async -> Result<ProfileData, ProfileError> {
+  func getProfileData(userId: String?) async -> Result<ProfileData, ProfileError> {
     do {
       let session = userSessionRepository.getSession()
       
-      let request = UserSecureRequest(token: session.token.accessToken, id: userId)
+      let request = UserSecureRequest(token: session.token.accessToken, id: userId ?? session.userId)
       
       let response = try await profileApi.getProfileData(request)
       
@@ -61,13 +61,13 @@ class ProfileRepositoryImpl: ProfileRepositoryType {
     }
   }
   
-  func getBlogsForProfile(userId: String, page: Int, size: Int) async -> Result<Paginated<Blog>, ProfileError> {
+  func getBlogsForProfile(userId: String?, page: Int, size: Int) async -> Result<Paginated<Blog>, ProfileError> {
     do {
-      let token = userSessionRepository.getSession().token
+      let session = userSessionRepository.getSession()
       
-      let request = BlogPageableSecureRequest(token: token.accessToken, page: page, size: size)
+      let request = BlogPageableSecureRequest(token: session.token.accessToken, page: page, size: size)
       
-      let response = try await blogApi.getByAuthor(request, userId: userId)
+      let response = try await blogApi.getByAuthor(request, userId: userId ?? session.userId)
       let blogList = response.content.map(blogResponseToBlogEntity.convert)
       let blogPage = Paginated(items: blogList, isLastPage: response.last)
       return .success(blogPage)

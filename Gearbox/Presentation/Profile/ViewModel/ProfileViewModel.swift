@@ -14,6 +14,7 @@ class ProfileViewModel: ObservableObject {
   @Dependency(\.uploadProfileImageUseCase) private var uploadProfileImageUseCase: UploadProfileImageUseCase
   @Dependency(\.getProfileDataUseCase) private var getProfileDataUseCase: GetProfileDataUseCase
   @Dependency(\.getBlogsByAuthorIdUseCase) private var getBlogsByAuthorIdUseCase: GetBlogsByAuthorIdUseCase
+  @Dependency(\.cacheNewImagesUseCase) private var cacheNewImagesUseCase: CacheNewImagesUseCase
   
   // MARK: - STATE
   @Published var state: ProfileState
@@ -28,22 +29,57 @@ class ProfileViewModel: ObservableObject {
   }
   
   // MARK: - FUNCTIONS
-  func loadUserData() {
+  func loadUserData(for userId: String?) {
     state.isLoading = true
     
-//    Task {
-//      let result = await getProfileDataUseCase.execute(userId: <#T##String#>)
-//
-//      switch result {
-//        case .success(let profileData):
-//          //state.profileImage = UIImage(data: profileData.pro)
-//        case .failure(let error):
-//      }
-//    }
+    Task {
+      let result = await getProfileDataUseCase.execute(for: userId)
+      
+      switch result {
+        case .success(let profileData):
+          state.profileData = profileData
+          state.isLoading = false
+        case .failure(let error):
+          setErrorMessage(error)
+          state.isLoading = false
+      }
+    }
   }
   
-  func loadUserBlogs() {
+  func loadUserBlogs(for userId: String?, loadMore: Bool = false) {
+    if loadMore {
+      state.isLoadingMore = true
+    } else {
+      state.isLoadingBlogs = true
+      pageController.reset()
+      state.userBlogs = []
+    }
     
+    Task {
+      if loadMore { pageController.incrementPage() }
+      let result = await getBlogsByAuthorIdUseCase.execute(userId: userId, page: pageController.currentPage, size: pageController.pageSize)
+      
+      switch result {
+        case .success(let blogPage):
+          pageController.setLastPage(blogPage.isLastPage)
+          
+          if blogPage.items.isEmpty {
+            state.isLoadingBlogs = false
+            state.isLoadingMore = false
+            return
+          }
+          
+          await cacheNewImagesUseCase.execute(for: blogPage.items)
+          
+          state.userBlogs.append(contentsOf: blogPage.items)
+          state.isLoadingBlogs = false
+          state.isLoadingMore = false
+        case .failure(let error):
+          setErrorMessage(error)
+          state.isLoadingBlogs = false
+          state.isLoadingMore = false
+      }
+    }
   }
   
   func loadLikedBlogs() {
@@ -57,31 +93,41 @@ class ProfileViewModel: ObservableObject {
           state.errorMessage = "Failed to load image data."
           return
         }
-        DispatchQueue.main.async {
-          self.state.profileImage = UIImage(data: imageData)
+        DispatchQueue.main.async { //TODO: Check if this could be removed since whole class is annotated with @MainActor
+          self.state.photoPickerImage = UIImage(data: imageData)
         }
       } catch {
-        state.errorMessage = "Failed to compute selected image."
+        state.errorMessage = "Failed to process selected image."
       }
     }
   }
   
   func uploadImage() {
+    guard let image = state.photoPickerImage else {
+      state.errorMessage = "No image selected."
+      return
+    }
+    
     state.isLoading = true
     Task {
-      let result = await uploadProfileImageUseCase.execute(state.profileImage!)
+      let result = await uploadProfileImageUseCase.execute(image)
       
       switch result {
         case .success(let profileData):
+          state.profileData = profileData
           state.isLoading = false
-          
-          //TODO: Find out what with profileImageUrl from profileData...
-          //state.profileImage = profileData.
           break
         case .failure(let error):
           state.isLoading = false
           state.errorMessage = error.message
       }
+    }
+  }
+  
+  private func setErrorMessage(_ error: ProfileError) {
+    switch error {
+      case .serverError(let message), .imageCompressionFailed(let message), .blogsNotFound(let message):
+        state.errorMessage = message
     }
   }
 }
