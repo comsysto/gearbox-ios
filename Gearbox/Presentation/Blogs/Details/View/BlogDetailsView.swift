@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BlogDetailView: View {
+struct BlogDetailsView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var router: Router
   @EnvironmentObject private var viewModel: BlogDetailsViewModel
@@ -22,7 +22,7 @@ struct BlogDetailView: View {
         VStack(alignment: .leading) {
           renderUser()
             .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+            .padding(.vertical, 5)
           renderBlogHeader()
             .padding(.horizontal, 20)
           renderBlogContent()
@@ -43,13 +43,16 @@ struct BlogDetailView: View {
           .presentationDetents([.medium, .fraction(0.75), .fraction(1.0)])
           .presentationDragIndicator(.visible)
       }
+      .onAppear {
+        viewModel.loadComments()
+      }
     } //: ZSTACK
     .navigationBarBackButtonHidden(true)
   }
 }
 
 // MARK: - VIEW EXTENSIONS
-private extension BlogDetailView {
+private extension BlogDetailsView {
   // MARK: - NAV BAR
   @ViewBuilder
   func renderNavigationBar() -> some View {
@@ -67,23 +70,36 @@ private extension BlogDetailView {
       Spacer()
     } //: HSTACK
     .padding(.horizontal, 20)
-    .padding(.vertical, 10)
+    .padding(.vertical, 5)
     .background(.thinMaterial)
   }
   
   @ViewBuilder
   func renderUser() -> some View {
     HStack {
-      Image("onboarding_third")
-        .resizable()
-        .scaledToFit()
-        .frame(width: 35)
-        .clipShape(Circle())
+      renderProfileImage(for: viewModel.state.blog!)
       Text("@\(viewModel.state.blog!.author.username)")
         .font(.caption)
         .foregroundStyle(.gray)
       Spacer()
     } //: HSTACK
+  }
+  
+  @ViewBuilder
+  func renderProfileImage(for blog: Blog) -> some View {
+    let image = {
+      if let imageUrl = blog.author.profileImageUrl, let cachedImage = imageCache.load(forKey: imageUrl) {
+        print("IMAGE: \(imageUrl)")
+        return Image(uiImage: cachedImage)
+      }
+      return Image(systemName: "person.circle.fill")
+    }()
+    
+    image
+      .resizable()
+      .scaledToFit()
+      .frame(width: 35)
+      .clipShape(Circle())
   }
   
   // MARK: - BLOG CONTENT
@@ -188,7 +204,7 @@ private extension BlogDetailView {
   let blog = Blog(
     id: "",
     title: "Next generation Apple Car Play integration started",
-    content: "",
+    content: "Here is a very short content just to display",
     thumbnailImageUrl: "trending_placeholder",
     createDate: Date().addingTimeInterval(-3600),
     numberOfLikes: 13,
@@ -198,7 +214,7 @@ private extension BlogDetailView {
   viewModel.state.blog = blog
   return ZStack {
     NavigationView {
-      BlogDetailView()
+      BlogDetailsView()
     }
   }
   .environmentObject(viewModel)

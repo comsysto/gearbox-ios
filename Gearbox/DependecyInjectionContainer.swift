@@ -25,6 +25,10 @@ private struct UserResponseToProfileDataConverterKey: DependencyKey {
   static var currentValue: UserResponseToProfileDataConverter = UserResponseToProfileDataConverter()
 }
 
+private struct CommentResponseToCommentEntityConverterKey: DependencyKey {
+  static var currentValue: CommentResponseToCommentEntityConverter = CommentResponseToCommentEntityConverter()
+}
+
 // MARK: - REPOSITORY
 private struct UserSessionRepositoryKey: DependencyKey {
   static var currentValue: UserSessionRepositoryType = KeychainUserSessionRepository()
@@ -51,6 +55,18 @@ private struct BlogRepositoryKey: DependencyKey {
     blogDatasource,
     userSesssionRepository,
     blogResponseToBlogEntityConverter
+  )
+}
+
+private struct CommentRepositoryKey: DependencyKey {
+  @Dependency(\.blogDatasourceKey) private static var blogDatasource
+  @Dependency(\.userSessionRepositoryKey) private static var userSessionRepository
+  @Dependency(\.commentResponseToCommentEntityConverterKey) private static var commentResponseToCommentEntityConverter
+  
+  static var currentValue: CommentRepositoryType = CommentRepositoryImpl(
+    blogDatasource,
+    userSessionRepository,
+    commentResponseToCommentEntityConverter
   )
 }
 
@@ -147,6 +163,12 @@ private struct GetBlogsByAuthorIdUseCaseKey: DependencyKey {
   static var currentValue: GetBlogsByAuthorIdUseCase = GetBlogsByAuthorIdUseCase(repository)
 }
 
+private struct GetBlogCommentsUseCaseKey: DependencyKey {
+  @Dependency(\.commentRepository) private static var repository
+  
+  static var currentValue: GetBlogCommentsUseCase = GetBlogCommentsUseCase(repository)
+}
+
 // MARK: - GETTERS
 extension DependencyValues {
   // MARK: - MAPPER
@@ -170,6 +192,11 @@ extension DependencyValues {
     set { Self[UserResponseToProfileDataConverterKey.self] = newValue }
   }
   
+  var commentResponseToCommentEntityConverterKey: CommentResponseToCommentEntityConverter {
+    get { Self[CommentResponseToCommentEntityConverterKey.self] }
+    set { Self[CommentResponseToCommentEntityConverterKey.self] = newValue }
+  }
+  
   // MARK: - REPOSITORY
   var userSessionRepositoryKey: UserSessionRepositoryType {
     get { Self[UserSessionRepositoryKey.self] }
@@ -184,6 +211,11 @@ extension DependencyValues {
   var blogRepository: BlogRepositoryType {
     get { Self[BlogRepositoryKey.self] }
     set { Self[BlogRepositoryKey.self] = newValue}
+  }
+  
+  var commentRepository: CommentRepositoryType {
+    get { Self[CommentRepositoryKey.self] }
+    set { Self[CommentRepositoryKey.self] = newValue}
   }
   
   var authorRepository: AuthorRepositoryType {
@@ -250,6 +282,11 @@ extension DependencyValues {
   var getBlogsByAuthorIdUseCase: GetBlogsByAuthorIdUseCase {
     get { Self[GetBlogsByAuthorIdUseCaseKey.self] }
     set { Self[GetBlogsByAuthorIdUseCaseKey.self] = newValue }
+  }
+  
+  var getBlogCommentsUseCase: GetBlogCommentsUseCase {
+    get { Self[GetBlogCommentsUseCaseKey.self] }
+    set { Self[GetBlogCommentsUseCaseKey.self] = newValue }
   }
 }
 

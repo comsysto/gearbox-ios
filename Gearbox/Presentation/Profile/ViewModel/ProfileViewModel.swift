@@ -69,7 +69,7 @@ class ProfileViewModel: ObservableObject {
             return
           }
           
-          await cacheNewImagesUseCase.execute(for: blogPage.items)
+          await cacheNewImagesUseCase.executeForBlogs(blogPage.items)
           
           state.userBlogs.append(contentsOf: blogPage.items)
           state.isLoadingBlogs = false

@@ -10,7 +10,7 @@ import SwiftUI
 struct BlogCard: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var router: Router
-  @EnvironmentObject private var detailsViewModel: BlogDetailsViewModel
+  @EnvironmentObject private var viewModel: BlogDetailsViewModel
   
   let blog: Blog
   
@@ -52,7 +52,6 @@ struct BlogCard: View {
         } //: HSTACK
       } //: VSTACK
       Spacer()
-    
       if let cachedImage = imageCache.load(forKey: blog.thumbnailImageUrl) {
         Image(uiImage: cachedImage)
           .resizable()
@@ -73,7 +72,7 @@ struct BlogCard: View {
     .shadow(color: .shadow, radius: 10, y: 5)
     .frame(height: 110)
     .onTapGesture {
-      detailsViewModel.select(blog)
+      viewModel.select(blog)
       router.navigateTo(.details)
     }
   }

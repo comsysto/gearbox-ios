@@ -13,6 +13,7 @@ public protocol BlogDatasourceType {
   func search(_ blogRequest: BlogPageableSecureRequest, query: String) async throws -> PageableResponse<[BlogResponse]>
   func getByAuthor(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]>
   func getLikedBy(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]>
+  func getBlogComments(_ commentRequest: CommentPageableSecureRequest) async throws -> PageableResponse<[CommentResponse]>
 }
 
 public enum BlogException: Error {

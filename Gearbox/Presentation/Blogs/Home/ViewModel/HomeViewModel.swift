@@ -32,7 +32,7 @@ class HomeViewModel: ObservableObject {
       
       switch result {
         case .success(let blogs):
-          await cacheNewImagesUseCase.execute(for: blogs)
+          await cacheNewImagesUseCase.executeForBlogs(blogs)
           
           state.trendingBlogs = blogs
           state.isTrendingLoading = false

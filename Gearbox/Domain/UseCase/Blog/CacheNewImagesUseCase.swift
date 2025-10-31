@@ -9,11 +9,20 @@ import SwiftUI
 class CacheNewImagesUseCase {
   private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
   
-  func execute(for blogs: [Blog]) async {
+  func executeForBlogs(_ blogs: [Blog]) async {
     for blog in blogs {
       if imageCache.load(forKey: blog.thumbnailImageUrl) == nil {
         await downloadImageFromUrlWithFallbackImage(blog.thumbnailImageUrl)
+        if let image = blog.author.profileImageUrl {
+          await downloadImageFromUrlWithFallbackImage(image)
+        }
       }
+    }
+  }
+  
+  func executeForUrl(_ url: String) async {
+    if imageCache.load(forKey: url) == nil {
+      await downloadImageFromUrlWithFallbackImage(url)
     }
   }
   

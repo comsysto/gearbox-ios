@@ -379,6 +379,28 @@
         }
       }
     },
+    "blog.details.comments.empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Be the first to comment"
+          }
+        }
+      }
+    },
+    "blog.details.comments.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No comments yet"
+          }
+        }
+      }
+    },
     "Bookmarked blogs" : {
 
     },

@@ -26,7 +26,9 @@ class LatestViewModel: ObservableObject {
   
   // MARK: - FUNCTIONS
   func getLatestBlogs(loadMore: Bool = false) {
-    if loadMore {
+    if loadMore && pageController.isLastPage {
+      return
+    } else if loadMore && !pageController.isLastPage {
       state.isLoadingMore = true
     } else {
       state.isLoading = true
@@ -48,7 +50,7 @@ class LatestViewModel: ObservableObject {
             return
           }
           
-          await cacheNewImagesUseCase.execute(for: blogPage.items)
+          await cacheNewImagesUseCase.executeForBlogs(blogPage.items)
           
           state.latestBlogs.append(contentsOf: blogPage.items)
           state.isLoading = false

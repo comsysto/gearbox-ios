@@ -31,6 +31,26 @@ class BlogClient : BlogDatasourceType {
     return try await sendPageableSecureRequest("likedBy/\(userId)", blogRequest)
   }
   
+  func getBlogComments(_ commentRequest: CommentPageableSecureRequest) async throws -> PageableResponse<[CommentResponse]> {
+    let url = URL(string: baseUrl + "/comment/\(commentRequest.blogId)/\(commentRequest.page)/\(commentRequest.size)")!
+    
+    let request = URLRequestBuilder(url: url)
+      .setAuthorization(token: commentRequest.token, method: "GET")
+      .build()
+    
+    let (data, status) = try await URLSession.shared.data(for: request)
+    let response = status as? HTTPURLResponse
+    
+    switch response?.statusCode {
+        case 200:
+        let decoder = JSONDecoder()
+        let result = try decoder.decode(PageableResponse<[CommentResponse]>.self, from: data)
+        return result
+      default:
+        throw BlogException.serverError("error.server-error")
+    }
+  }
+  
   private func sendPageableSecureRequest(
     _ endpoint: String,
     _ blogRequest: BlogPageableSecureRequest,

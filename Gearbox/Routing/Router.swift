@@ -35,7 +35,7 @@ class Router: ObservableObject {
       case .home:
         BottomTabMenuView()
       case .details:
-        BlogDetailView()
+        BlogDetailsView()
       case .latest:
         LatestView()
       case .profile(let userId):

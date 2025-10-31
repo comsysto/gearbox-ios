@@ -11,67 +11,20 @@ struct CommentSectionView: View {
   // MARK: - PROPERTIES
   @EnvironmentObject private var viewModel: BlogDetailsViewModel
   
-  @State private var comments: [Comment] = [
-    Comment(
-      username: "@hansmuliner",
-      text: "I can't wait to see this next generation Apple Car Play in my Jaguar",
-      userImage: "person.circle.fill"
-    ),
-    Comment(
-      username: "@tomtainor",
-      text: "Honestly, I think this will be a huge feature for iPhone users. This has a potential to create your own car gauges and customize your dashboard to your liking. I hope that users will have that opportunity in the next gen.",
-      userImage: "person.circle.fill"
-    ),
-    Comment(
-      username: "@theresawalter",
-      text: "I just hope that the dashboard won't be locked by brand.",
-      userImage: "person.circle.fill"
-    )
-  ]
+  private let imageCache: ImageCacheManagerType = ImageNSCacheManager.shared
   
   // MARK: - BODY
   var body: some View {
     VStack {
-      HStack(alignment: .center) {
-        Text("label.comments")
-          .font(.headline)
-        Spacer()
-        Button {
-          viewModel.state.isSheetPresented.toggle()
-        } label: {
-          Image(systemName: "arrow.down.circle")
-            .resizable()
-            .frame(width: 25, height: 25)
-            .foregroundStyle(.gray)
-        }
-      } //: HSTACK
-      .padding(.top, 20)
-      ScrollView {
-        VStack(spacing: 20) {
-          ForEach(comments) { comment in
-            renderCommentBox(comment)
-          }
-        } //: VSTACK
-      } //: SCROLL VIEW
-      HStack {
-        Image(systemName: "person.circle.fill")
-          .resizable()
-          .frame(width: 25, height: 25)
-          .foregroundStyle(.brand)
-        TextField("placeholder.comment", text: .constant(""))
-        Spacer()
-        Button {
-          //TODO: Add send action
-        } label: {
-          Image(systemName: "paperplane.fill")
-            .foregroundColor(.brand)
-        }
+      renderHeader()
+      
+      if (viewModel.state.commentList.isEmpty) {
+        renderEmptyState()
+      } else {
+        renderCommentList()
       }
-      .padding()
-      .overlay(
-        RoundedRectangle(cornerRadius: 5)
-          .stroke(.brand, lineWidth: 1)
-      )
+      
+      renderInput()
     } //VSTACK
     .padding(.horizontal, 20)
     .presentationBackground(.regularMaterial)
@@ -79,39 +32,151 @@ struct CommentSectionView: View {
   }
 }
 
-// MARK: - TEMPORARY STRUCT MODEL
-struct Comment: Identifiable {
-  let id = UUID()
-  let username: String
-  let text: String
-  let userImage: String // SF Symbol name for user image
-}
-
 // MARK: - VIEW EXTENSIONS
 private extension CommentSectionView {
+  
+  @ViewBuilder
+  func renderHeader() -> some View {
+    HStack(alignment: .center) {
+      Text("label.comments")
+        .font(.title3)
+        .fontWeight(.bold)
+      Spacer()
+      Button {
+        viewModel.state.isSheetPresented.toggle()
+      } label: {
+        Image(systemName: "arrow.down.circle")
+          .resizable()
+          .frame(width: 25, height: 25)
+          .foregroundStyle(.gray)
+      }
+    } //: HSTACK
+    .padding(.top, 20)
+  }
+  
+  @ViewBuilder
+  func renderEmptyState() -> some View {
+    VStack {
+      Spacer()
+      Image("gearbox_logo")
+        .resizable()
+        .frame(width: 45, height: 45)
+        .foregroundStyle(.secondary)
+        .padding(.bottom, 5)
+      Text("blog.details.comments.empty.title")
+        .font(.custom("RobotoCondensed-Bold", size: 18))
+      Text("blog.details.comments.empty.description")
+        .font(.footnote)
+        .multilineTextAlignment(.center)
+        .foregroundStyle(.secondary)
+        .padding(.horizontal)
+      Spacer()
+    } //: VSTACK
+  }
+  
+  @ViewBuilder
+  func renderCommentList() -> some View {
+    if viewModel.state.isLoadingComments {
+      ProgressView()
+    } else {
+      
+    }
+    
+    ScrollView {
+      VStack(alignment: .leading, spacing: 20) {
+        ForEach(viewModel.state.commentList) { comment in
+          renderCommentBox(comment)
+        }
+      } //: VSTACK
+    } //: SCROLL VIEW
+  }
+  
   @ViewBuilder
   func renderCommentBox(_ comment: Comment) -> some View {
     HStack (alignment: .top) {
-      Image(systemName: comment.userImage)
-        .resizable()
-        .scaledToFill()
-        .frame(width: 30, height: 30)
-        .clipShape(Circle())
+      renderProfileImage(for: comment)
+      
       VStack (alignment: .leading) {
-        Text(comment.username)
+        Text("@\(comment.username)")
           .font(.caption2)
           .foregroundStyle(.gray)
-        Text(comment.text)
+        Text(comment.content)
           .font(.caption)
       } //:VSTACK
     } //: HSTACK
+  }
+  
+  @ViewBuilder
+  func renderProfileImage(for comment: Comment) -> some View {
+    let image = {
+      if let url = comment.profileImageUrl, let cachedImage = imageCache.load(forKey: url) {
+        return Image(uiImage: cachedImage)
+      }
+      return Image(systemName: "person.circle.fill")
+    }()
+    
+    image
+      .resizable()
+      .scaledToFill()
+      .frame(width: 30, height: 30)
+      .clipShape(Circle())
+  }
+  
+  @ViewBuilder
+  func renderInput() -> some View {
+    HStack {
+      Image(systemName: "person.circle.fill")
+        .resizable()
+        .frame(width: 25, height: 25)
+        .foregroundStyle(.brand)
+      TextField("placeholder.comment", text: .constant(""))
+      Spacer()
+      Button {
+        //TODO: Add send action
+      } label: {
+        Image(systemName: "paperplane.fill")
+          .foregroundColor(.brand)
+      }
+    } //: HSTACK
+    .padding()
+    .overlay(
+      RoundedRectangle(cornerRadius: 5)
+        .stroke(.brand, lineWidth: 1)
+    )
   }
 }
 
 // MARK: - PREVIEW
 #Preview {
   let viewModel = BlogDetailsViewModel()
-  ZStack {
+  viewModel.state.commentList = [
+    Comment(
+      id: "1",
+      blogId: "1",
+      userId: "@hansmuliner",
+      username: "@hansmuliner",
+      profileImageUrl: nil,
+      content: "I can't wait to see this next generation Apple Car Play in my Jaguar",
+    ),
+    Comment(
+      id: "2",
+      blogId: "2",
+      userId: "@tomtainor",
+      username: "@tomtainor",
+      profileImageUrl: nil,
+      content: "Honestly, I think this will be a huge feature for iPhone users. This has a potential to create your own car gauges and customize your dashboard to your liking. I hope that users will have that opportunity in the next gen.",
+    ),
+    Comment(
+      id: "3",
+      blogId: "3",
+      userId: "@theresawalter",
+      username: "@theresawalter",
+      profileImageUrl: nil,
+      content: "I just hope that the dashboard will be customizable.",
+    )
+  ]
+  
+  return ZStack {
     VStack {
       
     }
