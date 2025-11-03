@@ -7,23 +7,24 @@
 import Foundation
 
 public class URLRequestBuilder {
-  var request: URLRequest
+  // MARK: - PROPERTIES
+  private var request: URLRequest
   
+  // MARK: - CONSTRUCTOR
   init(url: URL) {
     self.request = URLRequest(url: url)
   }
   
+  // MARK: - FUNCTIONS
   func setAuthorization(token: String, method: String) -> URLRequestBuilder {
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
     request.httpMethod = method
     return self
   }
   
-  func setBody(data: Data?) -> URLRequestBuilder {
-    if (data != nil) {
-      request.httpBody = data
-    }
+  func setBody(data: Data?, contentType: String = "application/json") -> URLRequestBuilder {
+    request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+    request.httpBody = data
     return self
   }
   
@@ -31,3 +32,14 @@ public class URLRequestBuilder {
     return request
   }
 }
+
+// MARK: - DATA EXTENSION
+public extension Data {
+  mutating func append(_ string: String, encoding: String.Encoding = .utf8) {
+    guard let data = string.data(using: encoding) else {
+      return
+    }
+    append(data)
+  }
+}
+

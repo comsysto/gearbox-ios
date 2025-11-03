@@ -15,8 +15,9 @@ class Router: ObservableObject {
     case signIn
     case signUp
     case home
-    case details
+    case details //TODO: Consider passing the blog object here 
     case latest
+    case profile(userId: String?)
   }
   
   // MARK: - PROPERTIES
@@ -34,9 +35,11 @@ class Router: ObservableObject {
       case .home:
         BottomTabMenuView()
       case .details:
-        BlogDetailView()
+        BlogDetailsView()
       case .latest:
         LatestView()
+      case .profile(let userId):
+        ProfileView(for: userId)
     }
   }
   

@@ -8,7 +8,6 @@ import Foundation
 
 @available(iOS 15.0, *)
 class BlogClient : BlogDatasourceType {
-  
   private let baseUrl = "http://localhost:8080/api/blog"
   
   func getTrending(_ blogRequest: BlogPageableSecureRequest) async throws -> PageableResponse<[BlogResponse]> {
@@ -22,6 +21,34 @@ class BlogClient : BlogDatasourceType {
   func search(_ blogRequest: BlogPageableSecureRequest, query: String) async throws -> PageableResponse<[BlogResponse]> {
     let body = serializeStringToJSONData(query)
     return try await sendPageableSecureRequest("search", blogRequest, method: "POST", body: body)
+  }
+  
+  func getByAuthor(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]> {
+    return try await sendPageableSecureRequest("byAuthor/\(userId)", blogRequest)
+  }
+
+  func getLikedBy(_ blogRequest: BlogPageableSecureRequest, userId: String) async throws -> PageableResponse<[BlogResponse]> {
+    return try await sendPageableSecureRequest("likedBy/\(userId)", blogRequest)
+  }
+  
+  func getBlogComments(_ commentRequest: CommentPageableSecureRequest) async throws -> PageableResponse<[CommentResponse]> {
+    let url = URL(string: baseUrl + "/comment/\(commentRequest.blogId)/\(commentRequest.page)/\(commentRequest.size)")!
+    
+    let request = URLRequestBuilder(url: url)
+      .setAuthorization(token: commentRequest.token, method: "GET")
+      .build()
+    
+    let (data, status) = try await URLSession.shared.data(for: request)
+    let response = status as? HTTPURLResponse
+    
+    switch response?.statusCode {
+        case 200:
+        let decoder = JSONDecoder()
+        let result = try decoder.decode(PageableResponse<[CommentResponse]>.self, from: data)
+        return result
+      default:
+        throw BlogException.serverError("error.server-error")
+    }
   }
   
   private func sendPageableSecureRequest(

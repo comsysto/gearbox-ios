@@ -379,6 +379,28 @@
         }
       }
     },
+    "blog.details.comments.empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Be the first to comment"
+          }
+        }
+      }
+    },
+    "blog.details.comments.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No comments yet"
+          }
+        }
+      }
+    },
     "Bookmarked blogs" : {
 
     },
@@ -418,6 +440,28 @@
     },
     "Create new" : {
 
+    },
+    "error.blogs-not-found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error while searching for blogs."
+          }
+        }
+      }
+    },
+    "error.image-compression" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error while compressing the image."
+          }
+        }
+      }
     },
     "error.server-error" : {
       "extractionState" : "manual",
@@ -537,6 +581,9 @@
           }
         }
       }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "label.back" : {
       "extractionState" : "manual",
@@ -738,6 +785,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lozinka"
+          }
+        }
+      }
+    },
+    "label.profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
           }
         }
       }
@@ -965,13 +1023,157 @@
         }
       }
     },
-    "ProfileView" : {
-
+    "profile.image-setup.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from the photo gallery your profile photo."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izaberi fotografiju iz galerije za svoj profil."
+          }
+        }
+      }
+    },
+    "profile.image-setup.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrap the garage door."
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotografija profila"
+          }
+        }
+      }
+    },
+    "profile.label.empty.placeholder.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the photo in the gallery that you want to be your new profile photo."
+          }
+        }
+      }
+    },
+    "profile.label.empty.placeholder.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your profile photo"
+          }
+        }
+      }
+    },
+    "profile.label.filled.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wow, nice photo!"
+          }
+        }
+      }
+    },
+    "profile.label.liked-blogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liked blogs"
+          }
+        }
+      }
+    },
+    "profile.label.liked-blogs-empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have not liked any blog yet."
+          }
+        }
+      }
+    },
+    "profile.label.liked-blogs-empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No blogs"
+          }
+        }
+      }
+    },
+    "profile.label.posted-blogs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posted blogs"
+          }
+        }
+      }
+    },
+    "profile.label.posted-blogs-empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No published blog yet."
+          }
+        }
+      }
+    },
+    "profile.label.posted-blogs-empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No blogs"
+          }
+        }
+      }
+    },
+    "profile.label.upload-image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submit image"
+          }
+        }
+      }
     },
     "Search category" : {
 
     },
     "Trending" : {
+
+    },
+    "Username not found" : {
 
     }
   },
