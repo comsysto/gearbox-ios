@@ -13,6 +13,7 @@ struct Blog: Identifiable, Equatable {
   let thumbnailImageUrl: String
   let createDate: Date
   let numberOfLikes: Int
+  let numberOfComments: Int
   let category: String
   let author: Author
 }

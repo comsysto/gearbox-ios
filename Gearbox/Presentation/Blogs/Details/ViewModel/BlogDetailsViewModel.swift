@@ -44,6 +44,8 @@ class BlogDetailsViewModel: ObservableObject {
     Task {
       if loadMore { pageController.incrementPage() }
       
+      try? await Task.sleep(nanoseconds: 3_000_000_000)
+      
       let result = await getBlogCommentsUseCase.execute(
         blogId: state.blog!.id,
         page: pageController.currentPage,
@@ -53,7 +55,6 @@ class BlogDetailsViewModel: ObservableObject {
       switch result {
         case .success(let commentPage):
           pageController.setLastPage(commentPage.isLastPage)
-          print("LAST PAGE: \(pageController.isLastPage)")
           
           if commentPage.items.isEmpty {
             state.isLoadingMore = false

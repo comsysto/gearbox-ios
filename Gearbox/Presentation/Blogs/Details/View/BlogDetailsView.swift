@@ -64,6 +64,7 @@ private extension BlogDetailsView {
         .foregroundStyle(.text)
         .onTapGesture {
           router.navigateBack()
+          viewModel.state.isSheetPresented = false
         }
       Text("label.back")
         .font(.footnote)
@@ -156,10 +157,10 @@ private extension BlogDetailsView {
   @ViewBuilder
   func renderBottomActionBar() -> some View {
     HStack (alignment: .center) {
-      renderActionButton(imageName: "gearshape", label: "14") {
+      renderActionButton(imageName: "gearshape", label: "\(viewModel.state.blog!.numberOfLikes)") {
         print("Like pressed!")
       }
-      renderActionButton(imageName: "ellipsis.bubble", label: "3") {
+      renderActionButton(imageName: "ellipsis.bubble", label: "\(viewModel.state.blog!.numberOfComments)") {
         viewModel.state.isSheetPresented.toggle()
       }
       Spacer()
@@ -207,6 +208,7 @@ private extension BlogDetailsView {
     thumbnailImageUrl: "trending_placeholder",
     createDate: Date().addingTimeInterval(-3600),
     numberOfLikes: 13,
+    numberOfComments: 4,
     category: "Technology",
     author: Author(id: "", username: "filipkisic", profileImageUrl: nil)
   )

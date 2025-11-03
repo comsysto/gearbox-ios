@@ -34,7 +34,6 @@ class CommentRepositoryImpl: CommentRepositoryType {
       let paginated = Paginated(items: comments, isLastPage: response.last)
       return .success(paginated)
     } catch {
-      print("\(error.localizedDescription)")
       switch error as? BlogError {
         case .serverError(let message):
           return .failure(.serverError(message))

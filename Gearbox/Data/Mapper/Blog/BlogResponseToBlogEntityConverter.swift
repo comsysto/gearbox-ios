@@ -18,6 +18,7 @@ class BlogResponseToBlogEntityConverter: ConverterType {
       thumbnailImageUrl: response.thumbnailImageUrl,
       createDate: response.createDate,
       numberOfLikes: response.numberOfLikes,
+      numberOfComments: response.numberOfComments,
       category: response.category,
       author: Author(
         id: response.author.id,

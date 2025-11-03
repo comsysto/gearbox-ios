@@ -25,6 +25,7 @@ public struct BlogResponse: Identifiable, Decodable {
   public let thumbnailImageUrl: String
   public let createDate: Date
   public let numberOfLikes: Int
+  public let numberOfComments: Int
   public let category: String
   public let author: AuthorResponse
   
@@ -35,6 +36,7 @@ public struct BlogResponse: Identifiable, Decodable {
     thumbnailImageUrl: String,
     createDate: Date,
     numberOfLikes: Int,
+    numberOfComments: Int,
     category: String,
     author: AuthorResponse
   ) {
@@ -44,6 +46,7 @@ public struct BlogResponse: Identifiable, Decodable {
     self.thumbnailImageUrl = thumbnailImageUrl
     self.createDate = createDate
     self.numberOfLikes = numberOfLikes
+    self.numberOfComments = numberOfComments
     self.category = category
     self.author = author
   }

@@ -122,6 +122,7 @@ struct ShimmerBlogCard: View {
     thumbnailImageUrl: "trending_placeholder",
     createDate: Date().addingTimeInterval(-3600),
     numberOfLikes: 13,
+    numberOfComments: 4,
     category: "Technology",
     author: Author(id: "", username: "filipkisic", profileImageUrl: nil)
   )

@@ -319,6 +319,7 @@ private func mockBlogState() -> [Blog] {
       thumbnailImageUrl: "photo_icon",
       createDate: Date(),
       numberOfLikes: 13,
+      numberOfComments: 4,
       category: "Technology",
       author: Author(id: "1", username: "@filipkisic", profileImageUrl: "photo_icon")
     ),
@@ -329,6 +330,7 @@ private func mockBlogState() -> [Blog] {
       thumbnailImageUrl: "photo_icon",
       createDate: Date(),
       numberOfLikes: 15,
+      numberOfComments: 2,
       category: "Old Timer",
       author: Author(id: "1", username: "@filipkisic", profileImageUrl: "photo_icon")
     ),
@@ -339,6 +341,7 @@ private func mockBlogState() -> [Blog] {
       thumbnailImageUrl: "photo_icon",
       createDate: Date(),
       numberOfLikes: 3,
+      numberOfComments: 0,
       category: "Concept",
       author: Author(id: "1", username: "@filipkisic", profileImageUrl: "photo_icon")
     ),

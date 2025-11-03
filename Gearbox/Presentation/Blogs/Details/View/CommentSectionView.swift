@@ -18,7 +18,13 @@ struct CommentSectionView: View {
     VStack {
       renderHeader()
       
-      if (viewModel.state.commentList.isEmpty) {
+      if viewModel.state.isLoadingComments {
+        VStack {
+          Spacer()
+          ProgressView()
+          Spacer()
+        } //: VSTACK
+      } else if viewModel.state.commentList.isEmpty {
         renderEmptyState()
       } else {
         renderCommentList()
@@ -76,25 +82,21 @@ private extension CommentSectionView {
   
   @ViewBuilder
   func renderCommentList() -> some View {
-    if viewModel.state.isLoadingComments {
-      VStack {
-        Spacer()
-        ProgressView()
-        Spacer()
-      } //: VSTACK
-    } else {
-      ScrollView {
-        LazyVStack(alignment: .leading, spacing: 20) {
-          ForEach(0..<viewModel.state.commentList.count, id: \.self) { index in
-            renderCommentBox(at: index)
-          } //: FOR EACH
-          
-          if viewModel.state.isLoadingMore {
+    ScrollView {
+      LazyVStack(alignment: .leading, spacing: 20) {
+        ForEach(0..<viewModel.state.commentList.count, id: \.self) { index in
+          renderCommentBox(at: index)
+        } //: FOR EACH
+        
+        if viewModel.state.isLoadingMore {
+          HStack {
+            Spacer()
             ProgressView().padding()
-          }
-        } //: LAZY VSTACK
-      } //: SCROLL VIEW
-    }
+            Spacer()
+          } //: HSTACK
+        }
+      } //: LAZY VSTACK
+    } //: SCROLL VIEW
   }
   
   @ViewBuilder
