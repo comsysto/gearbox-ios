@@ -89,7 +89,6 @@ private extension BlogDetailsView {
   func renderProfileImage(for blog: Blog) -> some View {
     let image = {
       if let imageUrl = blog.author.profileImageUrl, let cachedImage = imageCache.load(forKey: imageUrl) {
-        print("IMAGE: \(imageUrl)")
         return Image(uiImage: cachedImage)
       }
       return Image(systemName: "person.circle.fill")

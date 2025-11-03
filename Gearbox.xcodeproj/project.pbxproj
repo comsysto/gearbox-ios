@@ -32,6 +32,7 @@
 		123F65092DB673A7000A236C /* KeychainUserSessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123F65082DB6739E000A236C /* KeychainUserSessionRepository.swift */; };
 		124A198D2CF0BA84005B97CA /* BlogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124A198C2CF0BA84005B97CA /* BlogCard.swift */; };
 		124C1DA42D66014800407A82 /* CacheNewImagesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124C1DA32D66013B00407A82 /* CacheNewImagesUseCase.swift */; };
+		124DB1832EB4EFB1006D5102 /* AppIconGlass.icon in Resources */ = {isa = PBXBuildFile; fileRef = 124DB1822EB4EFB1006D5102 /* AppIconGlass.icon */; };
 		124DB7192D9A8CFB00C12BE6 /* AuthorRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DB7182D9A8CF700C12BE6 /* AuthorRepositoryImpl.swift */; };
 		124DB71C2D9A8D1700C12BE6 /* AuthorRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DB71B2D9A8D1100C12BE6 /* AuthorRepositoryType.swift */; };
 		124DB71E2D9A916400C12BE6 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DB71D2D9A916100C12BE6 /* Author.swift */; };
@@ -149,6 +150,7 @@
 		123F65082DB6739E000A236C /* KeychainUserSessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUserSessionRepository.swift; sourceTree = "<group>"; };
 		124A198C2CF0BA84005B97CA /* BlogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCard.swift; sourceTree = "<group>"; };
 		124C1DA32D66013B00407A82 /* CacheNewImagesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheNewImagesUseCase.swift; sourceTree = "<group>"; };
+		124DB1822EB4EFB1006D5102 /* AppIconGlass.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIconGlass.icon; sourceTree = "<group>"; };
 		124DB7182D9A8CF700C12BE6 /* AuthorRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorRepositoryImpl.swift; sourceTree = "<group>"; };
 		124DB71B2D9A8D1100C12BE6 /* AuthorRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorRepositoryType.swift; sourceTree = "<group>"; };
 		124DB71D2D9A916100C12BE6 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		1251E6312C36E61F00FE8E93 = {
 			isa = PBXGroup;
 			children = (
+				124DB1822EB4EFB1006D5102 /* AppIconGlass.icon */,
 				1251E63C2C36E61F00FE8E93 /* Gearbox */,
 				1251E63B2C36E61F00FE8E93 /* Products */,
 				125216832C5BDE2F00A0185B /* Frameworks */,
@@ -1006,6 +1009,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1251E6452C36E62100FE8E93 /* Preview Assets.xcassets in Resources */,
+				124DB1832EB4EFB1006D5102 /* AppIconGlass.icon in Resources */,
 				1251E6422C36E62100FE8E93 /* Assets.xcassets in Resources */,
 				1218000D2DD5FD3B004D1F75 /* GoogleService-Info.plist in Resources */,
 				12C1EDF52C38000A005783CC /* Localizable.xcstrings in Resources */,
@@ -1240,8 +1244,9 @@
 		1251E6492C36E62100FE8E93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGlass;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1278,8 +1283,9 @@
 		1251E64A2C36E62100FE8E93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconGlass;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

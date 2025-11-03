@@ -77,22 +77,30 @@ private extension CommentSectionView {
   @ViewBuilder
   func renderCommentList() -> some View {
     if viewModel.state.isLoadingComments {
-      ProgressView()
-    } else {
-      
-    }
-    
-    ScrollView {
-      VStack(alignment: .leading, spacing: 20) {
-        ForEach(viewModel.state.commentList) { comment in
-          renderCommentBox(comment)
-        }
+      VStack {
+        Spacer()
+        ProgressView()
+        Spacer()
       } //: VSTACK
-    } //: SCROLL VIEW
+    } else {
+      ScrollView {
+        LazyVStack(alignment: .leading, spacing: 20) {
+          ForEach(0..<viewModel.state.commentList.count, id: \.self) { index in
+            renderCommentBox(at: index)
+          } //: FOR EACH
+          
+          if viewModel.state.isLoadingMore {
+            ProgressView().padding()
+          }
+        } //: LAZY VSTACK
+      } //: SCROLL VIEW
+    }
   }
   
   @ViewBuilder
-  func renderCommentBox(_ comment: Comment) -> some View {
+  func renderCommentBox(at index: Int) -> some View {
+    let comment = viewModel.state.commentList[index]
+    
     HStack (alignment: .top) {
       renderProfileImage(for: comment)
       
@@ -104,6 +112,11 @@ private extension CommentSectionView {
           .font(.caption)
       } //:VSTACK
     } //: HSTACK
+    .onAppear {
+      if index == viewModel.state.commentList.count - 1 {
+        viewModel.loadComments(loadMore: true)
+      }
+    }
   }
   
   @ViewBuilder
@@ -168,6 +181,30 @@ private extension CommentSectionView {
     ),
     Comment(
       id: "3",
+      blogId: "3",
+      userId: "@theresawalter",
+      username: "@theresawalter",
+      profileImageUrl: nil,
+      content: "I just hope that the dashboard will be customizable.",
+    ),
+    Comment(
+      id: "4",
+      blogId: "3",
+      userId: "@theresawalter",
+      username: "@theresawalter",
+      profileImageUrl: nil,
+      content: "I just hope that the dashboard will be customizable.",
+    ),
+    Comment(
+      id: "5",
+      blogId: "3",
+      userId: "@theresawalter",
+      username: "@theresawalter",
+      profileImageUrl: nil,
+      content: "I just hope that the dashboard will be customizable.",
+    ),
+    Comment(
+      id: "6",
       blogId: "3",
       userId: "@theresawalter",
       username: "@theresawalter",

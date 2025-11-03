@@ -21,12 +21,12 @@ class LatestViewModel: ObservableObject {
   // MARK: - CONSTRUCTOR
   init(state: LatestState = LatestState()) {
     self.state = state
-    pageController = PageController(pageSize: 6)
+    pageController = PageController(pageSize: 10)
   }
   
   // MARK: - FUNCTIONS
   func getLatestBlogs(loadMore: Bool = false) {
-    if loadMore && pageController.isLastPage {
+    if pageController.isLastPage {
       return
     } else if loadMore && !pageController.isLastPage {
       state.isLoadingMore = true

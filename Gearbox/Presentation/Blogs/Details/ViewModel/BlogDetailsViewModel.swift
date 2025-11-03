@@ -27,10 +27,12 @@ class BlogDetailsViewModel: ObservableObject {
   // MARK: - FUNCTIONS
   func select(_ blog: Blog) {
     state.blog = blog
+    state.commentList.removeAll()
+    pageController.reset()
   }
   
   func loadComments(loadMore: Bool = false) {
-    if loadMore && pageController.isLastPage {
+    if pageController.isLastPage {
       return
     } else if loadMore && !pageController.isLastPage {
       state.isLoadingMore = true
@@ -40,6 +42,8 @@ class BlogDetailsViewModel: ObservableObject {
     }
     
     Task {
+      if loadMore { pageController.incrementPage() }
+      
       let result = await getBlogCommentsUseCase.execute(
         blogId: state.blog!.id,
         page: pageController.currentPage,
@@ -49,6 +53,7 @@ class BlogDetailsViewModel: ObservableObject {
       switch result {
         case .success(let commentPage):
           pageController.setLastPage(commentPage.isLastPage)
+          print("LAST PAGE: \(pageController.isLastPage)")
           
           if commentPage.items.isEmpty {
             state.isLoadingMore = false
@@ -62,6 +67,7 @@ class BlogDetailsViewModel: ObservableObject {
           
           state.commentList.append(contentsOf: commentPage.items)
           state.isLoadingComments = false
+          state.isLoadingMore = false
         case .failure(let error):
           setErrorMessage(error)
           state.isLoadingComments = false
